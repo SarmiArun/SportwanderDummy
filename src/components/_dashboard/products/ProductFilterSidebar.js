@@ -41,7 +41,7 @@ export const FILTER_PRICE_OPTIONS = [
   { value: 'above', label: 'Above $75' }
 ];
 export const FILTER_COLOR_OPTIONS = [
-  '#00AB55',
+  '#F90E13',
   '#000000',
   '#FFFFFF',
   '#FFC0CB',

@@ -4,7 +4,8 @@ import peopleFill from '@iconify/icons-eva/people-fill';
 import shoppingBagFill from '@iconify/icons-eva/shopping-bag-fill';
 import fileTextFill from '@iconify/icons-eva/file-text-fill';
 import lockFill from '@iconify/icons-eva/lock-fill';
-import personAddFill from '@iconify/icons-eva/person-add-fill';
+import moderatorIcon from '@iconify/icons-ic/outline-support-agent';
+import subscriptionIcon from '@iconify/icons-ic/outline-subscriptions';
 import alertTriangleFill from '@iconify/icons-eva/alert-triangle-fill';
 
 // ----------------------------------------------------------------------
@@ -14,38 +15,43 @@ const getIcon = (name) => <Icon icon={name} width={22} height={22} />;
 const sidebarConfig = [
   {
     title: 'dashboard',
-    path: '/dashboard/app',
+    path: '/admin/dashboard',
     icon: getIcon(pieChart2Fill)
   },
   {
-    title: 'user',
-    path: '/dashboard/user',
-    icon: getIcon(peopleFill)
-  },
-  {
-    title: 'product',
-    path: '/dashboard/products',
+    title: 'KYC Verification',
+    path: '/admin/kyc_verification',
     icon: getIcon(shoppingBagFill)
   },
   {
-    title: 'blog',
-    path: '/dashboard/blog',
+    title: 'Players',
+    path: '/admin/players',
     icon: getIcon(fileTextFill)
   },
   {
-    title: 'login',
-    path: '/login',
+    title: 'Stadium Owners',
+    path: '/admin/stadium_owners',
+    icon: getIcon(fileTextFill)
+  },
+  {
+    title: 'Event Organigers',
+    path: '/admin/event_organigers',
+    icon: getIcon(fileTextFill)
+  },
+  {
+    title: 'Subscription Plans',
+    path: '/subscription_plans',
     icon: getIcon(lockFill)
   },
   {
-    title: 'register',
-    path: '/register',
-    icon: getIcon(personAddFill)
+    title: 'Subscriptions',
+    path: '/admin/subscriptions',
+    icon: getIcon(subscriptionIcon)
   },
   {
-    title: 'Not found',
-    path: '/404',
-    icon: getIcon(alertTriangleFill)
+    title: 'Moderators',
+    path: '/admin/moderators',
+    icon: getIcon(moderatorIcon)
   }
 ];
 

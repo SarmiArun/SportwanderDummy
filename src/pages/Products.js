@@ -10,7 +10,9 @@ import {
   ProductCartWidget,
   ProductFilterSidebar
 } from '../components/_dashboard/products';
-//
+
+import { Img } from '../components/CustomComponent';
+
 import PRODUCTS from '../_mocks_/products';
 
 // ----------------------------------------------------------------------

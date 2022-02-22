@@ -8,6 +8,7 @@ import { fCurrency } from '../../../utils/formatNumber';
 //
 import Label from '../../Label';
 import ColorPreview from '../../ColorPreview';
+import S from './product.module.scss';
 
 // ----------------------------------------------------------------------
 
@@ -30,15 +31,18 @@ export default function ShopProductCard({ product }) {
 
   return (
     <Card>
-      <Box sx={{ pt: '100%', position: 'relative' }}>
+      <Box className={S.productcard} sx={{ pt: '100%', position: 'relative' }}>
         {status && (
           <Label
             variant="filled"
+            className={S.editbtn}
             color={(status === 'sale' && 'error') || 'info'}
+            onClick={() => console.log('asd')}
             sx={{
               zIndex: 9,
               top: 16,
               right: 16,
+              display: 'none',
               position: 'absolute',
               textTransform: 'uppercase'
             }}

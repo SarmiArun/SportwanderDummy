@@ -10,20 +10,23 @@ import Products from './pages/Products';
 import Blog from './pages/Blog';
 import User from './pages/User';
 import NotFound from './pages/Page404';
+import Testing from './components/Testing';
+import MainLoader from './MainLoader';
 
 // ----------------------------------------------------------------------
 
-export default function Router() {
+export function Router(props) {
   return useRoutes([
     {
-      path: '/dashboard',
+      path: '/admin',
       element: <DashboardLayout />,
       children: [
-        { element: <Navigate to="/dashboard/app" replace /> },
-        { path: 'app', element: <DashboardApp /> },
-        { path: 'user', element: <User /> },
-        { path: 'products', element: <Products /> },
-        { path: 'blog', element: <Blog /> }
+        { element: <Navigate to="/admin/dashboard" replace /> },
+        // { path: 'app', element: <DashboardApp /> },
+        props.route,
+        // { path: 'products', element: <Products /> },
+        { path: 'blog', element: <Blog /> },
+        { path: 'testing', element: <Testing /> }
       ]
     },
     {
@@ -32,11 +35,22 @@ export default function Router() {
       children: [
         { path: 'login', element: <Login /> },
         { path: 'register', element: <Register /> },
-        { path: '404', element: <NotFound /> },
-        { path: '/', element: <Navigate to="/dashboard" /> },
-        { path: '*', element: <Navigate to="/404" /> }
+        { path: '404', element: <NotFound /> }
+        // { path: '/', element: <Navigate to="/dashboard" /> },
+        // { path: '*', element: <Navigate to="/404" /> }
       ]
     },
-    { path: '*', element: <Navigate to="/404" replace /> }
+    { path: '*', element: <MainLoader /> }
+  ]);
+}
+
+export function Routers() {
+  return useRoutes([
+    {
+      path: '/',
+      element: <DashboardLayout />,
+      children: [{ path: '/', element: <MainLoader /> }]
+    },
+    { path: '*', element: <MainLoader /> }
   ]);
 }

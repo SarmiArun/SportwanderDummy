@@ -1,5 +1,5 @@
 // routes
-import Router from './routes';
+import { Routers } from './routes';
 // theme
 import ThemeConfig from './theme';
 import GlobalStyles from './theme/globalStyles';
@@ -15,7 +15,7 @@ export default function App() {
       <ScrollToTop />
       <GlobalStyles />
       <BaseOptionChartStyle />
-      <Router />
+      <Routers />
     </ThemeConfig>
   );
 }
