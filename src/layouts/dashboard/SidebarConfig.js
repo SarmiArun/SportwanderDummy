@@ -19,40 +19,70 @@ const sidebarConfig = [
     icon: getIcon(pieChart2Fill)
   },
   {
-    title: 'KYC Verification',
-    path: '/admin/kyc_verification',
+    title: 'Add Stadiums',
+    path: '/admin/AddStadium',
     icon: getIcon(shoppingBagFill)
   },
   {
-    title: 'Players',
-    path: '/admin/players',
-    icon: getIcon(fileTextFill)
+    title: 'Stadium List',
+    path: '/admin/ListStadium',
+    icon: getIcon(shoppingBagFill)
   },
   {
-    title: 'Stadium Owners',
-    path: '/admin/stadium_owners',
-    icon: getIcon(fileTextFill)
+    title: 'Booked Stadiums',
+    path: '/admin/BookedStadiums',
+    icon: getIcon(shoppingBagFill)
   },
   {
-    title: 'Event Organigers',
-    path: '/admin/event_organigers',
-    icon: getIcon(fileTextFill)
+    title: 'Booked Events',
+    path: '/admin/BookedEvents',
+    icon: getIcon(shoppingBagFill)
   },
   {
-    title: 'Subscription Plans',
-    path: '/subscription_plans',
-    icon: getIcon(lockFill)
+    title: 'Courts',
+    path: '/admin/Court',
+    icon: getIcon(shoppingBagFill)
   },
   {
-    title: 'Subscriptions',
-    path: '/admin/subscriptions',
-    icon: getIcon(subscriptionIcon)
+    title: 'User',
+    path: '/admin/User',
+    icon: getIcon(shoppingBagFill)
   },
   {
-    title: 'Moderators',
-    path: '/admin/moderators',
-    icon: getIcon(moderatorIcon)
+    title: 'Subscription',
+    path: '/admin/Subscription',
+    icon: getIcon(shoppingBagFill)
   }
+  // {
+  //   title: 'Players',
+  //   path: '/admin/players',
+  //   icon: getIcon(fileTextFill)
+  // },
+  // {
+  //   title: 'Stadium Owners',
+  //   path: '/admin/stadium_owners',
+  //   icon: getIcon(fileTextFill)
+  // },
+  // {
+  //   title: 'Event Organigers',
+  //   path: '/admin/event_organigers',
+  //   icon: getIcon(fileTextFill)
+  // },
+  // {
+  //   title: 'Subscription Plans',
+  //   path: '/subscription_plans',
+  //   icon: getIcon(lockFill)
+  // },
+  // {
+  //   title: 'Subscriptions',
+  //   path: '/admin/subscriptions',
+  //   icon: getIcon(subscriptionIcon)
+  // },
+  // {
+  //   title: 'Moderators',
+  //   path: '/admin/moderators',
+  //   icon: getIcon(moderatorIcon)
+  // }
 ];
 
 export default sidebarConfig;

@@ -1,22 +1,28 @@
 // scroll bar
 import 'simplebar/src/simplebar.css';
-
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-
-//
-import App from './App';
+import { createStore, compose, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import Reducer from './redux/reducer/index';
 import * as serviceWorker from './serviceWorker';
 import reportWebVitals from './reportWebVitals';
+import App from './App';
+
+const store = createStore(Reducer, compose(applyMiddleware(thunk)));
 
 // ----------------------------------------------------------------------
 
 ReactDOM.render(
   <HelmetProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
   </HelmetProvider>,
   document.getElementById('root')
 );

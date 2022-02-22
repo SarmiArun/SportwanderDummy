@@ -1,13 +1,15 @@
 import { Icon } from '@iconify/react';
+import react, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import androidFilled from '@iconify/icons-ant-design/android-filled';
 // material
 import { alpha, styled } from '@mui/material/styles';
 import { Card, Typography } from '@mui/material';
 // utils
 import { fShortenNumber } from '../../../utils/formatNumber';
+import { stadiumcounts } from '../../../redux/actions/actions';
 
 // ----------------------------------------------------------------------
-
 const RootStyle = styled(Card)(({ theme }) => ({
   boxShadow: 'none',
   textAlign: 'center',
@@ -37,12 +39,18 @@ const IconWrapperStyle = styled('div')(({ theme }) => ({
 const TOTAL = 714000;
 
 export default function AppWeeklySales() {
+  const dispatch = useDispatch();
+  const count = useSelector(({ stadiumcounts }) => stadiumcounts.payload);
+  useEffect(() => {
+    dispatch(stadiumcounts());
+  }, []);
+
   return (
     <RootStyle>
       <IconWrapperStyle>
         <Icon icon={androidFilled} width={24} height={24} />
       </IconWrapperStyle>
-      <Typography variant="h3">{fShortenNumber(TOTAL)}</Typography>
+      <Typography variant="h3">{count}5</Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
         Weekly Sales
       </Typography>

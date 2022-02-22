@@ -1,8 +1,13 @@
 import { Navigate, useRoutes } from 'react-router-dom';
 // layouts
 import DashboardLayout from './layouts/dashboard';
+import AddStadium from './pages/AddStadium';
+import Subscription from './pages/Subscription';
+import ListStadium from './pages/ListStadium';
+import BookedStadiums from './pages/BookedStadiums';
+import BookedEvents from './pages/BookedEvents';
+import Court from './pages/Court';
 import LogoOnlyLayout from './layouts/LogoOnlyLayout';
-//
 import Login from './pages/Login';
 import Register from './pages/Register';
 import DashboardApp from './pages/DashboardApp';
@@ -26,7 +31,14 @@ export function Router(props) {
         props.route,
         // { path: 'products', element: <Products /> },
         { path: 'blog', element: <Blog /> },
-        { path: 'testing', element: <Testing /> }
+        { path: 'testing', element: <Testing /> },
+        { path: 'addStadium', element: <AddStadium /> },
+        { path: 'ListStadium', element: <ListStadium /> },
+        { path: 'BookedStadiums', element: <BookedStadiums /> },
+        { path: 'BookedEvents', element: <BookedEvents /> },
+        { path: 'court', element: <Court /> },
+        { path: 'User', element: <User /> },
+        { path: 'Subscription', element: <Subscription /> }
       ]
     },
     {
@@ -43,7 +55,6 @@ export function Router(props) {
     { path: '*', element: <MainLoader /> }
   ]);
 }
-
 export function Routers() {
   return useRoutes([
     {
