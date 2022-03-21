@@ -39,18 +39,12 @@ const IconWrapperStyle = styled('div')(({ theme }) => ({
 const TOTAL = 714000;
 
 export default function AppWeeklySales() {
-  const dispatch = useDispatch();
-  const count = useSelector(({ stadiumcounts }) => stadiumcounts.payload);
-  useEffect(() => {
-    dispatch(stadiumcounts());
-  }, []);
-
   return (
     <RootStyle>
       <IconWrapperStyle>
         <Icon icon={androidFilled} width={24} height={24} />
       </IconWrapperStyle>
-      <Typography variant="h3">{count}5</Typography>
+      <Typography variant="h3">5</Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
         Weekly Sales
       </Typography>
