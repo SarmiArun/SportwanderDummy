@@ -27,22 +27,22 @@ export const stadiumowner = {
     succes: 'stadiumownercreatesuccess',
     error: 'stadiumownercreateerror'
   },
-  List: {
-    succes: 'stadiumownerlistsuccess',
+  list: {
+    success: 'stadiumownerlistsuccess',
     error: 'stadiumownerlisterror'
   },
   count: {
-    succes: 'stadiumcountsuccess',
+    success: 'stadiumcountsuccess',
     error: 'stadiumownererror'
   }
 };
 export const event = {
   List: {
-    succes: 'eventlistsuccess',
+    success: 'eventlistsuccess',
     error: 'eventlisterror'
   },
   count: {
-    succes: 'eventcountsuccess',
+    success: 'eventcountsuccess',
     error: 'eventcounterror'
   }
 };

@@ -158,11 +158,11 @@ export default function User() {
   const { errors, touched, values, isSubmitting, handleSubmit, getFieldProps } = formik;
 
   return (
-    <Page title="User | Minimal-UI">
+    <Page title="User | Sportswander">
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Add Stadium
+            Create Stadium Owners
           </Typography>
           <Button
             variant="contained"
@@ -170,7 +170,7 @@ export default function User() {
             to="#"
             startIcon={<Icon icon={plusFill} />}
           >
-            New User
+            Stadium List
           </Button>
         </Stack>
 

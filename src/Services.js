@@ -1,10 +1,11 @@
 import axios from 'axios';
 
-export function setHeaderToken() {
-  const token = `"jdQ5cp4uRpCqICEAxITZdpTT4n1EVUqcglueS2jM9hInKfdym+/e5CW6qsswOfBKcNtdQ9B3Kh4mPbrog1lsCE1WJXmbnVU0aPVCSsJsA5Y="`;
-  if (token) {
-    // axios.defaults.headers.common['stadium_owner_token'] = `${token}`;
-    axios.defaults.headers.common[`'Auth'`] = `${token}`;
+export function setHeaderToken(t) {
+  const d = {
+    token: t
+  };
+  if (t) {
+    axios.defaults.headers.common = d;
   } else {
     delete axios.defaults.headers.common['  '];
   }
@@ -15,10 +16,11 @@ export function axiosInstance(method, path, data, params, header) {
   return axios({
     url: path,
     method: method.toLowerCase(), // default
-    baseURL: 'http://192.168.29.24:5002',
-    headers: { 'Content-Type': 'application/json' },
-    // params: params,
-    // data: data,
+    baseURL: 'http://192.168.1.44:5002',
+    // headers: { 'Content-Type': 'application/json', token: `${token}` },
+    // headers: { 'Content-Type': 'application/json', header },
+    params,
+    data,
     timeout: 0
   });
 }

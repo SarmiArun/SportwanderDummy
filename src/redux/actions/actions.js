@@ -4,7 +4,7 @@ import { user, KYC, stadiumowner, event } from '../actiontype/actiontype';
 export function userlogin(data) {
   return (dispatch) =>
     new Promise((resolve, reject) =>
-      axiosInstance('post', 'v1/admin/login', data)
+      axiosInstance('post', '/v1/admin/login', data)
         .then((res) => {
           localStorage.setItem('AuthTokAdmin', res.data.data);
           dispatch({
@@ -129,14 +129,14 @@ export function stadiumownerlist() {
       axiosInstance('get', '/v1/admin/stadium_owner/list')
         .then((res) => {
           dispatch({
-            type: stadiumowner.List.success,
+            type: stadiumowner.list.success,
             data: res?.data?.data
           });
           resolve(res);
         })
         .catch((err) => {
           dispatch({
-            type: stadiumowner.List.error,
+            type: stadiumowner.list.error,
             data: err
           });
           reject(err);

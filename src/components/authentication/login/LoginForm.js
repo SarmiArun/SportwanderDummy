@@ -1,3 +1,4 @@
+import axios from 'axios';
 import * as Yup from 'yup';
 import { useState } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
@@ -18,6 +19,7 @@ import {
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { userlogin } from '../../../redux/actions/actions';
+
 // ----------------------------------------------------------------------
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -33,7 +35,7 @@ export default function LoginForm() {
   };
   const loginsubmit = (e) => {
     e.preventDefault();
-    console.log(user);
+
     dispatch(userlogin(user)).then((res) => {
       if (res.data.data === 'Invalid Email/Password !') {
         setError(res.data.data);
@@ -41,6 +43,7 @@ export default function LoginForm() {
         window.location.href = '/admin/dashboard';
       }
     });
+    // axios.post('http://192.168.1.44:5002/v1/admin/login', user);
   };
   const LoginSchema = Yup.object().shape({
     email: Yup.string().email('Email must be a valid email address').required('Email is required'),

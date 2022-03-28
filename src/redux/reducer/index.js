@@ -1,6 +1,24 @@
 import { combineReducers } from 'redux';
-import { userlogin } from './reducer';
+import {
+  userlogin,
+  kycverify,
+  kycpending,
+  kycreject,
+  kycupdate,
+  stadiumownercreate,
+  stadiumownercount,
+  stadiumownerlist,
+  stadiumeventlist
+} from './reducer';
 
 export default combineReducers({
-  userlogin
+  userlogin,
+  kycverify,
+  kycpending,
+  kycreject,
+  kycupdate,
+  stadiumownercreate,
+  stadiumownercount,
+  stadiumownerlist,
+  stadiumeventlist
 });

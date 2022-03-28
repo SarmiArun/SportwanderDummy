@@ -8,13 +8,18 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import Reducer from './redux/reducer/index';
-import * as serviceWorker from './serviceWorker';
-import reportWebVitals from './reportWebVitals';
 import App from './App';
+import * as serviceWorker from './serviceWorker';
+import { setHeaderToken } from './Services';
+import reportWebVitals from './reportWebVitals';
 
 const store = createStore(Reducer, compose(applyMiddleware(thunk)));
+const adminToken = localStorage.getItem('AuthTokAdmin');
 
 // ----------------------------------------------------------------------
+if (adminToken) {
+  setHeaderToken(adminToken);
+}
 
 ReactDOM.render(
   <HelmetProvider>
