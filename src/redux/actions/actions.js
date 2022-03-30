@@ -186,7 +186,7 @@ export function eventorglist() {
 export function eventorgcount() {
   return (dispatch) =>
     new Promise((resolve, reject) =>
-      axiosInstance('get', '/  v1/admin/organizer/count')
+      axiosInstance('get', '/v1/admin/organizer/count')
         .then((res) => {
           dispatch({
             type: event.count.success,

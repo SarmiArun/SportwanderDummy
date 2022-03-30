@@ -4,6 +4,7 @@ import { Router } from './routes';
 import DashboardApp from './pages/DashboardApp';
 import User from './pages/User';
 import Products from './pages/Products';
+import ListStadium from './pages/ListStadium';
 import Moderators from './pages/Moderator/Moderator';
 import Subscriptions from './pages/Subscription/Subscription';
 
@@ -32,8 +33,11 @@ export default function MainLoader() {
       case '/admin/moderators':
         setRoute({ path: 'moderators', element: <Moderators /> });
         return setLoad(false);
+      case '/admin/ListStadium':
+        setRoute({ path: 'ListStadium', element: <ListStadium /> });
+        return setLoad(false);
       default:
-        navigate('404', true);
+        navigate('/', true);
         return setLoad(false);
     }
   }, []);

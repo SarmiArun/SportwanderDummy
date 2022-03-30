@@ -37,8 +37,7 @@ export function Router(props) {
         { path: 'BookedStadiums', element: <BookedStadiums /> },
         { path: 'BookedEvents', element: <BookedEvents /> },
         { path: 'court', element: <Court /> },
-        { path: 'User', element: <User /> },
-
+        { path: 'user', element: <User /> },
         { path: 'Subscription', element: <Subscription /> }
       ]
     },

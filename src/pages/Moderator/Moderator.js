@@ -1,7 +1,8 @@
 import { Icon } from '@iconify/react';
 import { sentenceCase } from 'change-case';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import plusFill from '@iconify/icons-eva/plus-fill';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 // material
 import {
@@ -24,6 +25,7 @@ import Page from '../../components/Page';
 import Label from '../../components/Label';
 import Scrollbar from '../../components/Scrollbar';
 import SearchNotFound from '../../components/SearchNotFound';
+import { stadiumownerlist } from '../../redux/actions/actions';
 import {
   descendingComparator,
   getComparator,
@@ -41,12 +43,14 @@ const TABLE_HEAD = [
   { id: 'email', label: 'Email', alignRight: false },
   { id: 'password', label: 'Password', alignRight: false },
   { id: 'phoneno', label: 'Phone No', alignRight: false },
+  { id: 'kyc_status', label: 'KYC Status', alignRight: false },
   { id: '' }
 ];
 
 // ----------------------------------------------------------------------
 
 export default function Moderators() {
+  const dispatch = useDispatch();
   const [page, setPage] = useState(0);
   const [order, setOrder] = useState('asc');
   const [selected, setSelected] = useState([]);
@@ -105,13 +109,15 @@ export default function Moderators() {
   const filteredUsers = applySortFilter(MODERATORLIST, getComparator(order, orderBy), filterName);
 
   const isUserNotFound = filteredUsers.length === 0;
-
+  useEffect(() => {
+    dispatch(stadiumownerlist());
+  }, []);
   return (
-    <Page title="Moderators | Minimal-UI">
+    <Page title="Moderators | Sportswander">
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Moderators
+            Stadium Owner List
           </Typography>
           <Button
             variant="contained"
@@ -119,7 +125,7 @@ export default function Moderators() {
             to="#"
             startIcon={<Icon icon={plusFill} />}
           >
-            New User
+            Add Stadium Owner
           </Button>
         </Stack>
 
@@ -159,12 +165,6 @@ export default function Moderators() {
                           selected={isItemSelected}
                           aria-checked={isItemSelected}
                         >
-                          <TableCell padding="checkbox">
-                            <Checkbox
-                              checked={isItemSelected}
-                              onChange={(event) => handleClick(event, name)}
-                            />
-                          </TableCell>
                           <TableCell align="left">
                             <Avatar alt={name} src={profile} />
                           </TableCell>

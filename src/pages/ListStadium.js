@@ -1,8 +1,9 @@
+import React, { useState, useEffect } from 'react';
 import { filter } from 'lodash';
 import { Icon } from '@iconify/react';
 import { sentenceCase } from 'change-case';
-import { useState } from 'react';
 import plusFill from '@iconify/icons-eva/plus-fill';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 // material
 import {
@@ -24,6 +25,7 @@ import {
   TablePagination
 } from '@mui/material';
 // components
+
 import Page from '../components/Page';
 import Label from '../components/Label';
 import Scrollbar from '../components/Scrollbar';
@@ -75,6 +77,7 @@ function applySortFilter(array, comparator, query) {
 }
 
 export default function User() {
+  const dispatch = useDispatch();
   const [page, setPage] = useState(0);
   const [order, setOrder] = useState('asc');
   const [selected, setSelected] = useState([]);

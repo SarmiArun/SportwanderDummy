@@ -8,7 +8,8 @@ import {
   stadiumownercreate,
   stadiumownercount,
   stadiumownerlist,
-  stadiumeventlist
+  stadiumeventlist,
+  eventorgcount
 } from './reducer';
 
 export default combineReducers({
@@ -20,5 +21,6 @@ export default combineReducers({
   stadiumownercreate,
   stadiumownercount,
   stadiumownerlist,
-  stadiumeventlist
+  stadiumeventlist,
+  eventorgcount
 });

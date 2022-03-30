@@ -146,3 +146,19 @@ export const stadiumeventlist = (state = initialState, actions) => {
       return state;
   }
 };
+export const eventorgcount = (state = initialState, actions) => {
+  switch (actions.type) {
+    case event.count.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case event.count.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
