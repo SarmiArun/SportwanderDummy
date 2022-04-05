@@ -1,51 +1,43 @@
 import React, { useState, useEffect } from 'react';
-import { filter } from 'lodash';
+import { useDispatch, useSelector } from 'react-redux';
 import { Icon } from '@iconify/react';
 import { sentenceCase } from 'change-case';
+import { filter } from 'lodash';
 import plusFill from '@iconify/icons-eva/plus-fill';
-import { useSelector, useDispatch } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
-// material
 import {
   Card,
-  Table,
+  Container,
   Stack,
+  Typography,
+  Table,
   Avatar,
   Button,
   Checkbox,
   TableRow,
   TableBody,
   TableCell,
-  Container,
-  Typography,
-  CardActionArea,
-  CardContent,
-  CardMedia,
   TableContainer,
   TablePagination
 } from '@mui/material';
-// components
-
 import Page from '../components/Page';
 import Label from '../components/Label';
 import Scrollbar from '../components/Scrollbar';
 import SearchNotFound from '../components/SearchNotFound';
 import { TableListHead, TableListToolbar, TableMoreMenu } from '../components/_dashboard/Table';
-//
+import { stadiumownerlist } from '../redux/actions/actions';
+
 import USERLIST from '../_mocks_/user';
 
-// ----------------------------------------------------------------------
-
 const TABLE_HEAD = [
+  { id: 'userId', label: 'User Id', alignRight: false },
   { id: 'name', label: 'Name', alignRight: false },
-  { id: 'company', label: 'Company', alignRight: false },
-  { id: 'role', label: 'Role', alignRight: false },
-  { id: 'isVerified', label: 'Verified', alignRight: false },
-  { id: 'status', label: 'Status', alignRight: false },
-  { id: '' }
+  { id: 'phone', label: 'Phone', alignRight: false },
+  { id: 'email', label: 'Email', alignRight: false },
+  { id: 'gender', label: 'Gender', alignRight: false },
+  { id: 'address', label: 'Address', alignRight: false },
+  { id: 'status', label: 'Actions', alignRight: false }
 ];
-
-// ----------------------------------------------------------------------
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -56,7 +48,6 @@ function descendingComparator(a, b, orderBy) {
   }
   return 0;
 }
-
 function getComparator(order, orderBy) {
   return order === 'desc'
     ? (a, b) => descendingComparator(a, b, orderBy)
@@ -76,8 +67,9 @@ function applySortFilter(array, comparator, query) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-export default function User() {
+function BookedStadiums() {
   const dispatch = useDispatch();
+
   const [page, setPage] = useState(0);
   const [order, setOrder] = useState('asc');
   const [selected, setSelected] = useState([]);
@@ -137,43 +129,97 @@ export default function User() {
 
   const isUserNotFound = filteredUsers.length === 0;
 
+  useEffect(() => {
+    dispatch(stadiumownerlist());
+  }, []);
+  const ownerlist = useSelector(({ stadiumownerlist }) => stadiumownerlist.payload);
+  console.log('stdowner', ownerlist);
   return (
-    <Page title="User | Sportswander">
+    <div>
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Stadium List
+            Booked Stadiums
           </Typography>
           <Button
             variant="contained"
             component={RouterLink}
-            to="#"
+            to="/admin/AddBookedStadium"
             startIcon={<Icon icon={plusFill} />}
           >
-            New User
+            BOOK
           </Button>
         </Stack>
+        <Card>
+          <TableListToolbar
+            numSelected={selected.length}
+            filterName={filterName}
+            onFilterName={handleFilterByName}
+          />
+          <Scrollbar>
+            <TableContainer sx={{ minWidth: 800 }}>
+              <Table>
+                <TableListHead
+                  headLabel={TABLE_HEAD}
 
-        <Card sx={{ maxWidth: 345 }}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              height="140"
-              image="/static/images/cards/contemplative-reptile.jpg"
-              alt="green iguana"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Lizard
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over 6,000 species,
-                ranging across all continents except Antarctica
-              </Typography>
-            </CardContent>
-          </CardActionArea>
+                  // onRequestSort={handleRequestSort}
+                  // onSelectAllClick={handleSelectAllClick}
+                />
+                <TableBody>
+                  <>
+                    <>
+                      <TableRow>
+                        {Array.isArray(ownerlist) &&
+                          ownerlist.map((owner) => (
+                            <>
+                              <TableCell align="center">check</TableCell>
+                              <TableCell align="left">{owner.userid}</TableCell>
+                              <TableCell align="left">{owner.name}</TableCell>
+                              <TableCell align="left">{owner.phone}</TableCell>
+                              <TableCell align="left">{owner.email}</TableCell>
+                              <TableCell align="left">{owner.gender}</TableCell>
+                              <TableCell align="left">{owner.address}</TableCell>
+                              <TableCell align="left">
+                                <TableMoreMenu />
+                              </TableCell>
+                            </>
+                          ))}
+                      </TableRow>
+                    </>
+                  </>
+
+                  {emptyRows > 0 && (
+                    <TableRow style={{ height: 53 * emptyRows }}>
+                      <TableCell colSpan={6} />
+                    </TableRow>
+                  )}
+                </TableBody>
+                {isUserNotFound && (
+                  <TableBody>
+                    <TableRow>
+                      <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
+                        <SearchNotFound searchQuery={filterName} />
+                      </TableCell>
+                    </TableRow>
+                  </TableBody>
+                )}
+              </Table>
+            </TableContainer>
+          </Scrollbar>
+
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={USERLIST.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
         </Card>
       </Container>
-    </Page>
+    </div>
   );
 }
+
+export default BookedStadiums;

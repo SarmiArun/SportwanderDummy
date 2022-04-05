@@ -18,41 +18,41 @@ const sidebarConfig = [
     path: '/admin/dashboard',
     icon: getIcon(pieChart2Fill)
   },
+  // {
+  //   title: 'Add Stadiums',
+  //   path: '/admin/AddStadium',
+  //   icon: getIcon(shoppingBagFill)
+  // },
   {
-    title: 'Add Stadiums',
-    path: '/admin/AddStadium',
-    icon: getIcon(shoppingBagFill)
-  },
-  {
-    title: 'Stadium List',
+    title: 'Stadium Owner List',
     path: '/admin/ListStadium',
     icon: getIcon(shoppingBagFill)
   },
   {
-    title: 'Booked Stadiums',
+    title: 'Kyc',
     path: '/admin/BookedStadiums',
     icon: getIcon(shoppingBagFill)
   },
   {
-    title: 'Booked Events',
+    title: 'Add Stadium Owner',
     path: '/admin/BookedEvents',
     icon: getIcon(shoppingBagFill)
-  },
-  {
-    title: 'Courts',
-    path: '/admin/Court',
-    icon: getIcon(shoppingBagFill)
-  },
-  {
-    title: 'User',
-    path: '/admin/User',
-    icon: getIcon(shoppingBagFill)
-  },
-  {
-    title: 'Subscription',
-    path: '/admin/Subscription',
-    icon: getIcon(shoppingBagFill)
   }
+  // {
+  //   title: 'Courts',
+  //   path: '/admin/Court',
+  //   icon: getIcon(shoppingBagFill)
+  // },
+  // {
+  //   title: 'User',
+  //   path: '/admin/User',
+  //   icon: getIcon(shoppingBagFill)
+  // },
+  // {
+  //   title: 'Subscription',
+  //   path: '/admin/Subscription',
+  //   icon: getIcon(shoppingBagFill)
+  // }
   // {
   //   title: 'Players',
   //   path: '/admin/players',

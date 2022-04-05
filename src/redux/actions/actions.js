@@ -148,6 +148,10 @@ export function stadiumownercount() {
     new Promise((resolve, reject) =>
       axiosInstance('get', '/v1/admin/stadium_owner/count')
         .then((res) => {
+          if (res.data.data === 'Access Denied, Invalid Token') {
+            localStorage.clear();
+            window.location.href = '/login';
+          }
           dispatch({
             type: stadiumowner.count.success,
             data: res?.data?.data

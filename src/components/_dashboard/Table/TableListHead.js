@@ -25,7 +25,7 @@ export default function TableListHead({
   onSelectAllClick
 }) {
   const createSortHandler = (property) => (event) => {
-    onRequestSort(event, property);
+    // onRequestSort(event, property);
   };
 
   return (

@@ -24,7 +24,7 @@ export const KYC = {
 };
 export const stadiumowner = {
   create: {
-    succes: 'stadiumownercreatesuccess',
+    success: 'stadiumownercreatesuccess',
     error: 'stadiumownercreateerror'
   },
   list: {
