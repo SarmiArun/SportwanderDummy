@@ -55,7 +55,12 @@ const sidebarConfig = [
   },
   {
     title: 'Notifications',
-    path: '/admin/Notify',
+    path: '/admin/notify',
+    icon: getIcon(shoppingBagFill)
+  },
+  {
+    title: 'Moderators',
+    path: '/admin/moderators',
     icon: getIcon(shoppingBagFill)
   }
   // {

@@ -125,7 +125,7 @@ export default function Moderators() {
             to="#"
             startIcon={<Icon icon={plusFill} />}
           >
-            Add Stadium Owner
+            Add Moderator
           </Button>
         </Stack>
 
