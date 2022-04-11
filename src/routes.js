@@ -5,7 +5,11 @@ import AddStadium from './pages/AddStadium';
 import Subscription from './pages/Subscription';
 import ListStadium from './pages/ListStadium';
 import BookedStadiums from './pages/BookedStadiums';
+import Termsandconditions from './pages/Termsandconditions';
+import Notify from './pages/Notify';
+import Privacypolicy from './pages/Privacypolicy';
 import BookedEvents from './pages/BookedEvents';
+import Players from './pages/Players';
 import Court from './pages/Court';
 import LogoOnlyLayout from './layouts/LogoOnlyLayout';
 import Login from './pages/Login';
@@ -33,8 +37,12 @@ export function Router(props) {
         { path: 'blog', element: <Blog /> },
         { path: 'testing', element: <Testing /> },
         { path: 'addStadium', element: <AddStadium /> },
-        { path: 'ListStadium', element: <ListStadium /> },
+        { path: 'addStadium', element: <AddStadium /> },
+        { path: 'Privacypolicy', element: <Privacypolicy /> },
         { path: 'BookedStadiums', element: <BookedStadiums /> },
+        { path: 'Notify', element: <Notify /> },
+        { path: 'termsandconditions', element: <Termsandconditions /> },
+        { path: 'Players', element: <Players /> },
         { path: 'BookedEvents', element: <BookedEvents /> },
         { path: 'court', element: <Court /> },
         { path: 'user', element: <User /> },

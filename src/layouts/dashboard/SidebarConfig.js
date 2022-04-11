@@ -37,6 +37,26 @@ const sidebarConfig = [
     title: 'Add Stadium Owner',
     path: '/admin/BookedEvents',
     icon: getIcon(shoppingBagFill)
+  },
+  {
+    title: 'Privacy Policy',
+    path: '/admin/privacypolicy',
+    icon: getIcon(shoppingBagFill)
+  },
+  {
+    title: 'Terms and Conditions',
+    path: '/admin/termsandconditions',
+    icon: getIcon(shoppingBagFill)
+  },
+  {
+    title: 'Players',
+    path: '/admin/players',
+    icon: getIcon(shoppingBagFill)
+  },
+  {
+    title: 'Notifications',
+    path: '/admin/Notify',
+    icon: getIcon(shoppingBagFill)
   }
   // {
   //   title: 'Courts',

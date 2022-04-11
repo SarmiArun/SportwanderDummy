@@ -1,4 +1,4 @@
-import { user, KYC, stadiumowner, event } from '../actiontype/actiontype';
+import { user, KYC, stadiumowner, event, privacy, terms, notify } from '../actiontype/actiontype';
 
 const initialState = {};
 
@@ -10,6 +10,22 @@ export const userlogin = (state = initialState, actions) => {
         payload: actions.data
       };
     case user.login.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const kyclistall = (state = initialState, actions) => {
+  switch (actions.type) {
+    case KYC.all.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case KYC.all.error:
       return {
         status: false,
         payload: actions.data
@@ -154,6 +170,86 @@ export const eventorgcount = (state = initialState, actions) => {
         payload: actions.data
       };
     case event.count.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const privacypolicyadd = (state = initialState, actions) => {
+  switch (actions.type) {
+    case privacy.add.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case privacy.add.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const privacypolicylist = (state = initialState, actions) => {
+  switch (actions.type) {
+    case privacy.list.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case privacy.list.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const termsadd = (state = initialState, actions) => {
+  switch (actions.type) {
+    case terms.add.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case terms.add.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const termslist = (state = initialState, actions) => {
+  switch (actions.type) {
+    case terms.list.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case terms.list.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const notifyadd = (state = initialState, actions) => {
+  switch (actions.type) {
+    case notify.add.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case notify.add.error:
       return {
         status: false,
         payload: actions.data

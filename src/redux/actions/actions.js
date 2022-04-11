@@ -1,5 +1,5 @@
 import { axiosInstance } from '../../Services';
-import { user, KYC, stadiumowner, event } from '../actiontype/actiontype';
+import { user, KYC, stadiumowner, event, privacy, terms, notify } from '../actiontype/actiontype';
 
 export function userlogin(data) {
   return (dispatch) =>
@@ -36,6 +36,26 @@ export function kycpending(data) {
         .catch((err) => {
           dispatch({
             type: KYC.pending.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function kyclistall(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('get', '/v1/admin/kyc/all')
+        .then((res) => {
+          dispatch({
+            type: KYC.all.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: KYC.all.error,
             data: err
           });
           reject(err);
@@ -201,6 +221,106 @@ export function eventorgcount() {
         .catch((err) => {
           dispatch({
             type: event.count.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function privacypolicyadd(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/addpp', data)
+        .then((res) => {
+          dispatch({
+            type: privacy.add.success,
+            data: res?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: privacy.add.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function privacypolicylist(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('get', '/v1/admin/getpp')
+        .then((res) => {
+          dispatch({
+            type: privacy.list.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: privacy.list.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function termsadd(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/addtc', data)
+        .then((res) => {
+          dispatch({
+            type: terms.add.success,
+            data: res?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: terms.add.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function termslist(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('get', '/v1/admin/fetchtc')
+        .then((res) => {
+          dispatch({
+            type: terms.list.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: terms.list.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function notifyadd(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/notify', data)
+        .then((res) => {
+          dispatch({
+            type: notify.add.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: notify.add.error,
             data: err
           });
           reject(err);

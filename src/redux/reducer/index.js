@@ -9,7 +9,13 @@ import {
   stadiumownercount,
   stadiumownerlist,
   stadiumeventlist,
-  eventorgcount
+  eventorgcount,
+  kyclistall,
+  privacypolicyadd,
+  privacypolicylist,
+  termsadd,
+  termslist,
+  notifyadd
 } from './reducer';
 
 export default combineReducers({
@@ -22,5 +28,11 @@ export default combineReducers({
   stadiumownercount,
   stadiumownerlist,
   stadiumeventlist,
-  eventorgcount
+  eventorgcount,
+  kyclistall,
+  privacypolicyadd,
+  privacypolicylist,
+  termsadd,
+  termslist,
+  notifyadd
 });
