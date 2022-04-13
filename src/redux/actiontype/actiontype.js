@@ -76,3 +76,9 @@ export const notify = {
     error: 'notifyadderror'
   }
 };
+export const moderators = {
+  add: {
+    success: 'moderatosaddsuccess',
+    error: 'moderatosadderror'
+  }
+};

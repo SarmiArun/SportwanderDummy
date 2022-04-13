@@ -1,5 +1,14 @@
 import { axiosInstance } from '../../Services';
-import { user, KYC, stadiumowner, event, privacy, terms, notify } from '../actiontype/actiontype';
+import {
+  user,
+  KYC,
+  stadiumowner,
+  event,
+  privacy,
+  terms,
+  notify,
+  moderators
+} from '../actiontype/actiontype';
 
 export function userlogin(data) {
   return (dispatch) =>
@@ -321,6 +330,26 @@ export function notifyadd(data) {
         .catch((err) => {
           dispatch({
             type: notify.add.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function addmoderators(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/login', data)
+        .then((res) => {
+          dispatch({
+            type: moderators.add.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: moderators.add.error,
             data: err
           });
           reject(err);

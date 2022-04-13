@@ -1,4 +1,13 @@
-import { user, KYC, stadiumowner, event, privacy, terms, notify } from '../actiontype/actiontype';
+import {
+  user,
+  KYC,
+  stadiumowner,
+  event,
+  privacy,
+  terms,
+  notify,
+  moderators
+} from '../actiontype/actiontype';
 
 const initialState = {};
 
@@ -250,6 +259,22 @@ export const notifyadd = (state = initialState, actions) => {
         payload: actions.data
       };
     case notify.add.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const addmoderators = (state = initialState, actions) => {
+  switch (actions.type) {
+    case moderators.add.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case moderators.add.error:
       return {
         status: false,
         payload: actions.data
