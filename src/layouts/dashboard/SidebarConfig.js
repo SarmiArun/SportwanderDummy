@@ -62,17 +62,24 @@ const sidebarConfig = [
     title: 'Moderators',
     path: '/admin/moderators',
     icon: getIcon(shoppingBagFill)
+  },
+  {
+    title: 'Version',
+    path: '/admin/version',
+    icon: getIcon(shoppingBagFill)
+  },
+
+  {
+    title: 'Category Banner',
+    path: '/admin/Catbanner',
+    icon: getIcon(shoppingBagFill)
+  },
+  {
+    title: 'Main Banner',
+    path: '/admin/Mainbanner',
+    icon: getIcon(shoppingBagFill)
   }
-  // {
-  //   title: 'Courts',
-  //   path: '/admin/Court',
-  //   icon: getIcon(shoppingBagFill)
-  // },
-  // {
-  //   title: 'User',
-  //   path: '/admin/User',
-  //   icon: getIcon(shoppingBagFill)
-  // },
+
   // {
   //   title: 'Subscription',
   //   path: '/admin/Subscription',

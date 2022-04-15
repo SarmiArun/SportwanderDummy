@@ -10,17 +10,17 @@ import MenuPopover from '../../components/MenuPopover';
 const LANGS = [
   {
     value: 'en',
-    label: 'English',
+    label: '',
     icon: '/static/icons/ic_flag_en.svg'
   },
   {
     value: 'de',
-    label: 'German',
+    label: '',
     icon: '/static/icons/ic_flag_de.svg'
   },
   {
     value: 'fr',
-    label: 'French',
+    label: '',
     icon: '/static/icons/ic_flag_fr.svg'
   }
 ];

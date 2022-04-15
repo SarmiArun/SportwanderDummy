@@ -82,3 +82,41 @@ export const moderators = {
     error: 'moderatosadderror'
   }
 };
+export const version = {
+  udpate: {
+    success: 'versionupdatesuccess',
+    error: 'versionupdateerror'
+  },
+  get: {
+    success: 'versiongetsuccess',
+    error: 'versiongeterror'
+  }
+};
+export const catbanner = {
+  add: {
+    success: 'banneraddsuccess',
+    error: 'banneradderror'
+  },
+  list: {
+    success: 'bannerlistsuccess',
+    error: 'bannerlisterror'
+  },
+  delete: {
+    success: 'bannerdeletesuccess',
+    error: 'bannerdeleteerror'
+  }
+};
+export const mainbanner = {
+  add: {
+    success: 'banneraddsuccess',
+    error: 'banneradderror'
+  },
+  list: {
+    success: 'bannerlistsuccess',
+    error: 'bannerlisterror'
+  },
+  delete: {
+    success: 'bannerdeletesuccess',
+    error: 'bannerdeleteerror'
+  }
+};

@@ -23,9 +23,12 @@ import {
   TablePagination
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
+import { useSelector, useDispatch } from 'react-redux';
 import { useFormik, Form, FormikProvider } from 'formik';
+import { addmoderators } from '../../redux/actions/actions';
 
 function Moderators() {
+  const dispatch = useDispatch();
   const [data, setData] = useState({
     email: '',
     password: ''
@@ -34,9 +37,9 @@ function Moderators() {
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(addmoderators(data));
   };
   return (
     <div>
@@ -53,7 +56,7 @@ function Moderators() {
               onChange={handleChange}
               style={{ width: '100%', marginRight: '10px' }}
               label="Enter Email"
-              name="link"
+              name="email"
             />
           </Box>
           <br />
@@ -63,7 +66,7 @@ function Moderators() {
             onChange={handleChange}
             style={{ width: '100%', marginRight: '10px' }}
             label="Enter Password"
-            name="link"
+            name="password"
           />
           <br />
           <Box mt={4}>

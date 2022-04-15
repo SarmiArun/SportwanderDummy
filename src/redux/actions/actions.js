@@ -7,7 +7,10 @@ import {
   privacy,
   terms,
   notify,
-  moderators
+  moderators,
+  version,
+  catbanner,
+  mainbanner
 } from '../actiontype/actiontype';
 
 export function userlogin(data) {
@@ -350,6 +353,167 @@ export function addmoderators(data) {
         .catch((err) => {
           dispatch({
             type: moderators.add.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function udpateversion(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/upversion', data)
+        .then((res) => {
+          dispatch({
+            type: version.udpate.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: version.udpate.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+
+export function getversion(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('get', '/version')
+        .then((res) => {
+          dispatch({
+            type: version.get.success,
+            data: res?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: version.get.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function cataddbanner(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/addbanner', data)
+        .then((res) => {
+          dispatch({
+            type: catbanner.add.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: catbanner.add.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function catlistbanner(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/listbanner', data)
+        .then((res) => {
+          dispatch({
+            type: catbanner.list.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: catbanner.list.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function catdeletebanner(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/deletebanner', data)
+        .then((res) => {
+          dispatch({
+            type: catbanner.delete.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: catbanner.delete.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function mainaddbanner(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/addmainbanner', data)
+        .then((res) => {
+          dispatch({
+            type: mainbanner.add.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: mainbanner.add.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function maingetbanner(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('get', '/v1/admin/listmainbanner')
+        .then((res) => {
+          dispatch({
+            type: mainbanner.get.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: mainbanner.get.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function maindeletebanner(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/delmainbanner', data)
+        .then((res) => {
+          dispatch({
+            type: mainbanner.delete.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: mainbanner.delete.error,
             data: err
           });
           reject(err);

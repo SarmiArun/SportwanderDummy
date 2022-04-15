@@ -6,7 +6,10 @@ import {
   privacy,
   terms,
   notify,
-  moderators
+  moderators,
+  version,
+  catbanner,
+  mainbanner
 } from '../actiontype/actiontype';
 
 const initialState = {};
@@ -275,6 +278,134 @@ export const addmoderators = (state = initialState, actions) => {
         payload: actions.data
       };
     case moderators.add.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const updateversion = (state = initialState, actions) => {
+  switch (actions.type) {
+    case version.udpate.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case version.udpate.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const getversion = (state = initialState, actions) => {
+  switch (actions.type) {
+    case version.get.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case version.get.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const cataddbanner = (state = initialState, actions) => {
+  switch (actions.type) {
+    case catbanner.add.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case catbanner.add.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const catlistbanner = (state = initialState, actions) => {
+  switch (actions.type) {
+    case catbanner.list.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case catbanner.list.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const catdeletebanner = (state = initialState, actions) => {
+  switch (actions.type) {
+    case catbanner.delete.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case catbanner.delete.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const mainaddbanner = (state = initialState, actions) => {
+  switch (actions.type) {
+    case catbanner.add.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case catbanner.add.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const mainlistbanner = (state = initialState, actions) => {
+  switch (actions.type) {
+    case catbanner.list.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case catbanner.list.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const maindeletebanner = (state = initialState, actions) => {
+  switch (actions.type) {
+    case catbanner.delete.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case catbanner.delete.error:
       return {
         status: false,
         payload: actions.data

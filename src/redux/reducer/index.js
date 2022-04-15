@@ -15,7 +15,15 @@ import {
   privacypolicylist,
   termsadd,
   termslist,
-  notifyadd
+  notifyadd,
+  updateversion,
+  getversion,
+  cataddbanner,
+  catlistbanner,
+  catdeletebanner,
+  mainaddbanner,
+  mainlistbanner,
+  maindeletebanner
 } from './reducer';
 
 export default combineReducers({
@@ -34,5 +42,13 @@ export default combineReducers({
   privacypolicylist,
   termsadd,
   termslist,
-  notifyadd
+  notifyadd,
+  updateversion,
+  getversion,
+  cataddbanner,
+  catlistbanner,
+  catdeletebanner,
+  mainaddbanner,
+  mainlistbanner,
+  maindeletebanner
 });
