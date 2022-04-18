@@ -10,6 +10,7 @@ import Version from './pages/Version';
 import Notify from './pages/Notify';
 import Privacypolicy from './pages/Privacypolicy';
 import Mainbanner from './pages/Mainbanner';
+import Catbanner from './pages/Catbanner';
 import AddModerators from './pages/Moderator/AddModerator';
 import BookedEvents from './pages/BookedEvents';
 import Players from './pages/Players';
@@ -47,6 +48,7 @@ export function Router(props) {
         { path: 'notify', element: <Notify /> },
         { path: 'termsandconditions', element: <Termsandconditions /> },
         { path: 'Mainbanner', element: <Mainbanner /> },
+        { path: 'Catbanner', element: <Catbanner /> },
         { path: 'version', element: <Version /> },
         { path: 'Players', element: <Players /> },
         { path: 'BookedEvents', element: <BookedEvents /> },

@@ -480,20 +480,20 @@ export function mainaddbanner(data) {
         })
     );
 }
-export function maingetbanner(data) {
+export function mainlistbanner(data) {
   return (dispatch) =>
     new Promise((resolve, reject) =>
       axiosInstance('get', '/v1/admin/listmainbanner')
         .then((res) => {
           dispatch({
-            type: mainbanner.get.success,
+            type: mainbanner.list.success,
             data: res?.data?.data
           });
           resolve(res);
         })
         .catch((err) => {
           dispatch({
-            type: mainbanner.get.error,
+            type: mainbanner.list.error,
             data: err
           });
           reject(err);
