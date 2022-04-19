@@ -16,7 +16,7 @@ function Version() {
   };
   useEffect(() => {
     dispatch(getversion());
-  }, [versionlist]);
+  }, []);
 
   return (
     <div>
@@ -39,7 +39,7 @@ function Version() {
           </Button>
         </Box>
         <br />
-        <h3>List </h3>
+        <h3>Current version </h3>
         <br />
         Version <b>{versionlist?.version}</b>
       </Container>

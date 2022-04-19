@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // material
 import {
-  Card,
+  Grid,
   Table,
   Avatar,
   Button,
@@ -11,6 +11,10 @@ import {
   TableCell,
   Container,
   Typography,
+  Card,
+  CardActionArea,
+  CardMedia,
+  CardContent,
   Link,
   Stack,
   Checkbox,
@@ -21,8 +25,11 @@ import {
   TableContainer,
   Input,
   TablePagination,
-  Box
+  FormLabel,
+  Box,
+  Chip
 } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 import { mainaddbanner, mainlistbanner, maindeletebanner } from '../redux/actions/actions';
 
 function Mainbanner() {
@@ -55,27 +62,61 @@ function Mainbanner() {
     <>
       <Container>
         <h2>Main banner</h2>
-        <Box mt={2}>
-          <h3>Add</h3>
-        </Box>
-        <Input type="file" accept="image/*" onChange={imageChange} name="banner" /> <br />
-        Name
-        <Input type="text" label="Name" onChange={handleChange} name="name" />
         <br />
-        <Button color="primary" onClick={handleSubmit} variant="contained">
-          Submit
+        <Box>
+          <h2>Add Banner</h2>
+        </Box>
+        <div>
+          <h4>Banner Name</h4>
+          <br />
+          <div>
+            <TextField type="text" style={{ width: '50%' }} onChange={handleChange} name="name" />
+          </div>
+        </div>
+        <br />
+        <h4>Banner Image</h4>
+        <br />
+        <div>
+          <input type="file" onChange={imageChange} name="banner" />
+        </div>
+        <br />
+        <Button color="primary" variant="contained" onClick={handleSubmit}>
+          Add Banner
         </Button>
         <br />
-        <Box mt={2}>
-          <h3>Banner list</h3>
-          {Array.isArray(bannerlist) &&
-            bannerlist.map((list) => (
-              <>
-                <img src={list.banner} alt={list.name} />
-                <button onClick={dispatch(maindeletebanner({ id: list.id }))}>Delete </button>
-              </>
-            ))}
+
+        <Box>
+          <h2>Banner List</h2>
         </Box>
+        <br />
+        <Grid container spacing={2}>
+          {Array.isArray(bannerlist)
+            ? bannerlist.map((L) => (
+                <Grid item xs={4} style={{ marginBottom: '25px' }}>
+                  <Card xs={4} sx={{ maxWidth: 345 }}>
+                    <CardActionArea component={RouterLink} to={`/admin/Catbanner/${L.id}`}>
+                      <CardMedia component="img" height="240" image={L.banner} alt={L.name} />
+                      <CardContent>
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                          <Typography gutterBottom variant="h6" component="div">
+                            <span style={{ textTransform: 'capitalize' }}> {L.name} </span>
+                          </Typography>
+                          <Typography
+                            gutterBottom
+                            variant="h6"
+                            style={{ zIndex: '1' }}
+                            component="div"
+                          >
+                            <Chip onClick={() => console.log('test')} label="View" color="error" />
+                          </Typography>
+                        </div>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </Grid>
+              ))
+            : false}
+        </Grid>
       </Container>
     </>
   );

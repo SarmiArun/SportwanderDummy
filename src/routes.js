@@ -48,7 +48,7 @@ export function Router(props) {
         { path: 'notify', element: <Notify /> },
         { path: 'termsandconditions', element: <Termsandconditions /> },
         { path: 'Mainbanner', element: <Mainbanner /> },
-        { path: 'Catbanner', element: <Catbanner /> },
+        { path: 'Catbanner/:id', element: <Catbanner /> },
         { path: 'version', element: <Version /> },
         { path: 'Players', element: <Players /> },
         { path: 'BookedEvents', element: <BookedEvents /> },

@@ -70,11 +70,6 @@ const sidebarConfig = [
   },
 
   {
-    title: 'Category Banner',
-    path: '/admin/Catbanner',
-    icon: getIcon(shoppingBagFill)
-  },
-  {
     title: 'Main Banner',
     path: '/admin/Mainbanner',
     icon: getIcon(shoppingBagFill)
