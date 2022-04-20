@@ -6,6 +6,7 @@ import Subscription from './pages/Subscription';
 import ListStadium from './pages/ListStadium';
 import BookedStadiums from './pages/BookedStadiums';
 import Termsandconditions from './pages/Termsandconditions';
+import Issues from './pages/Issues';
 import Version from './pages/Version';
 import Notify from './pages/Notify';
 import Privacypolicy from './pages/Privacypolicy';
@@ -47,6 +48,7 @@ export function Router(props) {
         { path: 'addmoderators', element: <AddModerators /> },
         { path: 'notify', element: <Notify /> },
         { path: 'termsandconditions', element: <Termsandconditions /> },
+        { path: 'issues', element: <Issues /> },
         { path: 'Mainbanner', element: <Mainbanner /> },
         { path: 'Catbanner/:id', element: <Catbanner /> },
         { path: 'version', element: <Version /> },

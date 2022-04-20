@@ -18,11 +18,11 @@ const sidebarConfig = [
     path: '/admin/dashboard',
     icon: getIcon(pieChart2Fill)
   },
-  // {
-  //   title: 'Add Stadiums',
-  //   path: '/admin/AddStadium',
-  //   icon: getIcon(shoppingBagFill)
-  // },
+  {
+    title: 'Main Banner',
+    path: '/admin/Mainbanner',
+    icon: getIcon(shoppingBagFill)
+  },
   {
     title: 'Stadium Owner List',
     path: '/admin/ListStadium',
@@ -64,52 +64,15 @@ const sidebarConfig = [
     icon: getIcon(shoppingBagFill)
   },
   {
+    title: 'Issues',
+    path: '/admin/issues',
+    icon: getIcon(shoppingBagFill)
+  },
+  {
     title: 'Version',
     path: '/admin/version',
     icon: getIcon(shoppingBagFill)
-  },
-
-  {
-    title: 'Main Banner',
-    path: '/admin/Mainbanner',
-    icon: getIcon(shoppingBagFill)
   }
-
-  // {
-  //   title: 'Subscription',
-  //   path: '/admin/Subscription',
-  //   icon: getIcon(shoppingBagFill)
-  // }
-  // {
-  //   title: 'Players',
-  //   path: '/admin/players',
-  //   icon: getIcon(fileTextFill)
-  // },
-  // {
-  //   title: 'Stadium Owners',
-  //   path: '/admin/stadium_owners',
-  //   icon: getIcon(fileTextFill)
-  // },
-  // {
-  //   title: 'Event Organigers',
-  //   path: '/admin/event_organigers',
-  //   icon: getIcon(fileTextFill)
-  // },
-  // {
-  //   title: 'Subscription Plans',
-  //   path: '/subscription_plans',
-  //   icon: getIcon(lockFill)
-  // },
-  // {
-  //   title: 'Subscriptions',
-  //   path: '/admin/subscriptions',
-  //   icon: getIcon(subscriptionIcon)
-  // },
-  // {
-  //   title: 'Moderators',
-  //   path: '/admin/moderators',
-  //   icon: getIcon(moderatorIcon)
-  // }
 ];
 
 export default sidebarConfig;

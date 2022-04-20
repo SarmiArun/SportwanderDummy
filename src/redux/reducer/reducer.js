@@ -9,7 +9,9 @@ import {
   moderators,
   version,
   catbanner,
-  mainbanner
+  mainbanner,
+  player,
+  issues
 } from '../actiontype/actiontype';
 
 const initialState = {};
@@ -406,6 +408,54 @@ export const maindeletebanner = (state = initialState, actions) => {
         payload: actions.data
       };
     case catbanner.delete.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const playerCount = (state = initialState, actions) => {
+  switch (actions.type) {
+    case player.count.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case player.count.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const issueslist = (state = initialState, actions) => {
+  switch (actions.type) {
+    case issues.list.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case issues.list.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const updateissues = (state = initialState, actions) => {
+  switch (actions.type) {
+    case issues.update.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case issues.update.error:
       return {
         status: false,
         payload: actions.data

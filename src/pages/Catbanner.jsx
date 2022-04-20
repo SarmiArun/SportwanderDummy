@@ -29,7 +29,7 @@ import {
   Chip
 } from '@mui/material';
 import { Link as RouterLink, useParams } from 'react-router-dom';
-import { mainaddbanner, catlistbanner, maindeletebanner } from '../redux/actions/actions';
+import { cataddbanner, catlistbanner, catdeletebanner } from '../redux/actions/actions';
 
 function Catbanner() {
   const { id } = useParams();
@@ -39,6 +39,7 @@ function Catbanner() {
     banner: '',
     categoryId: id
   });
+
   const bannerlist = useSelector(({ mainlistbanner }) => mainlistbanner.payload);
   const imageChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -53,12 +54,17 @@ function Catbanner() {
     e.preventDefault();
     const formData = new FormData();
     Object.entries(data).map(([key, value]) => formData.append(key, value));
-    dispatch(mainaddbanner(formData));
+    dispatch(cataddbanner(formData));
   };
-  console.log(catid);
+
   useEffect(() => {
     dispatch(catlistbanner({ id: catid }));
   }, []);
+
+  const handleDelete = (i, L) => {
+    dispatch(catdeletebanner({ id: L.id, categoryId: Number(catid) }));
+    console.log(i, L);
+  };
 
   return (
     <>
@@ -80,7 +86,6 @@ function Catbanner() {
           Add Banner
         </Button>
         <br />
-
         <Box>
           <h2>Banner List</h2>
         </Box>
@@ -95,7 +100,7 @@ function Catbanner() {
                     <CardContent>
                       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                         <Typography gutterBottom variant="h6" component="div">
-                          <Chip onClick={() => console.log('test')} label="Delete" color="error" />
+                          <Chip onClick={(e) => handleDelete(e, L)} label="Delete" color="error" />
                         </Typography>
                       </div>
                     </CardContent>

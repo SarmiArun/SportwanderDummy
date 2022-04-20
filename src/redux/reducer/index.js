@@ -23,7 +23,10 @@ import {
   catdeletebanner,
   mainaddbanner,
   mainlistbanner,
-  maindeletebanner
+  maindeletebanner,
+  playerCount,
+  issueslist,
+  updateissues
 } from './reducer';
 
 export default combineReducers({
@@ -50,5 +53,8 @@ export default combineReducers({
   catdeletebanner,
   mainaddbanner,
   mainlistbanner,
-  maindeletebanner
+  maindeletebanner,
+  playerCount,
+  issueslist,
+  updateissues
 });

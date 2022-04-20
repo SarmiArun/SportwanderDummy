@@ -1,10 +1,14 @@
 import { Icon } from '@iconify/react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import windowsFilled from '@iconify/icons-ant-design/windows-filled';
 // material
 import { alpha, styled } from '@mui/material/styles';
 import { Card, Typography } from '@mui/material';
 // utils
 import { fShortenNumber } from '../../../utils/formatNumber';
+
+import { playerCount } from '../../../redux/actions/actions';
 
 // ----------------------------------------------------------------------
 
@@ -34,17 +38,20 @@ const IconWrapperStyle = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-const TOTAL = 1723315;
-
 export default function AppItemOrders() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(playerCount());
+  }, []);
+  const pcount = useSelector((playerCount) => playerCount.payload);
   return (
     <RootStyle>
       <IconWrapperStyle>
         <Icon icon={windowsFilled} width={24} height={24} />
       </IconWrapperStyle>
-      <Typography variant="h3">{fShortenNumber(TOTAL)}</Typography>
+      <Typography variant="h3">{fShortenNumber(pcount)}</Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-        Item Orders
+        Players Count
       </Typography>
     </RootStyle>
   );

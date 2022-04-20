@@ -34,6 +34,7 @@ import { mainaddbanner, mainlistbanner, maindeletebanner } from '../redux/action
 
 function Mainbanner() {
   const dispatch = useDispatch();
+  const [error, setError] = useState('');
   const [data, setData] = useState({
     banner: '',
     name: ''
@@ -52,8 +53,14 @@ function Mainbanner() {
     e.preventDefault();
     const formData = new FormData();
     Object.entries(data).map(([key, value]) => formData.append(key, value));
-    dispatch(mainaddbanner(formData));
+    dispatch(mainaddbanner(formData))
+      .then((res) => {
+        console.log('then');
+      })
+      .catch((err) => setError(err.response.data.data));
   };
+  const banneradd = useSelector((mainaddbanner) => mainaddbanner.payload);
+  console.log('bannererror', banneradd);
   useEffect(() => {
     dispatch(mainlistbanner());
   }, []);
@@ -70,15 +77,23 @@ function Mainbanner() {
           <h4>Banner Name</h4>
           <br />
           <div>
-            <TextField type="text" style={{ width: '50%' }} onChange={handleChange} name="name" />
+            <TextField
+              type="text"
+              style={{ width: '50%' }}
+              onChange={handleChange}
+              name="name"
+              required
+            />
           </div>
         </div>
         <br />
         <h4>Banner Image</h4>
         <br />
         <div>
-          <input type="file" onChange={imageChange} name="banner" />
+          <input type="file" onChange={imageChange} name="banner" required />
         </div>
+        <br />
+        <span style={{ color: 'red' }}> {error}</span>
         <br />
         <Button color="primary" variant="contained" onClick={handleSubmit}>
           Add Banner

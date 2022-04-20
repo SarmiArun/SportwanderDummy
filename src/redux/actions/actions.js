@@ -10,7 +10,9 @@ import {
   moderators,
   version,
   catbanner,
-  mainbanner
+  mainbanner,
+  player,
+  issues
 } from '../actiontype/actiontype';
 
 export function userlogin(data) {
@@ -474,7 +476,7 @@ export function mainaddbanner(data) {
         .catch((err) => {
           dispatch({
             type: mainbanner.add.error,
-            data: err
+            data: err.response.data
           });
           reject(err);
         })
@@ -514,6 +516,66 @@ export function maindeletebanner(data) {
         .catch((err) => {
           dispatch({
             type: mainbanner.delete.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function playerCount(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('get', '/v1/admin/pcount')
+        .then((res) => {
+          dispatch({
+            type: player.count.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: player.count.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function issueslist(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('get', '/v1/admin/issues/fetch')
+        .then((res) => {
+          dispatch({
+            type: issues.list.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: issues.list.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function updateissues(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/issues/update')
+        .then((res) => {
+          dispatch({
+            type: issues.update.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: issues.update.error,
             data: err
           });
           reject(err);

@@ -120,3 +120,24 @@ export const mainbanner = {
     error: 'bannerdeleteerror'
   }
 };
+export const player = {
+  count: {
+    success: 'playercountsuccess',
+    error: 'platercounterror'
+  },
+  list: {
+    success: 'playerlistsuccess',
+    error: 'playerlisterror'
+  }
+};
+
+export const issues = {
+  list: {
+    success: 'issueslistsuccess',
+    error: 'issueslisterror'
+  },
+  update: {
+    success: 'issuesupdatesuccess',
+    error: 'issuesupdateerror'
+  }
+};
