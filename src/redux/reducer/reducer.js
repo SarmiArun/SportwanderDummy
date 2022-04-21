@@ -432,7 +432,23 @@ export const playerCount = (state = initialState, actions) => {
       return state;
   }
 };
-export const issueslist = (state = initialState, actions) => {
+export const playerList = (state = initialState, actions) => {
+  switch (actions.type) {
+    case player.list.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case player.list.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const issuesList = (state = initialState, actions) => {
   switch (actions.type) {
     case issues.list.success:
       return {

@@ -529,7 +529,7 @@ export function playerCount(data) {
         .then((res) => {
           dispatch({
             type: player.count.success,
-            data: res?.data?.data
+            data: res?.data
           });
           resolve(res);
         })
@@ -542,7 +542,27 @@ export function playerCount(data) {
         })
     );
 }
-export function issueslist(data) {
+export function playerList(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('get', '/v1/admin/getplayer')
+        .then((res) => {
+          dispatch({
+            type: player.list.success,
+            data: res?.data.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: player.list.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function issuesList(data) {
   return (dispatch) =>
     new Promise((resolve, reject) =>
       axiosInstance('get', '/v1/admin/issues/fetch')

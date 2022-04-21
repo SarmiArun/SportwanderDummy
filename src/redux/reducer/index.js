@@ -25,7 +25,8 @@ import {
   mainlistbanner,
   maindeletebanner,
   playerCount,
-  issueslist,
+  playerList,
+  issuesList,
   updateissues
 } from './reducer';
 
@@ -55,6 +56,7 @@ export default combineReducers({
   mainlistbanner,
   maindeletebanner,
   playerCount,
-  issueslist,
+  playerList,
+  issuesList,
   updateissues
 });

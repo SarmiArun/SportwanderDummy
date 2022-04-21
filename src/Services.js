@@ -16,7 +16,7 @@ export function axiosInstance(method, path, data, params, header) {
   return axios({
     url: path,
     method: method.toLowerCase(), // default
-    baseURL: 'http://192.168.0.198:5002',
+    baseURL: 'http://192.168.0.199:5002',
     // headers: { 'Content-Type': 'application/json', token: `${token}` },
     // headers: { 'Content-Type': 'application/json', header },
     params,

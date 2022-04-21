@@ -108,26 +108,33 @@ function Mainbanner() {
           {Array.isArray(bannerlist)
             ? bannerlist.map((L) => (
                 <Grid item xs={4} style={{ marginBottom: '25px' }}>
-                  <Card xs={4} sx={{ maxWidth: 345 }}>
+                  <Card xs={4} sx={{ maxWidth: 380 }}>
                     <CardActionArea component={RouterLink} to={`/admin/Catbanner/${L.id}`}>
                       <CardMedia component="img" height="240" image={L.banner} alt={L.name} />
-                      <CardContent>
-                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                          <Typography gutterBottom variant="h6" component="div">
-                            <span style={{ textTransform: 'capitalize' }}> {L.name} </span>
-                          </Typography>
-                          <Typography
-                            gutterBottom
-                            variant="h6"
-                            style={{ zIndex: '1' }}
-                            component="div"
-                          >
-                            <Chip onClick={() => console.log('test')} label="View" color="error" />
-                          </Typography>
-                        </div>
-                      </CardContent>
                     </CardActionArea>
                   </Card>
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      marginTop: '10px',
+                      color: 'white'
+                    }}
+                  >
+                    <Chip
+                      style={{ color: 'white', fontWeight: 'bolder', fontSize: '15px' }}
+                      component={RouterLink}
+                      to={`/admin/Catbanner/${L.id}`}
+                      label="view"
+                      color="secondary"
+                    />
+                    <Chip
+                      style={{ color: 'white', fontWeight: 'bolder' }}
+                      onClick={() => dispatch(maindeletebanner({ id: L.id }))}
+                      label="Delete"
+                      color="error"
+                    />
+                  </div>
                 </Grid>
               ))
             : false}

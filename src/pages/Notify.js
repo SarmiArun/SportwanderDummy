@@ -16,6 +16,7 @@ function Notify() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(data);
     // dispatch(notifyadd(data));
   };
 

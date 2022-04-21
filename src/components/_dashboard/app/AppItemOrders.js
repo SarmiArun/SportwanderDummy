@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import windowsFilled from '@iconify/icons-ant-design/windows-filled';
 // material
@@ -39,17 +39,20 @@ const IconWrapperStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function AppItemOrders() {
+  const [count, setCount] = useState(0);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(playerCount());
+    dispatch(playerCount()).then((res) => {
+      setCount(res.data.count);
+    });
   }, []);
-  const pcount = useSelector((playerCount) => playerCount.payload);
+
   return (
     <RootStyle>
       <IconWrapperStyle>
         <Icon icon={windowsFilled} width={24} height={24} />
       </IconWrapperStyle>
-      <Typography variant="h3">{fShortenNumber(pcount)}</Typography>
+      <Typography variant="h3">{count}</Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
         Players Count
       </Typography>
