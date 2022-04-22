@@ -5,14 +5,24 @@ import { sentenceCase } from 'change-case';
 import { filter } from 'lodash';
 import plusFill from '@iconify/icons-eva/plus-fill';
 import { Link as RouterLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import ListItemText from '@mui/material/ListItemText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Dialog from '@mui/material/Dialog';
+import MenuItem from '@mui/material/MenuItem';
+import { blue } from '@mui/material/colors';
+import Select from '@mui/material/Select';
 import {
   Card,
   Container,
   Stack,
   Typography,
   Table,
-  Avatar,
-  Button,
   Checkbox,
   TableRow,
   TableBody,
@@ -169,7 +179,16 @@ function Players() {
                               <TableCell align="left">{player.player.name}</TableCell>
                               <TableCell align="left">{player.player.phone}</TableCell>
                               <TableCell align="left">{player.player.email}</TableCell>
-                              <TableCell align="left">{player.status}</TableCell>
+                              <TableCell align="left">
+                                <Select label="Status">
+                                  <MenuItem value="pending" onClick={() => console.log('test')}>
+                                    <em>Pending</em>
+                                  </MenuItem>
+                                  <MenuItem value="solved" onClick={() => console.log('test2')}>
+                                    <em>Solved</em>
+                                  </MenuItem>
+                                </Select>
+                              </TableCell>
                             </>
                           </TableRow>
                         ))}
@@ -182,6 +201,9 @@ function Players() {
                     </TableRow>
                   )}
                 </TableBody>
+
+                <br />
+
                 {isUserNotFound && (
                   <TableBody>
                     <TableRow>

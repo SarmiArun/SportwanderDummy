@@ -45,6 +45,10 @@ export default function AccountPopover() {
     setOpen(false);
   };
 
+  const handleClick = () => {
+    localStorage.removeItem('AuthTokAdmin');
+    window.location.href = '/login';
+  };
   return (
     <>
       <IconButton
@@ -110,7 +114,7 @@ export default function AccountPopover() {
         ))}
 
         <Box sx={{ p: 2, pt: 1.5 }}>
-          <Button fullWidth color="inherit" variant="outlined">
+          <Button fullWidth color="inherit" variant="outlined" onClick={handleClick}>
             Logout
           </Button>
         </Box>

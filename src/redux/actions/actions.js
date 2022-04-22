@@ -183,7 +183,7 @@ export function stadiumownercount() {
       axiosInstance('get', '/v1/admin/stadium_owner/count')
         .then((res) => {
           if (res.data.data === 'Access Denied, Invalid Token') {
-            localStorage.clear();
+            localStorage.removeItem('AuthTokAdmin');
             window.location.href = '/login';
           }
           dispatch({
