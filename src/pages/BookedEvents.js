@@ -32,10 +32,13 @@ import {
   InputAdornment,
   FormControlLabel,
   TableContainer,
+  MenuItem,
   Input,
+  Select,
   TablePagination
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
+import { stadiumownercreate } from '../redux/actions/actions';
 
 // components
 import Page from '../components/Page';
@@ -173,11 +176,20 @@ export default function User() {
   const [data, setData] = useState({
     name: '',
     userid: '',
-    location: '',
-    description: '',
-    address: '',
+    phone: '',
+    dob: '',
+    gender: '',
+    email: '',
     photo: '',
-    official_document: ''
+    password: '',
+    address: '',
+    bank_accno: '',
+    ifsc: '',
+    aadhaarno: '',
+    aadhaar_front: '',
+    aadhaar_back: '',
+    aadhaar_selfie: '',
+    branch: ''
   });
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -200,7 +212,7 @@ export default function User() {
     e.preventDefault();
     const formData = new FormData();
     Object.entries(data).map(([key, value]) => formData.append(key, value));
-    console.log('res', data);
+    dispatch(stadiumownercreate(data));
   };
   return (
     <Page title="User">
@@ -225,7 +237,7 @@ export default function User() {
                 <TextField
                   autoComplete="location"
                   type="text"
-                  style={{ width: '33%', marginRight: '10px' }}
+                  style={{ width: '25%', marginRight: '10px' }}
                   onChange={handleChange}
                   label="Name"
                   name="name"
@@ -235,8 +247,19 @@ export default function User() {
                 />
                 <TextField
                   autoComplete="location"
+                  type="email"
+                  style={{ width: '25%', marginRight: '10px' }}
+                  onChange={handleChange}
+                  label="Email"
+                  name="email"
+                  // {...getFieldProps('location')}
+                  error={Boolean(touched.email && errors.email)}
+                  helperText={touched.email && errors.email}
+                />
+                <TextField
+                  autoComplete="location"
                   type="text"
-                  style={{ width: '33%', marginRight: '10px' }}
+                  style={{ width: '25%', marginRight: '10px' }}
                   onChange={handleChange}
                   label="User Id"
                   name="userid"
@@ -247,7 +270,7 @@ export default function User() {
                 <TextField
                   autoComplete="location"
                   type="text"
-                  style={{ width: '34%' }}
+                  style={{ width: '25%' }}
                   onChange={handleChange}
                   label="Phone"
                   name="phone"
@@ -269,6 +292,7 @@ export default function User() {
                   error={Boolean(touched.email && errors.email)}
                   helperText={touched.email && errors.email}
                 />
+
                 <TextField
                   autoComplete="location"
                   type="text"
@@ -286,7 +310,7 @@ export default function User() {
                   style={{ width: '34%' }}
                   onChange={handleChange}
                   label="Image"
-                  name="image"
+                  name="photo"
                   // {...getFieldProps('location')}
                   error={Boolean(touched.email && errors.email)}
                   helperText={touched.email && errors.email}
@@ -335,7 +359,7 @@ export default function User() {
                 <TextField
                   autoComplete="location"
                   type="number"
-                  style={{ width: '33%', marginRight: '10px' }}
+                  style={{ width: '25%', marginRight: '10px' }}
                   onChange={handleChange}
                   label="Aadhaar No"
                   name="aadhaarno"
@@ -345,8 +369,19 @@ export default function User() {
                 />
                 <TextField
                   autoComplete="location"
-                  type="number"
-                  style={{ width: '33%', marginRight: '10px' }}
+                  type="text"
+                  style={{ width: '25%', marginRight: '10px' }}
+                  onChange={handleChange}
+                  label="Aadhaar No"
+                  name="address"
+                  // {...getFieldProps('location')}
+                  error={Boolean(touched.email && errors.email)}
+                  helperText={touched.email && errors.email}
+                />
+                <TextField
+                  autoComplete="location"
+                  type="text"
+                  style={{ width: '25%', marginRight: '10px' }}
                   onChange={handleChange}
                   label="Aadhaar Link"
                   name="aadhaar_front"
@@ -357,7 +392,7 @@ export default function User() {
                 <TextField
                   autoComplete="location"
                   type="text"
-                  style={{ width: '34%' }}
+                  style={{ width: '25%' }}
                   onChange={handleChange}
                   label="Aadhaar_back"
                   name="aadhaar_back"

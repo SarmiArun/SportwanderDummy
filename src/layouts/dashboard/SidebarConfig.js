@@ -72,6 +72,11 @@ const sidebarConfig = [
     title: 'Version',
     path: '/admin/version',
     icon: getIcon(shoppingBagFill)
+  },
+  {
+    title: 'Stadium List',
+    path: '/admin/stadiumlist',
+    icon: getIcon(shoppingBagFill)
   }
 ];
 

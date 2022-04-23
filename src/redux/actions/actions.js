@@ -12,7 +12,8 @@ import {
   catbanner,
   mainbanner,
   player,
-  issues
+  issues,
+  stadium
 } from '../actiontype/actiontype';
 
 export function userlogin(data) {
@@ -215,6 +216,26 @@ export function eventorglist() {
         .catch((err) => {
           dispatch({
             type: event.List.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function stadiumlist() {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('get', '/v1/admin/stadium/list')
+        .then((res) => {
+          dispatch({
+            type: stadium.List.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: stadium.List.error,
             data: err
           });
           reject(err);
@@ -585,7 +606,7 @@ export function issuesList(data) {
 export function updateissues(data) {
   return (dispatch) =>
     new Promise((resolve, reject) =>
-      axiosInstance('post', '/v1/admin/issues/update')
+      axiosInstance('post', '/v1/admin/issues/update', data)
         .then((res) => {
           dispatch({
             type: issues.update.success,

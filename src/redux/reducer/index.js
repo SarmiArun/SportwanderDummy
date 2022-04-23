@@ -26,6 +26,7 @@ import {
   maindeletebanner,
   playerCount,
   playerList,
+  stadiumlist,
   issuesList,
   updateissues
 } from './reducer';
@@ -58,5 +59,6 @@ export default combineReducers({
   playerCount,
   playerList,
   issuesList,
-  updateissues
+  updateissues,
+  stadiumlist
 });

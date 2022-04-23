@@ -10,6 +10,7 @@ import {
   version,
   catbanner,
   mainbanner,
+  stadium,
   player,
   issues
 } from '../actiontype/actiontype';
@@ -168,6 +169,22 @@ export const stadiumeventlist = (state = initialState, actions) => {
         payload: actions.data
       };
     case event.List.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const stadiumlist = (state = initialState, actions) => {
+  switch (actions.type) {
+    case stadium.List.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case stadium.List.error:
       return {
         status: false,
         payload: actions.data

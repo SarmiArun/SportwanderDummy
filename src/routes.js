@@ -17,6 +17,7 @@ import BookedEvents from './pages/BookedEvents';
 import Players from './pages/Players';
 import Court from './pages/Court';
 import LogoOnlyLayout from './layouts/LogoOnlyLayout';
+import Stadiumlist from './pages/Stadiumlist';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import DashboardApp from './pages/DashboardApp';
@@ -46,6 +47,7 @@ export function Router(props) {
         { path: 'Privacypolicy', element: <Privacypolicy /> },
         { path: 'BookedStadiums', element: <BookedStadiums /> },
         { path: 'addmoderators', element: <AddModerators /> },
+        { path: 'Stadiumlist', element: <Stadiumlist /> },
         { path: 'notify', element: <Notify /> },
         { path: 'termsandconditions', element: <Termsandconditions /> },
         { path: 'issues', element: <Issues /> },

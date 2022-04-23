@@ -16,7 +16,10 @@ import {
   Button,
   Checkbox,
   TableRow,
+  Select,
+  InputLabel,
   TableBody,
+  MenuItem,
   TableCell,
   TableContainer,
   TablePagination
@@ -26,7 +29,7 @@ import Label from '../components/Label';
 import Scrollbar from '../components/Scrollbar';
 import SearchNotFound from '../components/SearchNotFound';
 import { TableListHead, TableListToolbar, TableMoreMenu } from '../components/_dashboard/Table';
-import { kycpending, kycverify, kycreject } from '../redux/actions/actions';
+import { kycpending, kycverify, kycupdate } from '../redux/actions/actions';
 
 import USERLIST from '../_mocks_/user';
 
@@ -137,6 +140,22 @@ function BookedStadiums() {
   }, []);
   const ownerlist = useSelector(({ kycpending }) => kycpending.payload);
   console.log('stdowner', ownerlist);
+  const handleverify = (owner) => {
+    dispatch(
+      kycupdate({
+        id: owner.id,
+        kycStatus: 'verified'
+      })
+    );
+  };
+  const handlereject = (owner) => {
+    dispatch(
+      kycupdate({
+        id: owner.id,
+        kycStatus: 'rejected'
+      })
+    );
+  };
   return (
     <div>
       <Container>
@@ -185,6 +204,22 @@ function BookedStadiums() {
                               <TableCell align="left">
                                 <Chip label={owner.kyc_status} color="primary" variant="outlined" />
                               </TableCell>
+                              <TableCell align="left">
+                                <InputLabel id="demo-simple-select-label">Status</InputLabel>
+                                <Select
+                                  labelId="demo-simple-select-label"
+                                  id="demo-simple-select"
+                                  label="Age"
+                                >
+                                  <MenuItem onClick={(e) => handleverify(owner)} value="verified">
+                                    Verify
+                                  </MenuItem>
+                                  <MenuItem onClick={(e) => handlereject(owner)} value="rejected">
+                                    Rejected
+                                  </MenuItem>
+                                </Select>
+                              </TableCell>
+
                               <TableCell align="left">
                                 <TableMoreMenu />
                               </TableCell>

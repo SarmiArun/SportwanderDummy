@@ -141,3 +141,9 @@ export const issues = {
     error: 'issuesupdateerror'
   }
 };
+export const stadium = {
+  List: {
+    success: 'stadiiumlistsuccess',
+    error: 'stadiumlisterror'
+  }
+};

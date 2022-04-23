@@ -4,28 +4,22 @@ import { Icon } from '@iconify/react';
 import { sentenceCase } from 'change-case';
 import { filter } from 'lodash';
 import plusFill from '@iconify/icons-eva/plus-fill';
+import Chip from '@mui/material/Chip';
 import { Link as RouterLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import Button from '@mui/material/Button';
-import Avatar from '@mui/material/Avatar';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemText from '@mui/material/ListItemText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Dialog from '@mui/material/Dialog';
-import MenuItem from '@mui/material/MenuItem';
-import { blue } from '@mui/material/colors';
-import Select from '@mui/material/Select';
 import {
   Card,
   Container,
   Stack,
   Typography,
   Table,
+  Avatar,
+  Button,
   Checkbox,
   TableRow,
+  Select,
+  InputLabel,
   TableBody,
+  MenuItem,
   TableCell,
   TableContainer,
   TablePagination
@@ -35,17 +29,19 @@ import Label from '../components/Label';
 import Scrollbar from '../components/Scrollbar';
 import SearchNotFound from '../components/SearchNotFound';
 import { TableListHead, TableListToolbar, TableMoreMenu } from '../components/_dashboard/Table';
-import { issuesList, updateissues } from '../redux/actions/actions';
+import { stadiumlist } from '../redux/actions/actions';
 
 import USERLIST from '../_mocks_/user';
 
 const TABLE_HEAD = [
   { id: 'userId', label: 'User Id', alignRight: false },
-  { id: 'messsage', label: 'User Id', alignRight: false },
   { id: 'name', label: 'Name', alignRight: false },
   { id: 'phone', label: 'Phone', alignRight: false },
   { id: 'email', label: 'Email', alignRight: false },
-  { id: 'status', label: 'Status', alignRight: false }
+  { id: 'gender', label: 'Gender', alignRight: false },
+  { id: 'address', label: 'Address', alignRight: false },
+  { id: 'status', label: 'Kyc Status', alignRight: false },
+  { id: 'status', label: 'Actions', alignRight: false }
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -76,7 +72,7 @@ function applySortFilter(array, comparator, query) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-function Players() {
+function BookedStadiums() {
   const dispatch = useDispatch();
 
   const [page, setPage] = useState(0);
@@ -139,17 +135,15 @@ function Players() {
   const isUserNotFound = filteredUsers.length === 0;
 
   useEffect(() => {
-    dispatch(issuesList());
+    dispatch(stadiumlist());
   }, []);
-  const issuelist = useSelector(({ issuesList }) => issuesList.payload);
-  console.log('playerlist', issuelist);
-  const handlesub = () => {};
+
   return (
     <div>
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Player List
+            Stadiums List
           </Typography>
         </Stack>
         <Card>
@@ -170,25 +164,35 @@ function Players() {
                 <TableBody>
                   <>
                     <>
-                      {Array.isArray(issuelist) &&
-                        issuelist.map((player) => (
+                      {Array.isArray(stadiumlist) &&
+                        stadiumlist.map((owner) => (
                           <TableRow>
+                            console.log(owner)
                             <>
                               <TableCell align="center">check</TableCell>
-                              <TableCell align="left">{player.message}</TableCell>
-                              <TableCell align="left">{player.player.userid}</TableCell>
-                              <TableCell align="left">{player.player.name}</TableCell>
-                              <TableCell align="left">{player.player.phone}</TableCell>
-                              <TableCell align="left">{player.player.email}</TableCell>
+                              <TableCell align="left">{owner.userid}</TableCell>
+                              <TableCell align="left">{owner.name}</TableCell>
+                              <TableCell align="left">{owner.phone}</TableCell>
+                              <TableCell align="left">{owner.email}</TableCell>
+                              <TableCell align="left">{owner.gender}</TableCell>
+                              <TableCell align="left">{owner.address}</TableCell>
                               <TableCell align="left">
-                                <Select label="Status">
-                                  <MenuItem value="pending">
-                                    <em>Pending</em>
-                                  </MenuItem>
-                                  <MenuItem value="solved">
-                                    <em>Solved</em>
-                                  </MenuItem>
+                                <Chip label={owner.kyc_status} color="primary" variant="outlined" />
+                              </TableCell>
+                              <TableCell align="left">
+                                <InputLabel id="demo-simple-select-label">Status</InputLabel>
+                                <Select
+                                  labelId="demo-simple-select-label"
+                                  id="demo-simple-select"
+                                  label="Age"
+                                >
+                                  <MenuItem value="verified">Verify</MenuItem>
+                                  <MenuItem value="rejected">Rejected</MenuItem>
                                 </Select>
+                              </TableCell>
+
+                              <TableCell align="left">
+                                <TableMoreMenu />
                               </TableCell>
                             </>
                           </TableRow>
@@ -202,9 +206,6 @@ function Players() {
                     </TableRow>
                   )}
                 </TableBody>
-
-                <br />
-
                 {isUserNotFound && (
                   <TableBody>
                     <TableRow>
@@ -233,4 +234,4 @@ function Players() {
   );
 }
 
-export default Players;
+export default BookedStadiums;
