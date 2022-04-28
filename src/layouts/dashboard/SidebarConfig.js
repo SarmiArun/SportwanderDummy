@@ -29,7 +29,7 @@ const sidebarConfig = [
     icon: getIcon(shoppingBagFill)
   },
   {
-    title: 'Kyc',
+    title: 'KYC',
     path: '/admin/BookedStadiums',
     icon: getIcon(shoppingBagFill)
   },

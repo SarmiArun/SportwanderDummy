@@ -26,7 +26,6 @@ import Scrollbar from '../components/Scrollbar';
 import SearchNotFound from '../components/SearchNotFound';
 import { TableListHead, TableListToolbar, TableMoreMenu } from '../components/_dashboard/Table';
 import { stadiumownerlist } from '../redux/actions/actions';
-
 import USERLIST from '../_mocks_/user';
 
 const TABLE_HEAD = [
@@ -35,8 +34,7 @@ const TABLE_HEAD = [
   { id: 'phone', label: 'Phone', alignRight: false },
   { id: 'email', label: 'Email', alignRight: false },
   { id: 'gender', label: 'Gender', alignRight: false },
-  { id: 'address', label: 'Address', alignRight: false },
-  { id: 'status', label: 'Actions', alignRight: false }
+  { id: 'address', label: 'Address', alignRight: false }
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -179,9 +177,6 @@ function BookedStadiums() {
                               <TableCell align="left">{owner.email}</TableCell>
                               <TableCell align="left">{owner.gender}</TableCell>
                               <TableCell align="left">{owner.address}</TableCell>
-                              <TableCell align="left">
-                                <TableMoreMenu />
-                              </TableCell>
                             </>
                           ))}
                       </TableRow>

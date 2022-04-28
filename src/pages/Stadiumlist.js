@@ -135,9 +135,12 @@ function BookedStadiums() {
   const isUserNotFound = filteredUsers.length === 0;
 
   useEffect(() => {
-    dispatch(stadiumlist());
+    dispatch(stadiumlist()).then((res) => {
+      console.log(res);
+    });
   }, []);
-
+  const stdlist = useSelector((stadiumlist) => stadiumlist.payload);
+  console.log(stdlist);
   return (
     <div>
       <Container>
@@ -167,7 +170,6 @@ function BookedStadiums() {
                       {Array.isArray(stadiumlist) &&
                         stadiumlist.map((owner) => (
                           <TableRow>
-                            console.log(owner)
                             <>
                               <TableCell align="center">check</TableCell>
                               <TableCell align="left">{owner.userid}</TableCell>

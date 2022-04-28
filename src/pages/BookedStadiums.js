@@ -29,7 +29,7 @@ import Label from '../components/Label';
 import Scrollbar from '../components/Scrollbar';
 import SearchNotFound from '../components/SearchNotFound';
 import { TableListHead, TableListToolbar, TableMoreMenu } from '../components/_dashboard/Table';
-import { kycpending, kycverify, kycupdate } from '../redux/actions/actions';
+import { kycpending, kycverify, kycupdate, kyclistall } from '../redux/actions/actions';
 
 import USERLIST from '../_mocks_/user';
 
@@ -137,8 +137,9 @@ function BookedStadiums() {
   useEffect(() => {
     dispatch(kycpending());
     dispatch(kycverify());
+    dispatch(kyclistall());
   }, []);
-  const ownerlist = useSelector(({ kycpending }) => kycpending.payload);
+  const ownerlist = useSelector(({ kyclistall }) => kyclistall.payload);
   console.log('stdowner', ownerlist);
   const handleverify = (owner) => {
     dispatch(
@@ -161,16 +162,8 @@ function BookedStadiums() {
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Booked Stadiums
+            KYC List
           </Typography>
-          <Button
-            variant="contained"
-            component={RouterLink}
-            to="/admin/AddBookedStadium"
-            startIcon={<Icon icon={plusFill} />}
-          >
-            BOOK
-          </Button>
         </Stack>
         <Card>
           <TableListToolbar
@@ -218,10 +211,6 @@ function BookedStadiums() {
                                     Rejected
                                   </MenuItem>
                                 </Select>
-                              </TableCell>
-
-                              <TableCell align="left">
-                                <TableMoreMenu />
                               </TableCell>
                             </>
                           </TableRow>

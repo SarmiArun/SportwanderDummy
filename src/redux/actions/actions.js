@@ -229,7 +229,7 @@ export function stadiumlist() {
         .then((res) => {
           dispatch({
             type: stadium.List.success,
-            data: res?.data?.data
+            data: res?.data?.data?.data
           });
           resolve(res);
         })

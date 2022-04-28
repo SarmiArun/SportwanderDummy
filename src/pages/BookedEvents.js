@@ -186,7 +186,7 @@ export default function User() {
     bank_accno: '',
     ifsc: '',
     aadhaarno: '',
-    aadhaar_front: '',
+    aadhaar_fron: '',
     aadhaar_back: '',
     aadhaar_selfie: '',
     branch: ''
@@ -372,19 +372,8 @@ export default function User() {
                   type="text"
                   style={{ width: '25%', marginRight: '10px' }}
                   onChange={handleChange}
-                  label="Aadhaar No"
-                  name="address"
-                  // {...getFieldProps('location')}
-                  error={Boolean(touched.email && errors.email)}
-                  helperText={touched.email && errors.email}
-                />
-                <TextField
-                  autoComplete="location"
-                  type="text"
-                  style={{ width: '25%', marginRight: '10px' }}
-                  onChange={handleChange}
-                  label="Aadhaar Link"
-                  name="aadhaar_front"
+                  label="Aadhaar Front"
+                  name="aadhaar_fron"
                   // {...getFieldProps('location')}
                   error={Boolean(touched.email && errors.email)}
                   helperText={touched.email && errors.email}
@@ -415,7 +404,6 @@ export default function User() {
                   error={Boolean(touched.email && errors.email)}
                   helperText={touched.email && errors.email}
                 />
-
                 <TextField
                   autoComplete="location"
                   type="text"
