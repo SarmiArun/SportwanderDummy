@@ -359,7 +359,7 @@ export default function User() {
                 <TextField
                   autoComplete="location"
                   type="number"
-                  style={{ width: '25%', marginRight: '10px' }}
+                  style={{ width: '35%', marginRight: '10px' }}
                   onChange={handleChange}
                   label="Aadhaar No"
                   name="aadhaarno"
@@ -370,7 +370,7 @@ export default function User() {
                 <TextField
                   autoComplete="location"
                   type="text"
-                  style={{ width: '25%', marginRight: '10px' }}
+                  style={{ width: '35%', marginRight: '10px' }}
                   onChange={handleChange}
                   label="Aadhaar Front"
                   name="aadhaar_fron"
@@ -381,7 +381,7 @@ export default function User() {
                 <TextField
                   autoComplete="location"
                   type="text"
-                  style={{ width: '25%' }}
+                  style={{ width: '30%' }}
                   onChange={handleChange}
                   label="Aadhaar_back"
                   name="aadhaar_back"

@@ -93,9 +93,7 @@ export default function LoginForm() {
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton onClick={handleShowPassword} edge="end">
-                    <Icon icon={showPassword ? eyeFill : eyeOffFill} />
-                  </IconButton>
+                  <IconButton onClick={handleShowPassword} edge="end" />
                 </InputAdornment>
               )
             }}

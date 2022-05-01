@@ -132,7 +132,7 @@ export default function Moderators() {
   const isUserNotFound = filteredUsers.length === 0;
 
   return (
-    <Page title="Moderators | Minimal-UI">
+    <Page title="Moderators | Sportswander">
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
