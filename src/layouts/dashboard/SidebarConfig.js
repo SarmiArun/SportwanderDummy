@@ -24,6 +24,11 @@ const sidebarConfig = [
     icon: getIcon(shoppingBagFill)
   },
   {
+    title: 'Sponsers',
+    path: '/admin/Sponsers',
+    icon: getIcon(shoppingBagFill)
+  },
+  {
     title: 'Stadium Owner List',
     path: '/admin/ListStadium',
     icon: getIcon(shoppingBagFill)

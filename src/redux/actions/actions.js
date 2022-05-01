@@ -13,7 +13,8 @@ import {
   mainbanner,
   player,
   issues,
-  stadium
+  stadium,
+  sponser
 } from '../actiontype/actiontype';
 
 export function userlogin(data) {
@@ -296,6 +297,46 @@ export function privacypolicylist(data) {
         .catch((err) => {
           dispatch({
             type: privacy.list.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function sponseradd(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/addpp', data)
+        .then((res) => {
+          dispatch({
+            type: sponser.add.success,
+            data: res?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: sponser.add.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function sponserlist(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('get', '/v1/admin/getpp')
+        .then((res) => {
+          dispatch({
+            type: sponser.list.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: sponser.list.error,
             data: err
           });
           reject(err);

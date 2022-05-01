@@ -60,6 +60,16 @@ export const privacy = {
     error: 'privacylisterror'
   }
 };
+export const sponser = {
+  add: {
+    success: 'sponsersaddsuccess',
+    error: 'sponsersadderror'
+  },
+  list: {
+    success: 'sponserslistsuccess',
+    error: 'sponserslisterror'
+  }
+};
 export const terms = {
   add: {
     success: 'termsaddsuccess',
