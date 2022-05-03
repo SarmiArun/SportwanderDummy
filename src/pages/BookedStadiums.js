@@ -30,7 +30,6 @@ import Scrollbar from '../components/Scrollbar';
 import SearchNotFound from '../components/SearchNotFound';
 import { TableListHead, TableListToolbar, TableMoreMenu } from '../components/_dashboard/Table';
 import { kycpending, kycverify, kycupdate, kyclistall } from '../redux/actions/actions';
-
 import USERLIST from '../_mocks_/user';
 
 const TABLE_HEAD = [
@@ -153,10 +152,12 @@ function BookedStadiums() {
     dispatch(
       kycupdate({
         id: owner.id,
-        kycStatus: 'rejected'
+        kycStatus: 'rejected',
+        reason: 'Submit Documents Properly'
       })
     );
   };
+
   return (
     <div>
       <Container>

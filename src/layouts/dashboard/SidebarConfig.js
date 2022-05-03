@@ -28,6 +28,11 @@ const sidebarConfig = [
     path: '/admin/Sponsers',
     icon: getIcon(shoppingBagFill)
   },
+  // {
+  //   title: 'Sponsers List',
+  //   path: '/admin/Sponserlist',
+  //   icon: getIcon(shoppingBagFill)
+  // },
   {
     title: 'Stadium Owner List',
     path: '/admin/ListStadium',

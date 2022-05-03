@@ -13,12 +13,13 @@ import Privacypolicy from './pages/Privacypolicy';
 import Mainbanner from './pages/Mainbanner';
 import Catbanner from './pages/Catbanner';
 import AddModerators from './pages/Moderator/AddModerator';
-import Sponsers from './pages/Sponsers';
+import Sponsers from './pages/Sponse';
 import BookedEvents from './pages/BookedEvents';
 import Players from './pages/Players';
 import Court from './pages/Court';
 import LogoOnlyLayout from './layouts/LogoOnlyLayout';
 import Stadiumlist from './pages/Stadiumlist';
+import Sponserlist from './pages/Sponserlist';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import DashboardApp from './pages/DashboardApp';
@@ -52,6 +53,7 @@ export function Router(props) {
         { path: 'notify', element: <Notify /> },
         { path: 'termsandconditions', element: <Termsandconditions /> },
         { path: 'Sponsers', element: <Sponsers /> },
+        { path: 'Sponserlist/:id', element: <Sponserlist /> },
         { path: 'issues', element: <Issues /> },
         { path: 'Mainbanner', element: <Mainbanner /> },
         { path: 'Catbanner/:id', element: <Catbanner /> },

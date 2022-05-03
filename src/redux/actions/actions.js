@@ -306,7 +306,7 @@ export function privacypolicylist(data) {
 export function sponseradd(data) {
   return (dispatch) =>
     new Promise((resolve, reject) =>
-      axiosInstance('post', '/v1/admin/addpp', data)
+      axiosInstance('post', '/v1/admin/sponsor/add', data)
         .then((res) => {
           dispatch({
             type: sponser.add.success,
@@ -326,7 +326,7 @@ export function sponseradd(data) {
 export function sponserlist(data) {
   return (dispatch) =>
     new Promise((resolve, reject) =>
-      axiosInstance('get', '/v1/admin/getpp')
+      axiosInstance('post', '/v1/admin/sponsor/list', data)
         .then((res) => {
           dispatch({
             type: sponser.list.success,
@@ -337,6 +337,26 @@ export function sponserlist(data) {
         .catch((err) => {
           dispatch({
             type: sponser.list.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function sponserdelete(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/sponsor/delete', data)
+        .then((res) => {
+          dispatch({
+            type: sponser.delete.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: sponser.delete.error,
             data: err
           });
           reject(err);

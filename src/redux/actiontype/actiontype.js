@@ -68,6 +68,10 @@ export const sponser = {
   list: {
     success: 'sponserslistsuccess',
     error: 'sponserslisterror'
+  },
+  delete: {
+    success: 'sponsersdeletesuccess',
+    error: 'sponsersdeleteerror'
   }
 };
 export const terms = {

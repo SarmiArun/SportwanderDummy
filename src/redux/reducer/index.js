@@ -30,7 +30,8 @@ import {
   issuesList,
   updateissues,
   sponseradd,
-  sponserlist
+  sponserlist,
+  sponserdelete
 } from './reducer';
 
 export default combineReducers({
@@ -64,5 +65,6 @@ export default combineReducers({
   updateissues,
   stadiumlist,
   sponserlist,
-  sponseradd
+  sponseradd,
+  sponserdelete
 });

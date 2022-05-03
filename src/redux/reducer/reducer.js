@@ -274,6 +274,22 @@ export const sponserlist = (state = initialState, actions) => {
       return state;
   }
 };
+export const sponserdelete = (state = initialState, actions) => {
+  switch (actions.type) {
+    case sponser.delete.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case sponser.delete.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
 export const termsadd = (state = initialState, actions) => {
   switch (actions.type) {
     case terms.add.success:
