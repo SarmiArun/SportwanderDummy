@@ -14,7 +14,7 @@ import {
   player,
   issues,
   stadium,
-  sponser
+  Sponsor
 } from '../actiontype/actiontype';
 
 export function userlogin(data) {
@@ -230,7 +230,7 @@ export function stadiumlist() {
         .then((res) => {
           dispatch({
             type: stadium.List.success,
-            data: res?.data?.data?.data
+            data: res?.data?.data
           });
           resolve(res);
         })
@@ -309,14 +309,14 @@ export function sponseradd(data) {
       axiosInstance('post', '/v1/admin/sponsor/add', data)
         .then((res) => {
           dispatch({
-            type: sponser.add.success,
+            type: Sponsor.add.success,
             data: res?.data
           });
           resolve(res);
         })
         .catch((err) => {
           dispatch({
-            type: sponser.add.error,
+            type: Sponsor.add.error,
             data: err
           });
           reject(err);
@@ -329,14 +329,14 @@ export function sponserlist(data) {
       axiosInstance('post', '/v1/admin/sponsor/list', data)
         .then((res) => {
           dispatch({
-            type: sponser.list.success,
+            type: Sponsor.list.success,
             data: res?.data?.data
           });
           resolve(res);
         })
         .catch((err) => {
           dispatch({
-            type: sponser.list.error,
+            type: Sponsor.list.error,
             data: err
           });
           reject(err);
@@ -349,14 +349,14 @@ export function sponserdelete(data) {
       axiosInstance('post', '/v1/admin/sponsor/delete', data)
         .then((res) => {
           dispatch({
-            type: sponser.delete.success,
+            type: Sponsor.delete.success,
             data: res?.data?.data
           });
           resolve(res);
         })
         .catch((err) => {
           dispatch({
-            type: sponser.delete.error,
+            type: Sponsor.delete.error,
             data: err
           });
           reject(err);

@@ -13,7 +13,7 @@ import Privacypolicy from './pages/Privacypolicy';
 import Mainbanner from './pages/Mainbanner';
 import Catbanner from './pages/Catbanner';
 import AddModerators from './pages/Moderator/AddModerator';
-import Sponsers from './pages/Sponse';
+import Sponsors from './pages/Sponsors';
 import BookedEvents from './pages/BookedEvents';
 import Players from './pages/Players';
 import Court from './pages/Court';
@@ -52,7 +52,7 @@ export function Router(props) {
         { path: 'Stadiumlist', element: <Stadiumlist /> },
         { path: 'notify', element: <Notify /> },
         { path: 'termsandconditions', element: <Termsandconditions /> },
-        { path: 'Sponsers', element: <Sponsers /> },
+        { path: 'Sponsors', element: <Sponsors /> },
         { path: 'Sponserlist/:id', element: <Sponserlist /> },
         { path: 'issues', element: <Issues /> },
         { path: 'Mainbanner', element: <Mainbanner /> },

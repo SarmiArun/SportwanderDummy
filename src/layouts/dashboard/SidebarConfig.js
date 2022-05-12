@@ -24,15 +24,11 @@ const sidebarConfig = [
     icon: getIcon(shoppingBagFill)
   },
   {
-    title: 'Sponsers',
-    path: '/admin/Sponsers',
+    title: 'Sponsors',
+    path: '/admin/Sponsors',
     icon: getIcon(shoppingBagFill)
   },
-  // {
-  //   title: 'Sponsers List',
-  //   path: '/admin/Sponserlist',
-  //   icon: getIcon(shoppingBagFill)
-  // },
+
   {
     title: 'Stadium Owner List',
     path: '/admin/ListStadium',

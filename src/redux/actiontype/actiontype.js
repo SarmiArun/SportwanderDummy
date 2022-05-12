@@ -60,18 +60,18 @@ export const privacy = {
     error: 'privacylisterror'
   }
 };
-export const sponser = {
+export const Sponsor = {
   add: {
-    success: 'sponsersaddsuccess',
-    error: 'sponsersadderror'
+    success: 'sponsorsaddsuccess',
+    error: 'sponsorsadderror'
   },
   list: {
-    success: 'sponserslistsuccess',
-    error: 'sponserslisterror'
+    success: 'sponsorslistsuccess',
+    error: 'sponsorslisterror'
   },
   delete: {
-    success: 'sponsersdeletesuccess',
-    error: 'sponsersdeleteerror'
+    success: 'sponsorsdeletesuccess',
+    error: 'sponsorsdeleteerror'
   }
 };
 export const terms = {
@@ -159,5 +159,9 @@ export const stadium = {
   List: {
     success: 'stadiiumlistsuccess',
     error: 'stadiumlisterror'
+  },
+  update:{
+    success:"stadiumupdateuccess",
+    error:"stadiumupdateerror"
   }
 };

@@ -29,15 +29,15 @@ function Sponserlist() {
   return (
     <div>
       <Box mb={2}>
-        <h2>Sponser List</h2>
+        <h2>Sponsor List</h2>
       </Box>
       <Grid container spacing={2}>
         {Array.isArray(data) ? (
-          data.map((sponser) => (
+          data.map((Sponsor) => (
             <Grid item xs={3} style={{ marginBottom: '25px' }}>
               <Card xs={3} sx={{ maxWidth: 380 }}>
                 <CardActionArea>
-                  <CardMedia component="img" height="240" image={sponser.image} alt="" />
+                  <CardMedia component="img" height="240" image={Sponsor.image} alt="" />
                 </CardActionArea>
               </Card>
 
@@ -53,7 +53,7 @@ function Sponserlist() {
                   style={{ color: 'white', fontWeight: 'bolder', fontSize: '15px' }}
                   label="Delete"
                   color="primary"
-                  onClick={() => dispatch(sponserdelete({ id: sponser.id }))}
+                  onClick={() => dispatch(sponserdelete({ id: Sponsor.id }))}
                 />
               </div>
             </Grid>

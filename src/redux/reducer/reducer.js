@@ -13,7 +13,7 @@ import {
   stadium,
   player,
   issues,
-  sponser
+  Sponsor
 } from '../actiontype/actiontype';
 
 const initialState = {};
@@ -244,12 +244,12 @@ export const privacypolicylist = (state = initialState, actions) => {
 };
 export const sponseradd = (state = initialState, actions) => {
   switch (actions.type) {
-    case sponser.add.success:
+    case Sponsor.add.success:
       return {
         status: true,
         payload: actions.data
       };
-    case sponser.add.error:
+    case Sponsor.add.error:
       return {
         status: false,
         payload: actions.data
@@ -260,12 +260,12 @@ export const sponseradd = (state = initialState, actions) => {
 };
 export const sponserlist = (state = initialState, actions) => {
   switch (actions.type) {
-    case sponser.list.success:
+    case Sponsor.list.success:
       return {
         status: true,
         payload: actions.data
       };
-    case sponser.list.error:
+    case Sponsor.list.error:
       return {
         status: false,
         payload: actions.data
@@ -276,12 +276,12 @@ export const sponserlist = (state = initialState, actions) => {
 };
 export const sponserdelete = (state = initialState, actions) => {
   switch (actions.type) {
-    case sponser.delete.success:
+    case Sponsor.delete.success:
       return {
         status: true,
         payload: actions.data
       };
-    case sponser.delete.error:
+    case Sponsor.delete.error:
       return {
         status: false,
         payload: actions.data
