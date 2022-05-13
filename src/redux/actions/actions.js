@@ -243,6 +243,26 @@ export function stadiumlist() {
         })
     );
 }
+export function stadiumupdate(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/stadium/update', data)
+        .then((res) => {
+          dispatch({
+            type: stadium.update.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: stadium.update.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
 export function eventorgcount() {
   return (dispatch) =>
     new Promise((resolve, reject) =>

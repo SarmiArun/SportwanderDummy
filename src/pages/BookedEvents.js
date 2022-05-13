@@ -35,7 +35,9 @@ import {
   MenuItem,
   Input,
   Select,
-  TablePagination
+  TablePagination,
+  InputLabel,
+  FormControl
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { stadiumownercreate } from '../redux/actions/actions';
@@ -293,17 +295,20 @@ export default function User() {
                   helperText={touched.email && errors.email}
                 />
 
-                <TextField
-                  autoComplete="location"
-                  type="text"
-                  style={{ width: '33%', marginRight: '10px' }}
-                  onChange={handleChange}
-                  label="Gender"
-                  name="gender"
-                  // {...getFieldProps('location')}
-                  error={Boolean(touched.email && errors.email)}
-                  helperText={touched.email && errors.email}
-                />
+                <FormControl fullWidth style={{ marginRight: '10px' }}>
+                  <InputLabel id="demo-simple-select-label">Gender</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    label="Gender"
+                    name="gender"
+                    onChange={handleChange}
+                  >
+                    <MenuItem value="male">Male</MenuItem>
+                    <MenuItem value="female">Female</MenuItem>
+                    <MenuItem value="others">Others</MenuItem>
+                  </Select>
+                </FormControl>
                 <TextField
                   autoComplete="location"
                   type="text"
@@ -396,7 +401,7 @@ export default function User() {
                 <TextField
                   autoComplete="location"
                   type="text"
-                  style={{ width: '50%', marginRight: '10px' }}
+                  style={{ width: '35%', marginRight: '10px' }}
                   onChange={handleChange}
                   label="Aadhaar Selfie"
                   name="aadhaar_selfie"
@@ -407,13 +412,24 @@ export default function User() {
                 <TextField
                   autoComplete="location"
                   type="text"
-                  style={{ width: '50%' }}
+                  style={{ width: '30%', marginRight: '10px' }}
                   onChange={handleChange}
                   label="Branch"
                   name="branch"
                   // {...getFieldProps('location')}
                   error={Boolean(touched.email && errors.email)}
                   helperText={touched.email && errors.email}
+                />
+                <TextField
+                  autoComplete="location"
+                  type="text"
+                  style={{ width: '35%' }}
+                  onChange={handleChange}
+                  label="Address"
+                  name="address"
+                  // {...getFieldProps('location')}
+                  error={Boolean(touched.address && errors.address)}
+                  helperText={touched.address && errors.address}
                 />
               </div>
             </Stack>

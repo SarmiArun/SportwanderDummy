@@ -22,7 +22,8 @@ import {
   MenuItem,
   TableCell,
   TableContainer,
-  TablePagination
+  TablePagination,
+  FormControl
 } from '@mui/material';
 import Page from '../components/Page';
 import Label from '../components/Label';
@@ -137,9 +138,9 @@ function BookedStadiums() {
     dispatch(kycpending());
     dispatch(kycverify());
     dispatch(kyclistall());
-  }, []);
+  }, [kycverify]);
   const ownerlist = useSelector(({ kyclistall }) => kyclistall.payload);
-  console.log('stdowner', ownerlist);
+
   const handleverify = (owner) => {
     dispatch(
       kycupdate({
@@ -199,19 +200,21 @@ function BookedStadiums() {
                                 <Chip label={owner.kyc_status} color="primary" variant="outlined" />
                               </TableCell>
                               <TableCell align="left">
-                                <InputLabel id="demo-simple-select-label">Status</InputLabel>
-                                <Select
-                                  labelId="demo-simple-select-label"
-                                  id="demo-simple-select"
-                                  label="Age"
-                                >
-                                  <MenuItem onClick={(e) => handleverify(owner)} value="verified">
-                                    Verify
-                                  </MenuItem>
-                                  <MenuItem onClick={(e) => handlereject(owner)} value="rejected">
-                                    Rejected
-                                  </MenuItem>
-                                </Select>
+                                <FormControl fullWidth>
+                                  <InputLabel id="demo-simple-select-label">Status</InputLabel>
+                                  <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    label="Status"
+                                  >
+                                    <MenuItem onClick={(e) => handleverify(owner)} value="verified">
+                                      Verify
+                                    </MenuItem>
+                                    <MenuItem onClick={(e) => handlereject(owner)} value="rejected">
+                                      Rejected
+                                    </MenuItem>
+                                  </Select>
+                                </FormControl>
                               </TableCell>
                             </>
                           </TableRow>

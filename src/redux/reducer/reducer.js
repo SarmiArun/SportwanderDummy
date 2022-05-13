@@ -194,6 +194,22 @@ export const stadiumlist = (state = initialState, actions) => {
       return state;
   }
 };
+export const stadiumupdate = (state = initialState, actions) => {
+  switch (actions.type) {
+    case stadium.update.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case stadium.update.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
 export const eventorgcount = (state = initialState, actions) => {
   switch (actions.type) {
     case event.count.success:

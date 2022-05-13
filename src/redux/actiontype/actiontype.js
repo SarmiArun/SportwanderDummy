@@ -160,8 +160,8 @@ export const stadium = {
     success: 'stadiiumlistsuccess',
     error: 'stadiumlisterror'
   },
-  update:{
-    success:"stadiumupdateuccess",
-    error:"stadiumupdateerror"
+  update: {
+    success: 'stadiumupdateuccess',
+    error: 'stadiumupdateerror'
   }
 };

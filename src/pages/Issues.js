@@ -161,38 +161,38 @@ function Players() {
           <Scrollbar>
             <TableContainer sx={{ minWidth: 800 }}>
               <Table>
-                <TableListHead
-                  headLabel={TABLE_HEAD}
-
-                  // onRequestSort={handleRequestSort}
-                  // onSelectAllClick={handleSelectAllClick}
-                />
+                {Array.isArray(issuelist) ? (
+                  <TableListHead headLabel={TABLE_HEAD} />
+                ) : (
+                  'No Issues Found'
+                )}
                 <TableBody>
                   <>
                     <>
-                      {Array.isArray(issuelist) &&
-                        issuelist.map((player) => (
-                          <TableRow>
-                            <>
-                              <TableCell align="center">check</TableCell>
-                              <TableCell align="left">{player.message}</TableCell>
-                              <TableCell align="left">{player.player.userid}</TableCell>
-                              <TableCell align="left">{player.player.name}</TableCell>
-                              <TableCell align="left">{player.player.phone}</TableCell>
-                              <TableCell align="left">{player.player.email}</TableCell>
-                              <TableCell align="left">
-                                <Select label="Status">
-                                  <MenuItem value="pending">
-                                    <em>Pending</em>
-                                  </MenuItem>
-                                  <MenuItem value="solved">
-                                    <em>Solved</em>
-                                  </MenuItem>
-                                </Select>
-                              </TableCell>
-                            </>
-                          </TableRow>
-                        ))}
+                      {Array.isArray(issuelist)
+                        ? issuelist.map((player) => (
+                            <TableRow>
+                              <>
+                                <TableCell align="center">check</TableCell>
+                                <TableCell align="left">{player.message}</TableCell>
+                                <TableCell align="left">{player.player.userid}</TableCell>
+                                <TableCell align="left">{player.player.name}</TableCell>
+                                <TableCell align="left">{player.player.phone}</TableCell>
+                                <TableCell align="left">{player.player.email}</TableCell>
+                                <TableCell align="left">
+                                  <Select label="Status">
+                                    <MenuItem value="pending">
+                                      <em>Pending</em>
+                                    </MenuItem>
+                                    <MenuItem value="solved">
+                                      <em>Solved</em>
+                                    </MenuItem>
+                                  </Select>
+                                </TableCell>
+                              </>
+                            </TableRow>
+                          ))
+                        : 'No Issues Found'}
                     </>
                   </>
 

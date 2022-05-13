@@ -14,7 +14,6 @@ function Version() {
     e.preventDefault();
     dispatch(udpateversion({ version: ver }));
   };
-
   useEffect(() => {
     dispatch(getversion());
   }, []);

@@ -9,10 +9,11 @@ import TableRow from '@mui/material/TableRow';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
+import Chip from '@mui/material/Chip';
 import Select from '@mui/material/Select';
 import Paper from '@mui/material/Paper';
 import { useDispatch, useSelector } from 'react-redux';
-import { stadiumlist } from '../redux/actions/actions';
+import { stadiumlist, stadiumupdate } from '../redux/actions/actions';
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -41,6 +42,7 @@ export default function Bookedstadiumlist() {
         <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
+              <TableCell> S No</TableCell>
               <TableCell>Stadium Name</TableCell>
               <TableCell>Location</TableCell>
               <TableCell>Document</TableCell>
@@ -51,8 +53,11 @@ export default function Bookedstadiumlist() {
           </TableHead>
           <TableBody>
             {Array.isArray(list) &&
-              list.map((row) => (
+              list.map((row, i) => (
                 <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                  <TableCell component="th" scope="row">
+                    {i + 1}
+                  </TableCell>
                   <TableCell component="th" scope="row">
                     {row.name}
                   </TableCell>
@@ -61,9 +66,9 @@ export default function Bookedstadiumlist() {
                   <TableCell>{row?.address}</TableCell>
                   <TableCell>
                     {row?.approved === false ? (
-                      <span style={{ color: 'red' }}> Not Approved</span>
+                      <Chip label="Not Approved" color="primary" variant="outlined" />
                     ) : (
-                      <span style={{ color: 'green' }}>Appoved </span>
+                      <Chip label="Approved" color="secondary" variant="outlined" />
                     )}
                   </TableCell>
                   <FormControl fullWidth style={{ marginTop: '10px' }}>
@@ -71,13 +76,18 @@ export default function Bookedstadiumlist() {
                     <Select labelId="demo-simple-select-label" id="demo-simple-select" label="Age">
                       <MenuItem
                         onClick={() => {
-                          dispatch(stadiumlist({ id: row.id, status: true }));
+                          dispatch(stadiumupdate({ id: row.id, status: true }));
                         }}
                       >
-                        Ten
+                        Appoved
                       </MenuItem>
-                      <MenuItem value={20}>Twenty</MenuItem>
-                      <MenuItem value={30}>Thirty</MenuItem>
+                      <MenuItem
+                        onClick={() => {
+                          dispatch(stadiumupdate({ id: row.id, status: false }));
+                        }}
+                      >
+                        Not Approved
+                      </MenuItem>
                     </Select>
                   </FormControl>
                 </TableRow>

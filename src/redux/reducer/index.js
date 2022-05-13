@@ -27,6 +27,7 @@ import {
   playerCount,
   playerList,
   stadiumlist,
+  stadiumupdate,
   issuesList,
   updateissues,
   sponseradd,
@@ -64,6 +65,7 @@ export default combineReducers({
   issuesList,
   updateissues,
   stadiumlist,
+  stadiumupdate,
   sponserlist,
   sponseradd,
   sponserdelete
