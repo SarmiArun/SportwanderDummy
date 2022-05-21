@@ -165,3 +165,13 @@ export const stadium = {
     error: 'stadiumupdateerror'
   }
 };
+export const promocode = {
+  add: {
+    success: 'promoaddsuccess',
+    error: 'promoadderror'
+  },
+  list: {
+    success: 'promolistsuccess',
+    error: 'promolisterror'
+  }
+};

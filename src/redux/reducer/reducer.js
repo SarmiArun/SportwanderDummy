@@ -13,7 +13,8 @@ import {
   stadium,
   player,
   issues,
-  Sponsor
+  Sponsor,
+  promocode
 } from '../actiontype/actiontype';
 
 const initialState = {};
@@ -234,6 +235,22 @@ export const privacypolicyadd = (state = initialState, actions) => {
         payload: actions.data
       };
     case privacy.add.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const promocodeadd = (state = initialState, actions) => {
+  switch (actions.type) {
+    case promocode.add.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case promocode.add.error:
       return {
         status: false,
         payload: actions.data

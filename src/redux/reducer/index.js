@@ -32,7 +32,8 @@ import {
   updateissues,
   sponseradd,
   sponserlist,
-  sponserdelete
+  sponserdelete,
+  promocodeadd
 } from './reducer';
 
 export default combineReducers({
@@ -68,5 +69,6 @@ export default combineReducers({
   stadiumupdate,
   sponserlist,
   sponseradd,
-  sponserdelete
+  sponserdelete,
+  promocodeadd
 });

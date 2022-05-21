@@ -40,7 +40,7 @@ function Sponsors() {
     setData({ ...data, [e.target.name]: e.target.value });
   };
   const title = 'TITLE_SPONSOR';
-  const associate = 'ASSOCIATE_SPONSOR';
+  const associate = 'ASSOC_SPONSOR';
   const partner = 'PARTNER';
   const Sponsor = 'CO_SPONSOR';
   return (
@@ -61,9 +61,9 @@ function Sponsors() {
             onChange={handleChange}
           >
             <MenuItem value="TITLE_SPONSOR"> TITLE SPONSOR</MenuItem>
-            <MenuItem value="ASSOCIATE_SPONSOR"> ASSOCIATE SPONSORS</MenuItem>
-            <MenuItem value="PARTNER"> PARTNERS</MenuItem>
             <MenuItem value="CO_SPONSOR"> CO SPONSORS</MenuItem>
+            <MenuItem value="ASSOC_SPONSOR"> ASSOCIATE SPONSORS</MenuItem>
+            <MenuItem value="PARTNER"> PARTNERS</MenuItem>
           </Select>
         </FormControl>
 

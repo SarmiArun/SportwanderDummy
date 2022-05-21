@@ -149,7 +149,7 @@ function Players() {
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Player List
+            Issues
           </Typography>
         </Stack>
         <Card>

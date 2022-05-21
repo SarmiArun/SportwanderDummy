@@ -70,39 +70,35 @@ function Mainbanner() {
       <Container>
         <h2>Main banner</h2>
         <br />
+        {
+          // <div>
+          //   <h4>Banner Name</h4>
+          //   <div style={{ marginTop: '10px' }}>
+          //     <TextField
+          //       type="text"
+          //       style={{ width: '50%' }}
+          //       onChange={handleChange}
+          //       name="name"
+          //       required
+          //     />
+          //   </div>
+          // </div>
+          // <h4 style={{ marginTop: '20px' }}>Banner Image</h4>
+          // <div style={{ marginTop: '10px' }}>
+          //   <input type="file" onChange={imageChange} name="banner" required />
+          // </div>
+          // <span style={{ color: 'red', marginTop: '10px' }}> {error}</span>
+          // <Button
+          //   color="primary"
+          //   variant="contained"
+          //   style={{ marginTop: '20px' }}
+          //   onClick={handleSubmit}
+          // >
+          //   Add Banner
+          // </Button>
+          // <br />
+        }
 
-        <div>
-          <h4>Banner Name</h4>
-
-          <div style={{ marginTop: '10px' }}>
-            <TextField
-              type="text"
-              style={{ width: '50%' }}
-              onChange={handleChange}
-              name="name"
-              required
-            />
-          </div>
-        </div>
-
-        <h4 style={{ marginTop: '20px' }}>Banner Image</h4>
-
-        <div style={{ marginTop: '10px' }}>
-          <input type="file" onChange={imageChange} name="banner" required />
-        </div>
-
-        <span style={{ color: 'red', marginTop: '10px' }}> {error}</span>
-
-        <Button
-          color="primary"
-          variant="contained"
-          style={{ marginTop: '20px' }}
-          onClick={handleSubmit}
-        >
-          Add Banner
-        </Button>
-        <br />
-        <br />
         <Box>
           <h2>Banner List</h2>
         </Box>

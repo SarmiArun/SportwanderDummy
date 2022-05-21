@@ -54,7 +54,7 @@ export default function AppWeeklySales() {
       </IconWrapperStyle>
       <Typography variant="h3">{stadiumCount}</Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-        Stadium Count
+        Stadium Owner Count
       </Typography>
     </RootStyle>
   );

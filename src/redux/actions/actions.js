@@ -14,7 +14,8 @@ import {
   player,
   issues,
   stadium,
-  Sponsor
+  Sponsor,
+  promocode
 } from '../actiontype/actiontype';
 
 export function userlogin(data) {
@@ -437,6 +438,26 @@ export function notifyadd(data) {
         .catch((err) => {
           dispatch({
             type: notify.add.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function promocodeadd(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/promo/add', data)
+        .then((res) => {
+          dispatch({
+            type: promocode.add.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: promocode.add.error,
             data: err
           });
           reject(err);

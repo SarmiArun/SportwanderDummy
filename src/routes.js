@@ -16,6 +16,7 @@ import AddModerators from './pages/Moderator/AddModerator';
 import Sponsors from './pages/Sponsors';
 import BookedEvents from './pages/BookedEvents';
 import Players from './pages/Players';
+import Promocode from './pages/Promocode';
 import Court from './pages/Court';
 import LogoOnlyLayout from './layouts/LogoOnlyLayout';
 import Stadiumlist from './pages/Stadiumlist';
@@ -50,6 +51,7 @@ export function Router(props) {
         { path: 'BookedStadiums', element: <BookedStadiums /> },
         { path: 'addmoderators', element: <AddModerators /> },
         { path: 'Stadiumlist', element: <Stadiumlist /> },
+        { path: 'Promocode', element: <Promocode /> },
         { path: 'notify', element: <Notify /> },
         { path: 'termsandconditions', element: <Termsandconditions /> },
         { path: 'Sponsors', element: <Sponsors /> },

@@ -28,6 +28,11 @@ const sidebarConfig = [
     path: '/admin/Sponsors',
     icon: getIcon(shoppingBagFill)
   },
+  {
+    title: 'Promo Code',
+    path: '/admin/Promocode',
+    icon: getIcon(shoppingBagFill)
+  },
 
   {
     title: 'Stadium Owner List',
