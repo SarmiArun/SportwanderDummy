@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { axiosInstance } from '../../Services';
 import {
   user,
@@ -125,6 +126,11 @@ export function kycupdate(data) {
     new Promise((resolve, reject) =>
       axiosInstance('post', '/v1/admin/kyc/update', data)
         .then((res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'KYC ',
+            text: 'Updated Successfully!'
+          });
           dispatch({
             type: KYC.update.success,
             data: res?.data?.data
@@ -145,6 +151,11 @@ export function stadiumownercreate(data) {
     new Promise((resolve, reject) =>
       axiosInstance('post', '/v1/stdowner/signup', data)
         .then((res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Stadium ',
+            text: 'Owner Created Successfully!'
+          });
           dispatch({
             type: stadiumowner.create.success,
             data: res?.data?.data
@@ -249,6 +260,11 @@ export function stadiumupdate(data) {
     new Promise((resolve, reject) =>
       axiosInstance('post', '/v1/admin/stadium/update', data)
         .then((res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Stadium',
+            text: 'Updated Successfully!'
+          });
           dispatch({
             type: stadium.update.success,
             data: res?.data?.data
@@ -289,6 +305,11 @@ export function privacypolicyadd(data) {
     new Promise((resolve, reject) =>
       axiosInstance('post', '/v1/admin/addpp', data)
         .then((res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Privacy Policy',
+            text: 'Add Successfully!'
+          });
           dispatch({
             type: privacy.add.success,
             data: res?.data
@@ -329,6 +350,11 @@ export function sponseradd(data) {
     new Promise((resolve, reject) =>
       axiosInstance('post', '/v1/admin/sponsor/add', data)
         .then((res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Sponsor',
+            text: 'Add Successfully!'
+          });
           dispatch({
             type: Sponsor.add.success,
             data: res?.data
@@ -369,6 +395,11 @@ export function sponserdelete(data) {
     new Promise((resolve, reject) =>
       axiosInstance('post', '/v1/admin/sponsor/delete', data)
         .then((res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Sponsor',
+            text: 'Deleted Successfully!'
+          });
           dispatch({
             type: Sponsor.delete.success,
             data: res?.data?.data
@@ -389,6 +420,11 @@ export function termsadd(data) {
     new Promise((resolve, reject) =>
       axiosInstance('post', '/v1/admin/addtc', data)
         .then((res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Terms and Conditions',
+            text: 'Added Successfully!'
+          });
           dispatch({
             type: terms.add.success,
             data: res?.data
@@ -429,6 +465,11 @@ export function notifyadd(data) {
     new Promise((resolve, reject) =>
       axiosInstance('post', '/v1/admin/notify', data)
         .then((res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Notification',
+            text: 'Added Successfully!'
+          });
           dispatch({
             type: notify.add.success,
             data: res?.data?.data
@@ -449,6 +490,11 @@ export function promocodeadd(data) {
     new Promise((resolve, reject) =>
       axiosInstance('post', '/v1/admin/promo/add', data)
         .then((res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Promo Code',
+            text: 'Added Successfully!'
+          });
           dispatch({
             type: promocode.add.success,
             data: res?.data?.data
@@ -469,6 +515,11 @@ export function addmoderators(data) {
     new Promise((resolve, reject) =>
       axiosInstance('post', '/v1/admin/login', data)
         .then((res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Moderator',
+            text: 'Added Successfully!'
+          });
           dispatch({
             type: moderators.add.success,
             data: res?.data?.data
@@ -489,6 +540,11 @@ export function udpateversion(data) {
     new Promise((resolve, reject) =>
       axiosInstance('post', '/v1/admin/upversion', data)
         .then((res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Version',
+            text: 'Updated Successfully!'
+          });
           dispatch({
             type: version.udpate.success,
             data: res?.data?.data
@@ -530,6 +586,11 @@ export function cataddbanner(data) {
     new Promise((resolve, reject) =>
       axiosInstance('post', '/v1/admin/addbanner', data)
         .then((res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Banner',
+            text: 'Added Successfully!'
+          });
           dispatch({
             type: catbanner.add.success,
             data: res?.data?.data
@@ -570,6 +631,11 @@ export function catdeletebanner(data) {
     new Promise((resolve, reject) =>
       axiosInstance('post', '/v1/admin/deletebanner', data)
         .then((res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Banner',
+            text: 'Deleted Successfully!'
+          });
           dispatch({
             type: catbanner.delete.success,
             data: res?.data?.data
@@ -590,6 +656,11 @@ export function mainaddbanner(data) {
     new Promise((resolve, reject) =>
       axiosInstance('post', '/v1/admin/addmainbanner', data)
         .then((res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Banner',
+            text: 'Added Successfully!'
+          });
           dispatch({
             type: mainbanner.add.success,
             data: res?.data?.data
@@ -630,6 +701,11 @@ export function maindeletebanner(data) {
     new Promise((resolve, reject) =>
       axiosInstance('post', '/v1/admin/delmainbanner', data)
         .then((res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Banner',
+            text: 'Deleted Successfully!'
+          });
           dispatch({
             type: mainbanner.delete.success,
             data: res?.data?.data
@@ -710,6 +786,11 @@ export function updateissues(data) {
     new Promise((resolve, reject) =>
       axiosInstance('post', '/v1/admin/issues/update', data)
         .then((res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Issues',
+            text: 'Updated Successfully!'
+          });
           dispatch({
             type: issues.update.success,
             data: res?.data?.data

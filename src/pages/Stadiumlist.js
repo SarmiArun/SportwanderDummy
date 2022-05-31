@@ -4,6 +4,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import Container from '@mui/material/Container';
+import Card from '@mui/material/Card';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import InputLabel from '@mui/material/InputLabel';
@@ -37,65 +38,65 @@ export default function Bookedstadiumlist() {
 
   return (
     <Container>
-      <h1>Booked Stadium List</h1>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} size="small">
-          <TableHead>
-            <TableRow>
-              <TableCell> S No</TableCell>
-              <TableCell>Stadium Name</TableCell>
-              <TableCell>Location</TableCell>
-              <TableCell>Document</TableCell>
-              <TableCell>Address</TableCell>
-              <TableCell>Stadium Approved </TableCell>
-              <TableCell>Status update</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {Array.isArray(list) &&
-              list.map((row, i) => (
-                <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <TableCell component="th" scope="row">
-                    {i + 1}
-                  </TableCell>
-                  <TableCell component="th" scope="row">
-                    {row.name}
-                  </TableCell>
-                  <TableCell>{row?.location}</TableCell>
-                  <TableCell>{row?.offc_doc}</TableCell>
-                  <TableCell>{row?.address}</TableCell>
-                  <TableCell>
-                    {row?.approved === false ? (
-                      <Chip label="Not Approved" color="primary" variant="outlined" />
-                    ) : (
-                      <Chip label="Approved" color="secondary" variant="outlined" />
-                    )}
-                  </TableCell>
-
-                  <FormControl fullWidth style={{ marginTop: '10px' }}>
-                    <InputLabel id="demo-simple-select-label">Approved</InputLabel>
-                    <Select labelId="demo-simple-select-label" id="demo-simple-select">
-                      <MenuItem
-                        onClick={() => {
-                          dispatch(stadiumupdate({ id: row.id, status: true }));
-                        }}
-                      >
-                        Appoved
-                      </MenuItem>
-                      <MenuItem
-                        onClick={() => {
-                          dispatch(stadiumupdate({ id: row.id, status: false }));
-                        }}
-                      >
-                        Not Approved
-                      </MenuItem>
-                    </Select>
-                  </FormControl>
-                </TableRow>
-              ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <h1 style={{ marginBottom: '20px' }}>Booked Stadium List</h1>
+      <Card style={{ padding: '40px' }}>
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 650 }} size="small">
+            <TableHead>
+              <TableRow>
+                <TableCell> S No</TableCell>
+                <TableCell>Stadium Name</TableCell>
+                <TableCell>Location</TableCell>
+                <TableCell>Document</TableCell>
+                <TableCell>Address</TableCell>
+                <TableCell>Stadium Approved </TableCell>
+                <TableCell>Status update</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {Array.isArray(list) &&
+                list.map((row, i) => (
+                  <TableRow
+                    key={row.name}
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                  >
+                    <TableCell scope="row">{i + 1}</TableCell>
+                    <TableCell scope="row">{row.name}</TableCell>
+                    <TableCell>{row?.location}</TableCell>
+                    <TableCell>{row?.offc_doc}</TableCell>
+                    <TableCell>{row?.address}</TableCell>
+                    <TableCell>
+                      {row?.approved === false ? (
+                        <Chip label="Not Approved" color="primary" variant="outlined" />
+                      ) : (
+                        <Chip label="Approved" color="secondary" variant="outlined" />
+                      )}
+                    </TableCell>
+                    <FormControl fullWidth style={{ marginTop: '10px' }}>
+                      <InputLabel id="demo-simple-select-label">Approved</InputLabel>
+                      <Select labelId="demo-simple-select-label" id="demo-simple-select">
+                        <MenuItem
+                          onClick={() => {
+                            dispatch(stadiumupdate({ id: row.id, status: true }));
+                          }}
+                        >
+                          Appoved
+                        </MenuItem>
+                        <MenuItem
+                          onClick={() => {
+                            dispatch(stadiumupdate({ id: row.id, status: false }));
+                          }}
+                        >
+                          Not Approved
+                        </MenuItem>
+                      </Select>
+                    </FormControl>
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Card>
     </Container>
   );
 }

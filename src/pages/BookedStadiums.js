@@ -25,12 +25,15 @@ import {
   TablePagination,
   FormControl
 } from '@mui/material';
+import TableHead from '@mui/material/TableHead';
+import Paper from '@mui/material/Paper';
 import Page from '../components/Page';
 import Label from '../components/Label';
 import Scrollbar from '../components/Scrollbar';
 import SearchNotFound from '../components/SearchNotFound';
 import { TableListHead, TableListToolbar, TableMoreMenu } from '../components/_dashboard/Table';
 import { kycpending, kycverify, kycupdate, kyclistall } from '../redux/actions/actions';
+
 import USERLIST from '../_mocks_/user';
 
 const TABLE_HEAD = [
@@ -162,96 +165,159 @@ function BookedStadiums() {
   return (
     <div>
       <Container>
-        <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-          <Typography variant="h4" gutterBottom>
-            KYC List
-          </Typography>
-        </Stack>
-        <Card>
-          <TableListToolbar
-            numSelected={selected.length}
-            filterName={filterName}
-            onFilterName={handleFilterByName}
-          />
-          <Scrollbar>
-            <TableContainer sx={{ minWidth: 800 }}>
-              <Table>
-                <TableListHead
-                  headLabel={TABLE_HEAD}
-
-                  // onRequestSort={handleRequestSort}
-                  // onSelectAllClick={handleSelectAllClick}
-                />
-                <TableBody>
-                  <>
-                    <>
-                      {Array.isArray(ownerlist) &&
-                        ownerlist.map((owner) => (
-                          <TableRow>
-                            <>
-                              <TableCell align="center">check</TableCell>
-                              <TableCell align="left">{owner.userid}</TableCell>
-                              <TableCell align="left">{owner.name}</TableCell>
-                              <TableCell align="left">{owner.phone}</TableCell>
-                              <TableCell align="left">{owner.email}</TableCell>
-                              <TableCell align="left">{owner.gender}</TableCell>
-                              <TableCell align="left">{owner.address}</TableCell>
-                              <TableCell align="left">
-                                <Chip label={owner.kyc_status} color="primary" variant="outlined" />
-                              </TableCell>
-                              <TableCell align="left">
-                                <FormControl fullWidth>
-                                  <InputLabel id="demo-simple-select-label">Status</InputLabel>
-                                  <Select
-                                    labelId="demo-simple-select-label"
-                                    id="demo-simple-select"
-                                    label="Status"
-                                  >
-                                    <MenuItem onClick={(e) => handleverify(owner)} value="verified">
-                                      Verify
-                                    </MenuItem>
-                                    <MenuItem onClick={(e) => handlereject(owner)} value="rejected">
-                                      Rejected
-                                    </MenuItem>
-                                  </Select>
-                                </FormControl>
-                              </TableCell>
-                            </>
-                          </TableRow>
-                        ))}
-                    </>
-                  </>
-
-                  {emptyRows > 0 && (
-                    <TableRow style={{ height: 53 * emptyRows }}>
-                      <TableCell colSpan={6} />
-                    </TableRow>
-                  )}
-                </TableBody>
-                {isUserNotFound && (
-                  <TableBody>
-                    <TableRow>
-                      <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
-                        <SearchNotFound searchQuery={filterName} />
-                      </TableCell>
-                    </TableRow>
-                  </TableBody>
-                )}
-              </Table>
-            </TableContainer>
-          </Scrollbar>
-
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
-            component="div"
-            count={USERLIST.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
+        <Typography variant="h3" component="h2">
+          KYC List
+        </Typography>
+        <Card style={{ padding: '40px' }}>
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <TableHead style={{ marginBottom: '20px' }}>
+                <TableRow>
+                  <TableCell> S No</TableCell>
+                  <TableCell> User Id</TableCell>
+                  <TableCell>Name</TableCell>
+                  <TableCell>Email</TableCell>
+                  <TableCell>Phone</TableCell>
+                  <TableCell>Address</TableCell>
+                  <TableCell>KYC Status</TableCell>
+                  <TableCell>Actions</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow key="Calories" sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                  {Array.isArray(ownerlist) &&
+                    ownerlist.map((owner, i) => (
+                      <>
+                        <TableCell component="th" scope="row">
+                          {i + 1}
+                        </TableCell>
+                        <TableCell>{owner.userid}</TableCell>
+                        <TableCell>{owner.name}</TableCell>
+                        <TableCell>{owner.email}</TableCell>
+                        <TableCell>{owner.phone}</TableCell>
+                        <TableCell>{owner.address}</TableCell>
+                        <TableCell align="left">
+                          <Chip
+                            label={owner.kyc_status}
+                            color="secondary"
+                            style={{ textTransform: 'capitalize' }}
+                            variant="outlined"
+                          />
+                        </TableCell>
+                        <FormControl fullWidth>
+                          <InputLabel id="demo-simple-select-label">Status</InputLabel>
+                          <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            label="Status"
+                          >
+                            <MenuItem onClick={(e) => handleverify(owner)} value="verified">
+                              Verify
+                            </MenuItem>
+                            <MenuItem onClick={(e) => handlereject(owner)} value="rejected">
+                              Rejected
+                            </MenuItem>
+                          </Select>
+                        </FormControl>
+                      </>
+                    ))}
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
         </Card>
       </Container>
+
+      {
+        // <Container>
+        //   <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
+        //     <Typography variant="h4" gutterBottom>
+        //       KYC List
+        //     </Typography>
+        //   </Stack>
+        //   <Card>
+        //     <TableListToolbar
+        //       numSelected={selected.length}
+        //       filterName={filterName}
+        //       onFilterName={handleFilterByName}
+        //     />
+        //     <Scrollbar>
+        //       <TableContainer sx={{ minWidth: 800 }}>
+        //         <Table>
+        //           <TableListHead
+        //             headLabel={TABLE_HEAD}
+        //             // onRequestSort={handleRequestSort}
+        //             // onSelectAllClick={handleSelectAllClick}
+        //           />
+        //           <TableBody>
+        //             <>
+        //               <>
+        //                 {Array.isArray(ownerlist) &&
+        //                   ownerlist.map((owner) => (
+        //                     <TableRow>
+        //                       <>
+        //                         <TableCell align="center">check</TableCell>
+        //                         <TableCell align="left">{owner.userid}</TableCell>
+        //                         <TableCell align="left">{owner.name}</TableCell>
+        //                         <TableCell align="left">{owner.phone}</TableCell>
+        //                         <TableCell align="left">{owner.email}</TableCell>
+        //                         <TableCell align="left">{owner.gender}</TableCell>
+        //                         <TableCell align="left">{owner.address}</TableCell>
+        //                         <TableCell align="left">
+        //                           <Chip label={owner.kyc_status} color="primary" variant="outlined" />
+        //                         </TableCell>
+        //                         <TableCell align="left">
+        //                           <FormControl fullWidth>
+        //                             <InputLabel id="demo-simple-select-label">Status</InputLabel>
+        //                             <Select
+        //                               labelId="demo-simple-select-label"
+        //                               id="demo-simple-select"
+        //                               label="Status"
+        //                             >
+        //                               <MenuItem onClick={(e) => handleverify(owner)} value="verified">
+        //                                 Verify
+        //                               </MenuItem>
+        //                               <MenuItem onClick={(e) => handlereject(owner)} value="rejected">
+        //                                 Rejected
+        //                               </MenuItem>
+        //                             </Select>
+        //                           </FormControl>
+        //                         </TableCell>
+        //                       </>
+        //                     </TableRow>
+        //                   ))}
+        //               </>
+        //             </>
+        //             {emptyRows > 0 && (
+        //               <TableRow style={{ height: 53 * emptyRows }}>
+        //                 <TableCell colSpan={6} />
+        //               </TableRow>
+        //             )}
+        //           </TableBody>
+        //           {isUserNotFound && (
+        //             <TableBody>
+        //               <TableRow>
+        //                 <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
+        //                   <SearchNotFound searchQuery={filterName} />
+        //                 </TableCell>
+        //               </TableRow>
+        //             </TableBody>
+        //           )}
+        //         </Table>
+        //       </TableContainer>
+        //     </Scrollbar>
+        //     <TablePagination
+        //       rowsPerPageOptions={[5, 10, 25]}
+        //       component="div"
+        //       count={USERLIST.length}
+        //       rowsPerPage={rowsPerPage}
+        //       page={page}
+        //       onPageChange={handleChangePage}
+        //       onRowsPerPageChange={handleChangeRowsPerPage}
+        //     />
+        //   </Card>
+        // </Container>
+      }
     </div>
   );
 }

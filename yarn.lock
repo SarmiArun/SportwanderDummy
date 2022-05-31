@@ -1447,20 +1447,69 @@
   "resolved" "https://registry.npmjs.org/@iconify/icons-ant-design/-/icons-ant-design-1.1.0.tgz"
   "version" "1.1.0"
 
+"@iconify/icons-arcticons@^1.2.17":
+  "integrity" "sha512-WkDQEVUeHipto1Q3gD9hjmK+72DKsh9wDDSGf9nC11xrf7N0+AvOP6wXs9fZqQFVBoo33x+JldxjhYJS96+I9g=="
+  "resolved" "https://registry.npmjs.org/@iconify/icons-arcticons/-/icons-arcticons-1.2.17.tgz"
+  "version" "1.2.17"
+  dependencies:
+    "@iconify/types" "^1.1.0"
+
+"@iconify/icons-bi@^1.2.4":
+  "integrity" "sha512-2OqqMBbrt/7/0BGzJHhkbnjikdP8i9+FvmC3EFapSPZSoXGEY0JPoBjdMRxXJ96IXh0HQFd+fNFIFf4+0TH09Q=="
+  "resolved" "https://registry.npmjs.org/@iconify/icons-bi/-/icons-bi-1.2.4.tgz"
+  "version" "1.2.4"
+  dependencies:
+    "@iconify/types" "^1.1.0"
+
 "@iconify/icons-eva@^1.1.0":
   "integrity" "sha512-a2wCJw+6UebrsoJ2WhpHUcdr4PJljwk0tdu1GfpjzwVyiJBC7y6sc2h7as1npJPLwgMIc/q8YFJf5iFl7Ik3NA=="
   "resolved" "https://registry.npmjs.org/@iconify/icons-eva/-/icons-eva-1.1.0.tgz"
   "version" "1.1.0"
 
-"@iconify/icons-ic@^1.1.10":
-  "integrity" "sha512-decmjXkGbK7BocYw+T0dDZMOpHqs4JX//aN1+pNbcdjUYu/gK5pir717CoSpX771eCGKmoLWS0VGx0tIC8wqJQ=="
-  "resolved" "https://registry.npmjs.org/@iconify/icons-ic/-/icons-ic-1.1.10.tgz"
-  "version" "1.1.10"
+"@iconify/icons-fluent@^1.2.10":
+  "integrity" "sha512-IZ8vZQsa/PwXSb2AjMtEKipwzayCoIhSO6EyAGeV4LTIhswUnJxB+PVKBU9D7aJDOQB97YaVt76C4wSKApLIdg=="
+  "resolved" "https://registry.npmjs.org/@iconify/icons-fluent/-/icons-fluent-1.2.10.tgz"
+  "version" "1.2.10"
+  dependencies:
+    "@iconify/types" "^1.1.0"
 
-"@iconify/react@^3.0.1":
-  "integrity" "sha512-yUskSSR80JzRSWcqNsBAG9AN802XzZgHsex8mTOkMLYcPQC3fk1XwK17ulnY5vf692OafhGCAMccR8TWKFaGdw=="
-  "resolved" "https://registry.npmjs.org/@iconify/react/-/react-3.0.1.tgz"
-  "version" "3.0.1"
+"@iconify/icons-ic@^1.2.5":
+  "integrity" "sha512-FbAnH7zj3M3FKosBxcK4iGTgMtTxS5vhGVXhfVhlCXBRkyl4nnIJa49G5MUtacLDknDXlt5kk+COLjCgzDS98w=="
+  "resolved" "https://registry.npmjs.org/@iconify/icons-ic/-/icons-ic-1.2.5.tgz"
+  "version" "1.2.5"
+  dependencies:
+    "@iconify/types" "^1.1.0"
+
+"@iconify/icons-iconoir@^1.2.6":
+  "integrity" "sha512-le267MWGJQcGnc9TEAvO8YklK7IZEJirQ9r9XO2R+uzZjs3Vh1ykm54vmthIkN/wIWQt7UBhKdI2gM5M3BrMNA=="
+  "resolved" "https://registry.npmjs.org/@iconify/icons-iconoir/-/icons-iconoir-1.2.6.tgz"
+  "version" "1.2.6"
+  dependencies:
+    "@iconify/types" "^1.1.0"
+
+"@iconify/icons-mdi@^1.2.17":
+  "integrity" "sha512-5Wa1RDhwdoX3ZSH9vCg2UQLqWfqftnmMjWaNl/j+NLtr+uN4ZUGD+SSLf/4cFk7ZfQ8HGeTGWoV2/xxcZUB1xw=="
+  "resolved" "https://registry.npmjs.org/@iconify/icons-mdi/-/icons-mdi-1.2.17.tgz"
+  "version" "1.2.17"
+  dependencies:
+    "@iconify/types" "^1.1.0"
+
+"@iconify/icons-system-uicons@^1.2.3":
+  "integrity" "sha512-dEo15AxdJN55hmIN0U7cDEhFeZk9UDifgLBnluOxXdGNvpC2hcgzJ+CgHiXpGMMuaDMPbgxsE3NfZZ7Bxn2Tkg=="
+  "resolved" "https://registry.npmjs.org/@iconify/icons-system-uicons/-/icons-system-uicons-1.2.3.tgz"
+  "version" "1.2.3"
+  dependencies:
+    "@iconify/types" "^1.1.0"
+
+"@iconify/react@^3.2.2":
+  "integrity" "sha512-z3+Jno3VcJzgNHsN5mEvYMsgCkOZkydqdIwOxjXh45+i2Vs9RGH68Y52vt39izwFSfuYUXhaW+1u7m7+IhCn/g=="
+  "resolved" "https://registry.npmjs.org/@iconify/react/-/react-3.2.2.tgz"
+  "version" "3.2.2"
+
+"@iconify/types@^1.1.0":
+  "integrity" "sha512-Jh0llaK2LRXQoYsorIH8maClebsnzTcve+7U3rQUSnC11X4jtPnFuyatqFLvMxZ8MLG8dB4zfHsbPfuvxluONw=="
+  "resolved" "https://registry.npmjs.org/@iconify/types/-/types-1.1.0.tgz"
+  "version" "1.1.0"
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   "integrity" "sha512-VjeHSlIzpv/NyD3N0YuHfXOPDIixcA1q2ZV98wsMqcYlPmv2n3Yb2lYP9XMElnaFVXg5A7YLTeLu6V84uQDjmQ=="
@@ -10401,7 +10450,7 @@
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-"react@^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0", "react@^16.6.0 || ^17.0.0", "react@^16.8.3 || ^17", "react@^17.0.2", "react@>=0.13", "react@>=16.6.0", "react@>=16.8", "react@>=16.8 || ^17.0.0", "react@>=16.8.0", "react@17.0.2":
+"react@^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0", "react@^16.6.0 || ^17.0.0", "react@^16.8.3 || ^17", "react@^17.0.2", "react@>=0.13", "react@>=16", "react@>=16.6.0", "react@>=16.8", "react@>=16.8 || ^17.0.0", "react@>=16.8.0", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -11985,6 +12034,11 @@
     "stable" "^0.1.8"
     "unquote" "~1.1.1"
     "util.promisify" "~1.0.0"
+
+"sweetalert2@^11.4.17":
+  "integrity" "sha512-z0iQW5fDdvtoDNle3iHTKunsuNWgPaMifVu0GPtdguR0uVPrvg9gg9bnSQeJ4tx3C7FwJOEnRshxrs6fFItRvw=="
+  "resolved" "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.4.17.tgz"
+  "version" "11.4.17"
 
 "symbol-tree@^3.2.4":
   "integrity" "sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw=="

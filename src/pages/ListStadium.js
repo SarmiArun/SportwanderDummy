@@ -5,6 +5,8 @@ import { sentenceCase } from 'change-case';
 import { filter } from 'lodash';
 import plusFill from '@iconify/icons-eva/plus-fill';
 import { Link as RouterLink } from 'react-router-dom';
+import TableHead from '@mui/material/TableHead';
+import Paper from '@mui/material/Paper';
 import {
   Card,
   Container,
@@ -131,88 +133,125 @@ function BookedStadiums() {
     dispatch(stadiumownerlist());
   }, []);
   const ownerlist = useSelector(({ stadiumownerlist }) => stadiumownerlist.payload);
-  console.log('stdowner', ownerlist);
+
   return (
     <div>
       <Container>
-        <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-          <Typography variant="h4" gutterBottom>
-            Booked Stadiums
+        <Card style={{ padding: '40px' }}>
+          <Typography variant="h3" component="h2">
+            Booked List
           </Typography>
-          <Button
-            variant="contained"
-            component={RouterLink}
-            to="/admin/BookedEvents"
-            endIcon={<Icon icon={plusFill} />}
-          >
-            BOOK
-          </Button>
-        </Stack>
-        <Card>
-          <TableListToolbar
-            numSelected={selected.length}
-            filterName={filterName}
-            onFilterName={handleFilterByName}
-          />
-          <Scrollbar>
-            <TableContainer sx={{ minWidth: 800 }}>
-              <Table>
-                <TableListHead
-                  headLabel={TABLE_HEAD}
-
-                  // onRequestSort={handleRequestSort}
-                  // onSelectAllClick={handleSelectAllClick}
-                />
-                <TableBody>
-                  <>
-                    <>
-                      <TableRow>
-                        {Array.isArray(ownerlist) &&
-                          ownerlist.map((owner) => (
-                            <>
-                              <TableCell align="center">check</TableCell>
-                              <TableCell align="left">{owner.userid}</TableCell>
-                              <TableCell align="left">{owner.name}</TableCell>
-                              <TableCell align="left">{owner.phone}</TableCell>
-                              <TableCell align="left">{owner.email}</TableCell>
-                              <TableCell align="left">{owner.gender}</TableCell>
-                              <TableCell align="left">{owner.address}</TableCell>
-                            </>
-                          ))}
-                      </TableRow>
-                    </>
-                  </>
-
-                  {emptyRows > 0 && (
-                    <TableRow style={{ height: 53 * emptyRows }}>
-                      <TableCell colSpan={6} />
-                    </TableRow>
-                  )}
-                </TableBody>
-                {isUserNotFound && (
-                  <TableBody>
-                    <TableRow>
-                      <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
-                        <SearchNotFound searchQuery={filterName} />
-                      </TableCell>
-                    </TableRow>
-                  </TableBody>
-                )}
-              </Table>
-            </TableContainer>
-          </Scrollbar>
-
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
-            component="div"
-            count={USERLIST.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell> S No</TableCell>
+                  <TableCell> User Id</TableCell>
+                  <TableCell>Name</TableCell>
+                  <TableCell>Email</TableCell>
+                  <TableCell>Phone</TableCell>
+                  <TableCell>Address</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow key="Calories" sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                  {Array.isArray(ownerlist) &&
+                    ownerlist.map((owner, i) => (
+                      <>
+                        <TableCell component="th" scope="row">
+                          {i + 1}
+                        </TableCell>
+                        <TableCell>{owner.userid}</TableCell>
+                        <TableCell>{owner.name}</TableCell>
+                        <TableCell>{owner.email}</TableCell>
+                        <TableCell>{owner.phone}</TableCell>
+                        <TableCell>{owner.address}</TableCell>
+                      </>
+                    ))}
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
         </Card>
       </Container>
+      {
+        // <Container>
+        //   <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
+        //     <Typography variant="h4" gutterBottom>
+        //       Booked Stadiums
+        //     </Typography>
+        //     <Button
+        //       variant="contained"
+        //       component={RouterLink}
+        //       to="/admin/BookedEvents"
+        //       endIcon={<Icon icon={plusFill} />}
+        //     >
+        //       BOOK
+        //     </Button>
+        //   </Stack>
+        //   <Card>
+        //     <TableListToolbar
+        //       numSelected={selected.length}
+        //       filterName={filterName}
+        //       onFilterName={handleFilterByName}
+        //     />
+        //     <Scrollbar>
+        //       <TableContainer sx={{ minWidth: 800 }}>
+        //         <Table>
+        //           <TableListHead
+        //             headLabel={TABLE_HEAD}
+        //             // onRequestSort={handleRequestSort}
+        //             // onSelectAllClick={handleSelectAllClick}
+        //           />
+        //           <TableBody>
+        //             <>
+        //               <>
+        //                 <TableRow>
+        //                   {Array.isArray(ownerlist) &&
+        //                     ownerlist.map((owner) => (
+        //                       <>
+        //                         <TableCell align="center">check</TableCell>
+        //                         <TableCell align="left">{owner.userid}</TableCell>
+        //                         <TableCell align="left">{owner.name}</TableCell>
+        //                         <TableCell align="left">{owner.phone}</TableCell>
+        //                         <TableCell align="left">{owner.email}</TableCell>
+        //                         <TableCell align="left">{owner.gender}</TableCell>
+        //                         <TableCell align="left">{owner.address}</TableCell>
+        //                       </>
+        //                     ))}
+        //                 </TableRow>
+        //               </>
+        //             </>
+        //             {emptyRows > 0 && (
+        //               <TableRow style={{ height: 53 * emptyRows }}>
+        //                 <TableCell colSpan={6} />
+        //               </TableRow>
+        //             )}
+        //           </TableBody>
+        //           {isUserNotFound && (
+        //             <TableBody>
+        //               <TableRow>
+        //                 <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
+        //                   <SearchNotFound searchQuery={filterName} />
+        //                 </TableCell>
+        //               </TableRow>
+        //             </TableBody>
+        //           )}
+        //         </Table>
+        //       </TableContainer>
+        //     </Scrollbar>
+        //     <TablePagination
+        //       rowsPerPageOptions={[5, 10, 25]}
+        //       component="div"
+        //       count={USERLIST.length}
+        //       rowsPerPage={rowsPerPage}
+        //       page={page}
+        //       onPageChange={handleChangePage}
+        //       onRowsPerPageChange={handleChangeRowsPerPage}
+        //     />
+        //   </Card>
+        // </Container>
+      }
     </div>
   );
 }
