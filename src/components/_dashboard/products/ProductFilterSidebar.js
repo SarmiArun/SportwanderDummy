@@ -215,7 +215,7 @@ export default function ShopFilterSidebar({
                 color="inherit"
                 variant="outlined"
                 onClick={onResetFilter}
-                startIcon={<Icon icon={roundClearAll} />}
+                endIcon={<Icon icon={roundClearAll} />}
               >
                 Clear All
               </Button>

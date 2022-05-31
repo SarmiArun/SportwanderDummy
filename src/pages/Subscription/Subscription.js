@@ -142,7 +142,7 @@ export default function Moderators() {
             variant="contained"
             component={RouterLink}
             to="#"
-            startIcon={<Icon icon={plusFill} />}
+            endIcon={<Icon icon={plusFill} />}
           >
             New User
           </Button>

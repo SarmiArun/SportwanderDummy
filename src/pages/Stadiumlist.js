@@ -39,7 +39,7 @@ export default function Bookedstadiumlist() {
     <Container>
       <h1>Booked Stadium List</h1>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+        <Table sx={{ minWidth: 650 }} size="small">
           <TableHead>
             <TableRow>
               <TableCell> S No</TableCell>
@@ -71,9 +71,10 @@ export default function Bookedstadiumlist() {
                       <Chip label="Approved" color="secondary" variant="outlined" />
                     )}
                   </TableCell>
+
                   <FormControl fullWidth style={{ marginTop: '10px' }}>
                     <InputLabel id="demo-simple-select-label">Approved</InputLabel>
-                    <Select labelId="demo-simple-select-label" id="demo-simple-select" label="Age">
+                    <Select labelId="demo-simple-select-label" id="demo-simple-select">
                       <MenuItem
                         onClick={() => {
                           dispatch(stadiumupdate({ id: row.id, status: true }));

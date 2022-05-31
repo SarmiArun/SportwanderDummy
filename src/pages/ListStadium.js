@@ -143,7 +143,7 @@ function BookedStadiums() {
             variant="contained"
             component={RouterLink}
             to="/admin/BookedEvents"
-            startIcon={<Icon icon={plusFill} />}
+            endIcon={<Icon icon={plusFill} />}
           >
             BOOK
           </Button>

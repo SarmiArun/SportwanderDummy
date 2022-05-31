@@ -29,17 +29,17 @@ import { privacypolicyadd, privacypolicylist } from '../redux/actions/actions';
 
 function Privacypolicy() {
   const [link, setLink] = useState('');
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(privacypolicylist());
   }, []);
+  const privacylist = useSelector(({ privacypolicylist }) => privacypolicylist.payload);
   const handleSubmit = (e) => {
     e.preventDefault();
+
     dispatch(privacypolicyadd({ url: link }));
   };
-
-  const privacylist = useSelector(({ privacypolicylist }) => privacypolicylist.payload);
-  console.log(privacylist);
 
   return (
     <div>

@@ -31,6 +31,9 @@ import {
 } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { mainaddbanner, mainlistbanner, maindeletebanner } from '../redux/actions/actions';
+import offer from '../Images/offerbanner.jpg';
+import main from '../Images/banner2.jpg';
+import event from '../Images/banner3.jpg';
 
 function Mainbanner() {
   const dispatch = useDispatch();
@@ -39,7 +42,7 @@ function Mainbanner() {
     banner: '',
     name: ''
   });
-  const bannerlist = useSelector(({ mainlistbanner }) => mainlistbanner.payload);
+
   const imageChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
       setData({ ...data, [e.target.name]: e.target.files[0] });
@@ -65,14 +68,30 @@ function Mainbanner() {
     dispatch(mainlistbanner());
   }, []);
 
+  const bannerlist = [
+    {
+      id: 1,
+      name: 'Offer banner',
+      image: offer
+    },
+    {
+      id: 2,
+      name: 'Main banner',
+      image: main
+    },
+    {
+      id: 3,
+      name: 'Event banner',
+      image: event
+    }
+  ];
   return (
     <>
       <Container>
         <h2>Main banner</h2>
-        <br />
+
         {
-          // <div>
-          //   <h4>Banner Name</h4>
+          //   <div>
           //   <div style={{ marginTop: '10px' }}>
           //     <TextField
           //       type="text"
@@ -96,8 +115,8 @@ function Mainbanner() {
           // >
           //   Add Banner
           // </Button>
-          // <br />
         }
+        <br />
 
         <Box>
           <h2>Banner List</h2>
@@ -109,7 +128,7 @@ function Mainbanner() {
                 <Grid item xs={4} style={{ marginBottom: '25px' }}>
                   <Card xs={4} sx={{ maxWidth: 380 }}>
                     <CardActionArea component={RouterLink} to={`/admin/Catbanner/${L.id}`}>
-                      <CardMedia component="img" height="240" image={L.banner} alt={L.name} />
+                      <CardMedia component="img" height="240" image={L.image} alt={L.name} />
                     </CardActionArea>
                   </Card>
                   <div
@@ -126,12 +145,6 @@ function Mainbanner() {
                       to={`/admin/Catbanner/${L.id}`}
                       label="View"
                       color="secondary"
-                    />
-                    <Chip
-                      style={{ color: 'white', fontWeight: 'bolder' }}
-                      onClick={() => dispatch(maindeletebanner({ id: L.id }))}
-                      label="Delete"
-                      color="error"
                     />
                   </div>
                 </Grid>

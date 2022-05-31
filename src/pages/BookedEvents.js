@@ -227,7 +227,7 @@ export default function User() {
             variant="contained"
             component={RouterLink}
             to="/admin/ListStadium"
-            startIcon={<Icon icon="eva:arrow-back-fill" />}
+            endIcon={<Icon icon="eva:arrow-back-fill" />}
           >
             Back
           </Button>

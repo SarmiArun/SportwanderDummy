@@ -14,6 +14,8 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import { blue } from '@mui/material/colors';
 import Select from '@mui/material/Select';
@@ -180,14 +182,17 @@ function Players() {
                                 <TableCell align="left">{player.player.phone}</TableCell>
                                 <TableCell align="left">{player.player.email}</TableCell>
                                 <TableCell align="left">
-                                  <Select label="Status">
-                                    <MenuItem value="pending">
-                                      <em>Pending</em>
-                                    </MenuItem>
-                                    <MenuItem value="solved">
-                                      <em>Solved</em>
-                                    </MenuItem>
-                                  </Select>
+                                  <FormControl fullWidth style={{ marginTop: '10px' }}>
+                                    <InputLabel id="demo-simple-select-label">Approved</InputLabel>
+                                    <Select label="Status">
+                                      <MenuItem value="pending">
+                                        <em>Pending</em>
+                                      </MenuItem>
+                                      <MenuItem value="solved">
+                                        <em>Solved</em>
+                                      </MenuItem>
+                                    </Select>
+                                  </FormControl>
                                 </TableCell>
                               </>
                             </TableRow>
