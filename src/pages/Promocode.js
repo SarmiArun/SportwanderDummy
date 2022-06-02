@@ -32,9 +32,7 @@ function Promocode() {
   const [expiryDate, setExpiryDate] = useState('');
   const [discount, setDiscount] = useState('');
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(promocodeadd());
-  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(promocodeadd({ promo, expiryDate, discount }));

@@ -56,14 +56,13 @@ function Catbanner() {
     Object.entries(data).map(([key, value]) => formData.append(key, value));
     dispatch(cataddbanner(formData));
   };
-
+  const banneradd = useSelector(({ cataddbanner }) => cataddbanner);
   useEffect(() => {
     dispatch(catlistbanner({ id: catid }));
-  }, []);
+  }, [banneradd]);
 
   const handleDelete = (i, L) => {
     dispatch(catdeletebanner({ id: L.id, categoryId: Number(catid) }));
-    console.log(i, L);
   };
 
   return (

@@ -35,9 +35,10 @@ function Termsandconditions() {
     e.preventDefault();
     dispatch(termsadd({ url: link }));
   };
+  const termschange = useSelector(({ termsadd }) => termsadd.payload);
   useEffect(() => {
     dispatch(termslist());
-  }, [link]);
+  }, [termschange]);
   const termsList = useSelector(({ termslist }) => termslist.payload);
 
   return (

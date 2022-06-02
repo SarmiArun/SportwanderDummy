@@ -29,10 +29,11 @@ const rows = [
 ];
 
 export default function Bookedstadiumlist() {
+  const verifyy = useSelector(({ stadiumupdate }) => stadiumupdate.payload);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(stadiumlist());
-  }, []);
+  }, [verifyy]);
   const list = useSelector(({ stadiumlist }) => stadiumlist.payload);
   console.log(list);
 

@@ -136,12 +136,10 @@ function BookedStadiums() {
   const filteredUsers = applySortFilter(USERLIST, getComparator(order, orderBy), filterName);
 
   const isUserNotFound = filteredUsers.length === 0;
-
+  const verifystatus = useSelector(({ kycupdate }) => kycupdate.payload);
   useEffect(() => {
-    dispatch(kycpending());
-    dispatch(kycverify());
     dispatch(kyclistall());
-  }, [kycverify]);
+  }, [verifystatus]);
   const ownerlist = useSelector(({ kyclistall }) => kyclistall.payload);
 
   const handleverify = (owner) => {
