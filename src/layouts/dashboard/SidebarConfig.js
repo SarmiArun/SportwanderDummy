@@ -48,20 +48,26 @@ const sidebarConfig = [
   },
 
   {
+    title: 'Add Stadium Owner',
+    path: '/admin/BookedEvents',
+    icon: getIcon(outlineStadium)
+  },
+  {
     title: 'Stadium Owner List',
     path: '/admin/ListStadium',
     icon: getIcon(peopleIcon)
+  },
+  {
+    title: 'Stadium List',
+    path: '/admin/stadiumlist',
+    icon: getIcon(shoppingBagFill)
   },
   {
     title: 'KYC',
     path: '/admin/BookedStadiums',
     icon: getIcon(oktaVerify)
   },
-  {
-    title: 'Add Stadium Owner',
-    path: '/admin/BookedEvents',
-    icon: getIcon(outlineStadium)
-  },
+
   {
     title: 'Privacy Policy',
     path: '/admin/privacypolicy',
@@ -96,11 +102,6 @@ const sidebarConfig = [
     title: 'Version',
     path: '/admin/version',
     icon: getIcon(versionIcon)
-  },
-  {
-    title: 'Stadium List',
-    path: '/admin/stadiumlist',
-    icon: getIcon(shoppingBagFill)
   }
 ];
 

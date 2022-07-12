@@ -260,6 +260,7 @@ export function stadiumupdate(data) {
     new Promise((resolve, reject) =>
       axiosInstance('post', '/v1/admin/stadium/update', data)
         .then((res) => {
+          dispatch(stadiumlist());
           Swal.fire({
             icon: 'success',
             title: 'Stadium',

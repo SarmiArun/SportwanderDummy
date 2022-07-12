@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
+import Box from '@mui/material/Box';
 import TableCell from '@mui/material/TableCell';
+import Button from '@mui/material/Button';
 import TableContainer from '@mui/material/TableContainer';
 import Container from '@mui/material/Container';
 import Card from '@mui/material/Card';
@@ -13,6 +15,7 @@ import FormControl from '@mui/material/FormControl';
 import Chip from '@mui/material/Chip';
 import Select from '@mui/material/Select';
 import Paper from '@mui/material/Paper';
+import { saveAs } from 'file-saver';
 import { useDispatch, useSelector } from 'react-redux';
 import { stadiumlist, stadiumupdate } from '../redux/actions/actions';
 
@@ -37,6 +40,10 @@ export default function Bookedstadiumlist() {
   const list = useSelector(({ stadiumlist }) => stadiumlist.payload);
   console.log(list);
 
+  const saveFile = (row) => {
+    saveAs(row.offc_doc);
+    console.log(row.offc_doc);
+  };
   return (
     <Container>
       <h1 style={{ marginBottom: '20px' }}>Booked Stadium List</h1>
@@ -45,13 +52,16 @@ export default function Bookedstadiumlist() {
           <Table sx={{ minWidth: 650 }} size="small">
             <TableHead>
               <TableRow>
-                <TableCell> S No</TableCell>
+                <TableCell style={{ width: '6%' }} colSpan={1}>
+                  {' '}
+                  S No
+                </TableCell>
                 <TableCell>Stadium Name</TableCell>
                 <TableCell>Location</TableCell>
                 <TableCell>Document</TableCell>
-                <TableCell>Address</TableCell>
+                <TableCell style={{ textAlign: 'center' }}>Address</TableCell>
                 <TableCell>Stadium Approved </TableCell>
-                <TableCell>Status update</TableCell>
+                <TableCell>Status Update</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -61,10 +71,16 @@ export default function Bookedstadiumlist() {
                     key={row.name}
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                   >
-                    <TableCell scope="row">{i + 1}</TableCell>
+                    <TableCell scope="row" style={{ textAlign: 'center' }}>
+                      {i + 1}
+                    </TableCell>
                     <TableCell scope="row">{row.name}</TableCell>
                     <TableCell>{row?.location}</TableCell>
-                    <TableCell>{row?.offc_doc}</TableCell>
+                    <TableCell>
+                      <Button size="small" variant="outlined" onClick={() => saveFile(row)}>
+                        Download
+                      </Button>
+                    </TableCell>
                     <TableCell>{row?.address}</TableCell>
                     <TableCell>
                       {row?.approved === false ? (
@@ -73,19 +89,25 @@ export default function Bookedstadiumlist() {
                         <Chip label="Approved" color="secondary" variant="outlined" />
                       )}
                     </TableCell>
+
                     <FormControl fullWidth style={{ marginTop: '10px' }}>
-                      <InputLabel id="demo-simple-select-label">Approved</InputLabel>
-                      <Select labelId="demo-simple-select-label" id="demo-simple-select">
+                      <InputLabel id="demo-simple-select-label">Update</InputLabel>
+                      <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        label="Gender"
+                        name="gender"
+                      >
                         <MenuItem
                           onClick={() => {
-                            dispatch(stadiumupdate({ id: row.id, status: true }));
+                            dispatch(stadiumupdate({ id: `${row.id}`, status: true }));
                           }}
                         >
                           Appoved
                         </MenuItem>
                         <MenuItem
                           onClick={() => {
-                            dispatch(stadiumupdate({ id: row.id, status: false }));
+                            dispatch(stadiumupdate({ id: `${row.id}`, status: false }));
                           }}
                         >
                           Not Approved

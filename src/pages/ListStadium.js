@@ -161,11 +161,15 @@ function BookedStadiums() {
                         <TableCell component="th" scope="row">
                           {i + 1}
                         </TableCell>
-                        <TableCell>{owner.userid}</TableCell>
-                        <TableCell>{owner.name}</TableCell>
+                        <TableCell style={{ textTransform: 'capitalize' }}>
+                          {owner.userid}
+                        </TableCell>
+                        <TableCell style={{ textTransform: 'capitalize' }}>{owner.name}</TableCell>
                         <TableCell>{owner.email}</TableCell>
                         <TableCell>{owner.phone}</TableCell>
-                        <TableCell>{owner.address}</TableCell>
+                        <TableCell style={{ textTransform: 'capitalize' }}>
+                          {owner.address}
+                        </TableCell>
                       </>
                     ))}
                 </TableRow>

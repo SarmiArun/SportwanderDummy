@@ -287,7 +287,7 @@ export default function User() {
                 <TextField
                   autoComplete="location"
                   type="date"
-                  style={{ width: '33%', marginRight: '10px' }}
+                  style={{ width: '50%', marginRight: '10px' }}
                   onChange={handleChange}
                   name="dob"
                   // {...getFieldProps('location')}
@@ -312,7 +312,7 @@ export default function User() {
                 <TextField
                   autoComplete="location"
                   type="text"
-                  style={{ width: '34%' }}
+                  style={{ width: '50%' }}
                   onChange={handleChange}
                   label="Image"
                   name="photo"
@@ -338,7 +338,7 @@ export default function User() {
                 <TextField
                   autoComplete="location"
                   type="number"
-                  style={{ width: '33%', marginRight: '10px' }}
+                  style={{ width: '34%', marginRight: '10px' }}
                   onChange={handleChange}
                   label="Bank Account"
                   name="bank_accno"
@@ -349,7 +349,7 @@ export default function User() {
                 <TextField
                   autoComplete="location"
                   type="text"
-                  style={{ width: '34%' }}
+                  style={{ width: '33%' }}
                   onChange={handleChange}
                   label="IFSC"
                   name="ifsc"
@@ -363,11 +363,11 @@ export default function User() {
               <div style={{ display: 'flex' }}>
                 <TextField
                   autoComplete="location"
-                  type="number"
-                  style={{ width: '35%', marginRight: '10px' }}
+                  type="text"
+                  style={{ width: '33%', marginRight: '10px' }}
                   onChange={handleChange}
-                  label="Aadhaar No"
-                  name="aadhaarno"
+                  label="Branch"
+                  name="branch"
                   // {...getFieldProps('location')}
                   error={Boolean(touched.email && errors.email)}
                   helperText={touched.email && errors.email}
@@ -375,9 +375,9 @@ export default function User() {
                 <TextField
                   autoComplete="location"
                   type="text"
-                  style={{ width: '35%', marginRight: '10px' }}
+                  style={{ width: '33%', marginRight: '10px' }}
                   onChange={handleChange}
-                  label="Aadhaar Front"
+                  label="Aadhar Front Link"
                   name="aadhaar_fron"
                   // {...getFieldProps('location')}
                   error={Boolean(touched.email && errors.email)}
@@ -386,9 +386,9 @@ export default function User() {
                 <TextField
                   autoComplete="location"
                   type="text"
-                  style={{ width: '30%' }}
+                  style={{ width: '33%' }}
                   onChange={handleChange}
-                  label="Aadhaar_back"
+                  label="Aadhar_back Link"
                   name="aadhaar_back"
                   // {...getFieldProps('location')}
                   error={Boolean(touched.email && errors.email)}
@@ -403,23 +403,25 @@ export default function User() {
                   type="text"
                   style={{ width: '35%', marginRight: '10px' }}
                   onChange={handleChange}
-                  label="Aadhaar Selfie"
+                  label="Aadhar Selfie Link"
                   name="aadhaar_selfie"
                   // {...getFieldProps('location')}
                   error={Boolean(touched.email && errors.email)}
                   helperText={touched.email && errors.email}
                 />
+
                 <TextField
                   autoComplete="location"
-                  type="text"
-                  style={{ width: '30%', marginRight: '10px' }}
+                  type="number"
+                  style={{ width: '35%', marginRight: '10px' }}
                   onChange={handleChange}
-                  label="Branch"
-                  name="branch"
+                  label="Aadhar No"
+                  name="aadhaarno"
                   // {...getFieldProps('location')}
                   error={Boolean(touched.email && errors.email)}
                   helperText={touched.email && errors.email}
                 />
+
                 <TextField
                   autoComplete="location"
                   type="text"
