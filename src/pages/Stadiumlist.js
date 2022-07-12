@@ -53,7 +53,6 @@ export default function Bookedstadiumlist() {
             <TableHead>
               <TableRow>
                 <TableCell style={{ width: '6%' }} colSpan={1}>
-                  {' '}
                   S No
                 </TableCell>
                 <TableCell>Stadium Name</TableCell>
