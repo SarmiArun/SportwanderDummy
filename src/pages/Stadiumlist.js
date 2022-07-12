@@ -52,15 +52,17 @@ export default function Bookedstadiumlist() {
           <Table sx={{ minWidth: 650 }} size="small">
             <TableHead>
               <TableRow>
-                <TableCell style={{ width: '6%' }} colSpan={1}>
+                <TableCell style={{ width: '8%', textAlign: 'center' }} colSpan={1}>
                   S No
                 </TableCell>
-                <TableCell>Stadium Name</TableCell>
-                <TableCell>Location</TableCell>
-                <TableCell>Document</TableCell>
+                <TableCell style={{ textAlign: 'center', width: '15%' }}> Stadium Name</TableCell>
+                <TableCell style={{ textAlign: 'center' }}>Location</TableCell>
+                <TableCell style={{ textAlign: 'center' }}>Document</TableCell>
                 <TableCell style={{ textAlign: 'center' }}>Address</TableCell>
-                <TableCell>Stadium Approved </TableCell>
-                <TableCell>Status Update</TableCell>
+                <TableCell style={{ textAlign: 'center', width: '16%' }}>
+                  Stadium Approved
+                </TableCell>
+                <TableCell style={{ textAlign: 'center', width: '16%' }}>Status Update</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -73,15 +75,17 @@ export default function Bookedstadiumlist() {
                     <TableCell scope="row" style={{ textAlign: 'center' }}>
                       {i + 1}
                     </TableCell>
-                    <TableCell scope="row">{row.name}</TableCell>
-                    <TableCell>{row?.location}</TableCell>
+                    <TableCell scope="row" style={{ textAlign: 'center' }}>
+                      {row.name}
+                    </TableCell>
+                    <TableCell style={{ textAlign: 'center' }}>{row?.location}</TableCell>
                     <TableCell>
                       <Button size="small" variant="outlined" onClick={() => saveFile(row)}>
                         Download
                       </Button>
                     </TableCell>
-                    <TableCell>{row?.address}</TableCell>
-                    <TableCell>
+                    <TableCell style={{ textAlign: 'center' }}>{row?.address}</TableCell>
+                    <TableCell style={{ textAlign: 'center' }}>
                       {row?.approved === false ? (
                         <Chip label="Not Approved" color="primary" variant="outlined" />
                       ) : (
@@ -89,7 +93,7 @@ export default function Bookedstadiumlist() {
                       )}
                     </TableCell>
 
-                    <FormControl fullWidth style={{ marginTop: '10px' }}>
+                    <FormControl fullWidth style={{ marginTop: '10px', textAlign: 'center' }}>
                       <InputLabel id="demo-simple-select-label">Update</InputLabel>
                       <Select
                         labelId="demo-simple-select-label"
@@ -98,13 +102,15 @@ export default function Bookedstadiumlist() {
                         name="gender"
                       >
                         <MenuItem
+                          value="2"
                           onClick={() => {
                             dispatch(stadiumupdate({ id: `${row.id}`, status: true }));
                           }}
                         >
-                          Appoved
+                          Approved
                         </MenuItem>
                         <MenuItem
+                          value="1"
                           onClick={() => {
                             dispatch(stadiumupdate({ id: `${row.id}`, status: false }));
                           }}

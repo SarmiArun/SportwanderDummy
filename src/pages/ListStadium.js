@@ -145,12 +145,12 @@ function BookedStadiums() {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell> S No</TableCell>
-                  <TableCell> User Id</TableCell>
-                  <TableCell>Name</TableCell>
-                  <TableCell>Email</TableCell>
-                  <TableCell>Phone</TableCell>
-                  <TableCell>Address</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}> S No</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}> User Id</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}>Name</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}>Email</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}>Phone</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}>Address</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -158,16 +158,18 @@ function BookedStadiums() {
                   {Array.isArray(ownerlist) &&
                     ownerlist.map((owner, i) => (
                       <>
-                        <TableCell component="th" scope="row">
+                        <TableCell component="th" scope="row" style={{ textAlign: 'center' }}>
                           {i + 1}
                         </TableCell>
-                        <TableCell style={{ textTransform: 'capitalize' }}>
+                        <TableCell style={{ textTransform: 'capitalize', textAlign: 'center' }}>
                           {owner.userid}
                         </TableCell>
-                        <TableCell style={{ textTransform: 'capitalize' }}>{owner.name}</TableCell>
-                        <TableCell>{owner.email}</TableCell>
-                        <TableCell>{owner.phone}</TableCell>
-                        <TableCell style={{ textTransform: 'capitalize' }}>
+                        <TableCell style={{ textTransform: 'capitalize', textAlign: 'center' }}>
+                          {owner.name}
+                        </TableCell>
+                        <TableCell style={{ textAlign: 'center' }}>{owner.email}</TableCell>
+                        <TableCell style={{ textAlign: 'center' }}>{owner.phone}</TableCell>
+                        <TableCell style={{ textTransform: 'capitalize', textAlign: 'center' }}>
                           {owner.address}
                         </TableCell>
                       </>
