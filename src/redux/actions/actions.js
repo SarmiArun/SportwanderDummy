@@ -16,7 +16,8 @@ import {
   issues,
   stadium,
   Sponsor,
-  promocode
+  promocode,
+  marathon
 } from '../actiontype/actiontype';
 
 export function userlogin(data) {
@@ -801,6 +802,26 @@ export function updateissues(data) {
         .catch((err) => {
           dispatch({
             type: issues.update.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function marathonlist() {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('get', '/v1/admin/marathon')
+        .then((res) => {
+          dispatch({
+            type: marathon.list.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: marathon.list.error,
             data: err
           });
           reject(err);

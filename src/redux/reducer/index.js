@@ -33,7 +33,8 @@ import {
   sponseradd,
   sponserlist,
   sponserdelete,
-  promocodeadd
+  promocodeadd,
+  marathonlist
 } from './reducer';
 
 export default combineReducers({
@@ -70,5 +71,6 @@ export default combineReducers({
   sponserlist,
   sponseradd,
   sponserdelete,
-  promocodeadd
+  promocodeadd,
+  marathonlist
 });

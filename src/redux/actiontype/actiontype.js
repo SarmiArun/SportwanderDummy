@@ -175,3 +175,9 @@ export const promocode = {
     error: 'promolisterror'
   }
 };
+export const marathon = {
+  list: {
+    success: 'marathonlistsuccess',
+    error: 'marathonlisterror'
+  }
+};

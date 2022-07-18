@@ -14,6 +14,7 @@ import peopleAdd24Regular from '@iconify/icons-fluent/people-add-24-regular';
 import versionIcon from '@iconify/icons-system-uicons/version';
 import financeIcon from '@iconify/icons-mdi/finance';
 import bellNotification from '@iconify/icons-iconoir/bell-notification';
+import runIcon from '@iconify/icons-bx/run';
 import imageFill from '@iconify/icons-bi/image-fill';
 import fileTextFill from '@iconify/icons-eva/file-text-fill';
 import lockFill from '@iconify/icons-eva/lock-fill';
@@ -35,6 +36,16 @@ const sidebarConfig = [
     title: 'Players',
     path: '/admin/players',
     icon: getIcon(baselineSportsHandball)
+  },
+  {
+    title: 'Marathon Players',
+    path: '/admin/Eventplayers',
+    icon: getIcon(runIcon)
+  },
+  {
+    title: 'Paid Players',
+    path: '/admin/paymentplayers',
+    icon: getIcon(runIcon)
   },
   {
     title: 'Main Banner',

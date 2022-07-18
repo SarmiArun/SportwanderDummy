@@ -14,6 +14,7 @@ import {
   player,
   issues,
   Sponsor,
+  marathon,
   promocode
 } from '../actiontype/actiontype';
 
@@ -563,6 +564,7 @@ export const issuesList = (state = initialState, actions) => {
       return state;
   }
 };
+
 export const updateissues = (state = initialState, actions) => {
   switch (actions.type) {
     case issues.update.success:
@@ -571,6 +573,22 @@ export const updateissues = (state = initialState, actions) => {
         payload: actions.data
       };
     case issues.update.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const marathonlist = (state = initialState, actions) => {
+  switch (actions.type) {
+    case marathon.list.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case marathon.list.error:
       return {
         status: false,
         payload: actions.data

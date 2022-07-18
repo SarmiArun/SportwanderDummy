@@ -12,8 +12,10 @@ import Notify from './pages/Notify';
 import Privacypolicy from './pages/Privacypolicy';
 import Mainbanner from './pages/Mainbanner';
 import Catbanner from './pages/Catbanner';
+import Eventplayers from './pages/Eventplayers';
 import AddModerators from './pages/Moderator/AddModerator';
 import Sponsors from './pages/Sponsors';
+import Paymentplayers from './pages/Paymentplayers';
 import BookedEvents from './pages/BookedEvents';
 import Players from './pages/Players';
 import Promocode from './pages/Promocode';
@@ -52,8 +54,10 @@ export function Router(props) {
         { path: 'addmoderators', element: <AddModerators /> },
         { path: 'Stadiumlist', element: <Stadiumlist /> },
         { path: 'Promocode', element: <Promocode /> },
+        { path: 'paymentplayers', element: <Paymentplayers /> },
         { path: 'notify', element: <Notify /> },
         { path: 'termsandconditions', element: <Termsandconditions /> },
+        { path: 'Eventplayers', element: <Eventplayers /> },
         { path: 'Sponsors', element: <Sponsors /> },
         { path: 'Sponserlist/:id', element: <Sponserlist /> },
         { path: 'issues', element: <Issues /> },
