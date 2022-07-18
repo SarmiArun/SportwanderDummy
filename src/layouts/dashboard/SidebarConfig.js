@@ -32,6 +32,11 @@ const sidebarConfig = [
     icon: getIcon(pieChart2Fill)
   },
   {
+    title: 'Players',
+    path: '/admin/players',
+    icon: getIcon(baselineSportsHandball)
+  },
+  {
     title: 'Main Banner',
     path: '/admin/Mainbanner',
     icon: getIcon(imageFill)
@@ -78,11 +83,7 @@ const sidebarConfig = [
     path: '/admin/termsandconditions',
     icon: getIcon(termuxIcon)
   },
-  {
-    title: 'Players',
-    path: '/admin/players',
-    icon: getIcon(baselineSportsHandball)
-  },
+
   {
     title: 'Notifications',
     path: '/admin/notify',

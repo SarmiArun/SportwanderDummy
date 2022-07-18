@@ -26,16 +26,17 @@ import Scrollbar from '../components/Scrollbar';
 import SearchNotFound from '../components/SearchNotFound';
 import { TableListHead, TableListToolbar, TableMoreMenu } from '../components/_dashboard/Table';
 import { playerList } from '../redux/actions/actions';
-
 import USERLIST from '../_mocks_/user';
 
 const TABLE_HEAD = [
   { id: 'userId', label: 'User Id', alignRight: false },
   { id: 'name', label: 'Name', alignRight: false },
-  { id: 'phone', label: 'Phone', alignRight: false },
   { id: 'email', label: 'Email', alignRight: false },
+  { id: 'phone', label: 'Phone', alignRight: false },
+  { id: 'bloodGroup', label: 'Blood', alignRight: false },
   { id: 'gender', label: 'Gender', alignRight: false },
-  { id: 'address', label: 'Address', alignRight: false }
+  { id: 'address', label: 'Address', alignRight: false },
+  { id: 'city', label: 'City' }
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -129,83 +130,90 @@ function Players() {
   const isUserNotFound = filteredUsers.length === 0;
 
   useEffect(() => {
-    dispatch(playerList());
+    dispatch(playerList()).then((res) => {
+      console.log(res);
+    });
   }, []);
   const playerlist = useSelector(({ playerList }) => playerList.payload);
-  console.log('playerlist', playerlist);
+
   return (
     <div>
-      <Container>
-        <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-          <Typography variant="h4" gutterBottom>
-            Player List
-          </Typography>
-        </Stack>
-        <Card>
-          <TableListToolbar
-            numSelected={selected.length}
-            filterName={filterName}
-            onFilterName={handleFilterByName}
-          />
-          <Scrollbar>
-            <TableContainer sx={{ minWidth: 800 }}>
-              <Table>
-                <TableListHead
-                  headLabel={TABLE_HEAD}
+      <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
+        <Typography variant="h4" gutterBottom>
+          Player List
+        </Typography>
+      </Stack>
+      <Card>
+        <Scrollbar>
+          <TableContainer sx={{ minWidth: 800 }} mt={3}>
+            <Table>
+              <TableListHead
+                headLabel={TABLE_HEAD}
 
-                  // onRequestSort={handleRequestSort}
-                  // onSelectAllClick={handleSelectAllClick}
-                />
-                <TableBody>
+                // onRequestSort={handleRequestSort}
+                // onSelectAllClick={handleSelectAllClick}
+              />
+              <TableBody>
+                <>
                   <>
-                    <>
-                      {Array.isArray(playerlist) &&
-                        playerlist.map((owner) => (
-                          <TableRow>
-                            <>
-                              <TableCell align="center">check</TableCell>
-                              <TableCell align="left">{owner.userid}</TableCell>
-                              <TableCell align="left">{owner.name}</TableCell>
-                              <TableCell align="left">{owner.phone}</TableCell>
-                              <TableCell align="left">{owner.email}</TableCell>
-                              <TableCell align="left">{owner.gender}</TableCell>
-                              <TableCell align="left">{owner.address}</TableCell>
-                            </>
-                          </TableRow>
-                        ))}
-                    </>
+                    {Array.isArray(playerlist) &&
+                      playerlist.map((owner, i) => (
+                        <TableRow>
+                          <>
+                            <TableCell align="center">{i + 1}</TableCell>
+                            <TableCell align="center" style={{ textTransform: 'capitalize' }}>
+                              {owner.userid}
+                            </TableCell>
+                            <TableCell align="center" style={{ textTransform: 'capitalize' }}>
+                              {owner.name}
+                            </TableCell>
+                            <TableCell align="center">{owner.email}</TableCell>
+                            <TableCell align="center">{owner.phone}</TableCell>
+                            <TableCell align="left" style={{ textAlign: 'center' }}>
+                              {owner.bloodGroup}
+                            </TableCell>
+                            <TableCell align="left" style={{ textTransform: 'capitalize' }}>
+                              {owner.gender}
+                            </TableCell>
+                            <TableCell align="center">{owner.address}</TableCell>
+                            <TableCell align="center" style={{ textTransform: 'capitalize' }}>
+                              {owner.city}
+                            </TableCell>
+                          </>
+                        </TableRow>
+                      ))}
                   </>
+                </>
 
-                  {emptyRows > 0 && (
-                    <TableRow style={{ height: 53 * emptyRows }}>
-                      <TableCell colSpan={6} />
-                    </TableRow>
-                  )}
-                </TableBody>
-                {isUserNotFound && (
-                  <TableBody>
-                    <TableRow>
-                      <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
-                        <SearchNotFound searchQuery={filterName} />
-                      </TableCell>
-                    </TableRow>
-                  </TableBody>
+                {emptyRows > 0 && (
+                  <TableRow style={{ height: 53 * emptyRows }}>
+                    <TableCell colSpan={6} />
+                  </TableRow>
                 )}
-              </Table>
-            </TableContainer>
-          </Scrollbar>
+              </TableBody>
+              {isUserNotFound && (
+                <TableBody>
+                  <TableRow>
+                    <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
+                      <SearchNotFound searchQuery={filterName} />
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              )}
+            </Table>
+          </TableContainer>
+        </Scrollbar>
 
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
-            component="div"
-            count={USERLIST.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-        </Card>
-      </Container>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={USERLIST.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </Card>
     </div>
   );
 }
