@@ -131,6 +131,12 @@ import { marathonlist } from '../redux/actions/actions';
 
 const columns = [
   {
+    field: 'id',
+    headerName: 'id',
+    width: 50,
+    editable: false
+  },
+  {
     field: 'fname',
     headerName: 'Name',
     width: 150,
@@ -188,7 +194,7 @@ const columns = [
     field: 'healthIssue',
     headerName: 'Health Issues',
     width: 150,
-    editable: true
+    editable: false
   },
   {
     field: 'idType',
@@ -209,6 +215,18 @@ const columns = [
     editable: true
   },
   {
+    field: 'type',
+    headerName: 'Payment Mode',
+    width: 150,
+    editable: false
+  },
+  {
+    field: 'ErodeEvent',
+    headerName: 'Payment Status',
+    width: 150,
+    editable: false
+  },
+  {
     field: 'createdAt',
     headerName: 'Created At',
     width: 150,
@@ -224,7 +242,27 @@ export default function EventPlayers() {
       setLoad(false);
     });
   }, []);
-  const playerlist = useSelector(({ marathonlist }) => marathonlist.payload);
+
+  let playerlist = useSelector(({ marathonlist }) => marathonlist.payload);
+  if (playerlist) {
+    playerlist = playerlist.map((data) => ({
+      ...data,
+      healthIssue: data.healthIssue ? 'Yes' : 'No'
+    }));
+  }
+  if (playerlist) {
+    playerlist = playerlist.map((data, i) => {
+      const d = {
+        ...data,
+        ErodeEvent: data.ErodeEvent ? 'Paid' : 'Unpaid'
+      };
+      d.type = data.ErodeEvent ? data.ErodeEvent.type : 'None';
+      d.id = i + 1;
+
+      return d;
+    });
+  }
+
   return (
     <>
       {load ? (
