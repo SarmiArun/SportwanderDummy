@@ -140,55 +140,55 @@ const columns = [
     field: 'fname',
     headerName: 'Name',
     width: 150,
-    editable: true
+    editable: false
   },
   {
     field: 'email',
     headerName: 'Email',
     width: 150,
-    editable: true
+    editable: false
   },
   {
     field: 'phone',
     headerName: 'Phone ',
     width: 150,
-    editable: true
+    editable: false
   },
   {
     field: 'gender',
     headerName: 'Gender',
     width: 150,
-    editable: true
+    editable: false
   },
   {
     field: 'bloodGroup',
     headerName: 'Blood Group',
     width: 150,
-    editable: true
+    editable: false
   },
   {
     field: 'categories',
     headerName: 'Category',
     width: 150,
-    editable: true
+    editable: false
   },
   {
     field: 'tshirtSize',
     headerName: 'T-Shirt Size',
     width: 150,
-    editable: true
+    editable: false
   },
   {
     field: 'emergencyContactName',
     headerName: 'Emergency Name',
     width: 150,
-    editable: true
+    editable: false
   },
   {
     field: 'emergencyContactPhone',
     headerName: 'Emergency Number',
     width: 150,
-    editable: true
+    editable: false
   },
   {
     field: 'healthIssue',
@@ -200,19 +200,19 @@ const columns = [
     field: 'idType',
     headerName: 'ID Type',
     width: 150,
-    editable: true
+    editable: false
   },
   {
     field: 'idNumber',
     headerName: 'ID Number',
     width: 150,
-    editable: true
+    editable: false
   },
   {
     field: 'city',
     headerName: 'City',
     width: 150,
-    editable: true
+    editable: false
   },
   {
     field: 'type',
@@ -230,7 +230,7 @@ const columns = [
     field: 'createdAt',
     headerName: 'Created At',
     width: 150,
-    editable: true
+    editable: false
   }
 ];
 
@@ -258,7 +258,6 @@ export default function EventPlayers() {
       };
       d.type = data.ErodeEvent ? data.ErodeEvent.type : 'None';
       d.id = i + 1;
-
       return d;
     });
   }

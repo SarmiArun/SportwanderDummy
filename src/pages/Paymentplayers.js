@@ -50,8 +50,8 @@ export default function Paymentplayers() {
             <TableCell align="center">ID Type</TableCell>
             <TableCell align="center">ID Number</TableCell>
             <TableCell align="center">Location</TableCell>
-            <TableCell align="center">Time</TableCell>
             <TableCell align="center">Payment Status</TableCell>
+            <TableCell align="center">Time</TableCell>
           </TableRow>
         </TableHead>
         {show ? (
