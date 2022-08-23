@@ -813,6 +813,12 @@ export function marathonlist() {
     new Promise((resolve, reject) =>
       axiosInstance('get', '/v1/admin/marathon')
         .then((res) => {
+          console.log(res.data);
+          if (res.data.data === 'Access Denied, Invalid Token') {
+            console.log('agdsgj');
+            localStorage.removeItem('AuthTokAdmin');
+            window.location.href = '/login';
+          }
           dispatch({
             type: marathon.list.success,
             data: res?.data?.data
