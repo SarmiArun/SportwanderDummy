@@ -8,7 +8,7 @@ import { alpha, styled } from '@mui/material/styles';
 import { Card, Typography } from '@mui/material';
 // utils
 import { fShortenNumber } from '../../../utils/formatNumber';
-import { stadiumownercount } from '../../../redux/actions/actions';
+import { stadiumownercount, marathonlist } from '../../../redux/actions/actions';
 
 // ----------------------------------------------------------------------
 const RootStyle = styled(Card)(({ theme }) => ({
@@ -43,18 +43,18 @@ export default function AppWeeklySales() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(stadiumownercount());
+    dispatch(marathonlist());
   }, []);
-  const stadiumCount = useSelector(({ stadiumownercount }) => stadiumownercount.payload);
+  const register = useSelector(({ marathonlist }) => marathonlist.payload);
 
   return (
     <RootStyle>
       <IconWrapperStyle>
         <Icon icon={androidFilled} width={24} height={24} />
       </IconWrapperStyle>
-      <Typography variant="h3">{stadiumCount}</Typography>
+      <Typography variant="h3">{register?.length}</Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-        Stadium Owner Count
+        Total Registrations
       </Typography>
     </RootStyle>
   );

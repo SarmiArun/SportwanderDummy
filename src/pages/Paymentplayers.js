@@ -13,26 +13,40 @@ import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import { marathonlist } from '../redux/actions/actions';
 
+let Age;
 export default function Paymentplayers() {
   const [show, setShow] = useState(false);
+  const [age, setAge] = useState('');
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(marathonlist());
   }, []);
   const playerlist = useSelector(({ marathonlist }) => marathonlist.payload);
+
   return (
     <>
-      {show ? (
+      <br />
+      {!show ? (
         <Chip
           onClick={() => setShow(!show)}
           label="Paid Players"
-          style={{ color: 'white', backgroundColor: '#E51E25' }}
+          style={{
+            color: 'white',
+            backgroundColor: '#E51E25',
+            marginTop: '10px',
+            fontWeight: 'bold'
+          }}
         />
       ) : (
         <Chip
           onClick={() => setShow(!show)}
           label="All Players"
-          style={{ color: 'white', backgroundColor: '#128C7E' }}
+          style={{
+            color: 'white',
+            backgroundColor: '#128C7E',
+            marginTop: '10px',
+            fontWeight: 'bold'
+          }}
         />
       )}
       <Table>
@@ -43,6 +57,7 @@ export default function Paymentplayers() {
             <TableCell align="center">Email</TableCell>
             <TableCell align="center">Phone</TableCell>
             <TableCell align="center">Gender</TableCell>
+            <TableCell align="center">Age</TableCell>
             <TableCell align="center">Blood</TableCell>
             <TableCell align="center">Category / Tshirt</TableCell>
             <TableCell align="center">Emergency Name / Number</TableCell>
@@ -54,7 +69,7 @@ export default function Paymentplayers() {
             <TableCell align="center">Time</TableCell>
           </TableRow>
         </TableHead>
-        {show ? (
+        {!show ? (
           <TableBody>
             {Array.isArray(playerlist) &&
               playerlist
@@ -66,6 +81,7 @@ export default function Paymentplayers() {
                     <TableCell align="center">{data?.email}</TableCell>
                     <TableCell align="center">{data?.phone}</TableCell>
                     <TableCell align="center">{data?.gender}</TableCell>
+                    <TableCell align="center">{age}</TableCell>
                     <TableCell align="center">{data?.bloodGroup}</TableCell>
                     <TableCell align="center">
                       {data?.categories} / {data?.tshirtSize}
@@ -101,6 +117,7 @@ export default function Paymentplayers() {
                   <TableCell align="center">{data?.email}</TableCell>
                   <TableCell align="center">{data?.phone}</TableCell>
                   <TableCell align="center">{data?.gender}</TableCell>
+                  <TableCell align="center">{data?.dob}</TableCell>
                   <TableCell align="center">{data?.bloodGroup}</TableCell>
                   <TableCell align="center">
                     {data?.categories} / {data?.tshirtSize}

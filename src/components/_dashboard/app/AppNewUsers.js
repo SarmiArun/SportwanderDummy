@@ -7,7 +7,7 @@ import { alpha, styled } from '@mui/material/styles';
 import { Card, Typography } from '@mui/material';
 // utils
 import { fShortenNumber } from '../../../utils/formatNumber';
-import { eventorgcount } from '../../../redux/actions/actions';
+import { eventorgcount, marathonlist } from '../../../redux/actions/actions';
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(Card)(({ theme }) => ({
@@ -41,17 +41,23 @@ const TOTAL = 1352831;
 export default function AppNewUsers() {
   const dispatch = useDispatch();
   const orgcount = useSelector(({ eventorgcount }) => eventorgcount.payload);
+
   useEffect(() => {
     dispatch(eventorgcount());
+    dispatch(marathonlist());
   }, []);
+  const paid = useSelector(({ marathonlist }) => marathonlist.payload);
+
   return (
     <RootStyle>
       <IconWrapperStyle>
         <Icon icon={appleFilled} width={24} height={24} />
       </IconWrapperStyle>
-      <Typography variant="h3">{orgcount}</Typography>
+      <Typography variant="h3">
+        {Array.isArray(paid) && paid.filter((dataa) => dataa?.ErodeEvent !== null)?.length}
+      </Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-        Organizer Count
+        Paid Members
       </Typography>
     </RootStyle>
   );

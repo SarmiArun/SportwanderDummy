@@ -1,4 +1,6 @@
 import { merge } from 'lodash';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import ReactApexChart from 'react-apexcharts';
 // material
 import { useTheme, styled } from '@mui/material/styles';
@@ -7,12 +9,11 @@ import { Card, CardHeader } from '@mui/material';
 import { fNumber } from '../../../utils/formatNumber';
 //
 import { BaseOptionChart } from '../../charts';
+import { marathonlist } from '../../../redux/actions/actions';
 
 // ----------------------------------------------------------------------
-
 const CHART_HEIGHT = 372;
 const LEGEND_HEIGHT = 72;
-
 const ChartWrapperStyle = styled('div')(({ theme }) => ({
   height: CHART_HEIGHT,
   marginTop: theme.spacing(5),
@@ -31,9 +32,8 @@ const ChartWrapperStyle = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-const CHART_DATA = [4344, 5435, 1443, 4443];
-
 export default function AppCurrentVisits() {
+  const dispatch = useDispatch();
   const theme = useTheme();
 
   const chartOptions = merge(BaseOptionChart(), {
@@ -43,7 +43,7 @@ export default function AppCurrentVisits() {
       theme.palette.warning.main,
       theme.palette.error.main
     ],
-    labels: ['America', 'Asia', 'Europe', 'Africa'],
+    labels: ['Registered', 'Paid'],
     stroke: { colors: [theme.palette.background.paper] },
     legend: { floating: true, horizontalAlign: 'center' },
     dataLabels: { enabled: true, dropShadow: { enabled: false } },
@@ -60,10 +60,17 @@ export default function AppCurrentVisits() {
       pie: { donut: { labels: { show: false } } }
     }
   });
+  useEffect(() => {
+    dispatch(marathonlist());
+  }, []);
+  const count = useSelector(({ marathonlist }) => marathonlist.payload);
+  const paidCount =
+    Array.isArray(count) && count.filter((dataa) => dataa?.ErodeEvent !== null)?.length;
 
+  const CHART_DATA = [count?.length - paidCount, paidCount];
   return (
     <Card>
-      <CardHeader title="Current Visits" />
+      <CardHeader title="Marathon Registrations" />
       <ChartWrapperStyle dir="ltr">
         <ReactApexChart type="pie" series={CHART_DATA} options={chartOptions} height={280} />
       </ChartWrapperStyle>
