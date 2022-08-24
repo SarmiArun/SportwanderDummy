@@ -15,6 +15,7 @@ import Catbanner from './pages/Catbanner';
 import Eventplayers from './pages/Eventplayers';
 import AddModerators from './pages/Moderator/AddModerator';
 import Sponsors from './pages/Sponsors';
+import SpotPayments from './pages/SpotPayments';
 import Paymentplayers from './pages/Paymentplayers';
 import BookedEvents from './pages/BookedEvents';
 import Players from './pages/Players';
@@ -59,6 +60,7 @@ export function Router(props) {
         { path: 'termsandconditions', element: <Termsandconditions /> },
         { path: 'Eventplayers', element: <Eventplayers /> },
         { path: 'Sponsors', element: <Sponsors /> },
+        { path: 'SpotPayments', element: <SpotPayments /> },
         { path: 'Sponserlist/:id', element: <Sponserlist /> },
         { path: 'issues', element: <Issues /> },
         { path: 'Mainbanner', element: <Mainbanner /> },

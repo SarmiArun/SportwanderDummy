@@ -17,11 +17,130 @@ let Age;
 export default function Paymentplayers() {
   const [show, setShow] = useState(false);
   const [age, setAge] = useState('');
+  const [spotPayment, setSpotPayment] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(marathonlist());
   }, []);
   const playerlist = useSelector(({ marathonlist }) => marathonlist.payload);
+
+  function showPlayers() {
+    return !show ? (
+      <TableBody>
+        {Array.isArray(playerlist) &&
+          playerlist
+            .filter((dataa) => dataa.ErodeEvent !== null)
+            .map((data, i) => (
+              <TableRow key="2">
+                <TableCell align="center">{i + 1}</TableCell>
+                <TableCell align="center">{data?.fname}</TableCell>
+                <TableCell align="center">{data?.email}</TableCell>
+                <TableCell align="center">{data?.phone}</TableCell>
+                <TableCell align="center">{data?.gender}</TableCell>
+                <TableCell align="center">{age}</TableCell>
+                <TableCell align="center">{data?.bloodGroup}</TableCell>
+                <TableCell align="center">
+                  {data?.categories} / {data?.tshirtSize}
+                </TableCell>
+                <TableCell align="center">
+                  {data?.emergencyContactName} / {data?.emergencyContactPhone}
+                </TableCell>
+                <TableCell align="center">{data?.healthIssue ? 'Yes' : 'No'}</TableCell>
+                <TableCell align="center">{data?.idType}</TableCell>
+                <TableCell align="center">{data?.idNumber}</TableCell>
+                <TableCell align="center">{data?.city}</TableCell>
+                <TableCell align="center">
+                  {data?.ErodeEvent == null ? (
+                    <Chip label="Unpaid" style={{ color: 'white', backgroundColor: '#E51E25' }} />
+                  ) : (
+                    <Chip label="Paid" style={{ color: 'white', backgroundColor: '#128C7E' }} />
+                  )}
+                </TableCell>
+                <TableCell align="center">{data?.createdAt}</TableCell>
+              </TableRow>
+            ))}
+      </TableBody>
+    ) : (
+      <TableBody>
+        {Array.isArray(playerlist) &&
+          playerlist.map((data, i) => (
+            <TableRow key="2">
+              <TableCell align="center">{i + 1}</TableCell>
+              <TableCell align="center">{data?.fname}</TableCell>
+              <TableCell align="center">{data?.email}</TableCell>
+              <TableCell align="center">{data?.phone}</TableCell>
+              <TableCell align="center">{data?.gender}</TableCell>
+              <TableCell align="center">{data?.dob}</TableCell>
+              <TableCell align="center">{data?.bloodGroup}</TableCell>
+              <TableCell align="center">
+                {data?.categories} / {data?.tshirtSize}
+              </TableCell>
+              <TableCell align="center">
+                {data?.emergencyContactName} / {data?.emergencyContactPhone}
+              </TableCell>
+              <TableCell align="center">{data?.healthIssue ? 'Yes' : 'No'}</TableCell>
+              <TableCell align="center">{data?.idType}</TableCell>
+              <TableCell align="center">{data?.idNumber}</TableCell>
+              <TableCell align="center">{data?.city}</TableCell>
+              <TableCell align="center">
+                {data?.ErodeEvent == null ? (
+                  <Chip label="Unpaid" style={{ color: 'white', backgroundColor: '#E51E25' }} />
+                ) : (
+                  <Chip label="Paid" style={{ color: 'white', backgroundColor: '#128C7E' }} />
+                )}
+              </TableCell>
+              <TableCell align="center">{data?.createdAt}</TableCell>
+            </TableRow>
+          ))}
+      </TableBody>
+    );
+  }
+
+  function spotPaymentsList() {
+    return (
+      <TableBody>
+        {Array.isArray(playerlist) &&
+          playerlist
+            .filter((dataa) => dataa.ErodeEvent !== null && dataa.ErodeEvent.type === 'LOCAL')
+            .map((data, i) => {
+              const date = new Date();
+              const currentYear = date.getFullYear();
+              const dob = new Date(data.dob);
+              const age = Number(currentYear) - Number(dob.getFullYear());
+
+              return (
+                <TableRow key="2">
+                  <TableCell align="center">{i + 1}</TableCell>
+                  <TableCell align="center">{data?.fname}</TableCell>
+                  <TableCell align="center">{data?.email}</TableCell>
+                  <TableCell align="center">{data?.phone}</TableCell>
+                  <TableCell align="center">{data?.gender}</TableCell>
+                  <TableCell align="center">{age}</TableCell>
+                  <TableCell align="center">{data?.bloodGroup}</TableCell>
+                  <TableCell align="center">
+                    {data?.categories} / {data?.tshirtSize}
+                  </TableCell>
+                  <TableCell align="center">
+                    {data?.emergencyContactName} / {data?.emergencyContactPhone}
+                  </TableCell>
+                  <TableCell align="center">{data?.healthIssue ? 'Yes' : 'No'}</TableCell>
+                  <TableCell align="center">{data?.idType}</TableCell>
+                  <TableCell align="center">{data?.idNumber}</TableCell>
+                  <TableCell align="center">{data?.city}</TableCell>
+                  <TableCell align="center">
+                    {data?.ErodeEvent == null ? (
+                      <Chip label="Unpaid" style={{ color: 'white', backgroundColor: '#E51E25' }} />
+                    ) : (
+                      <Chip label="Paid" style={{ color: 'white', backgroundColor: '#128C7E' }} />
+                    )}
+                  </TableCell>
+                  <TableCell align="center">{data?.createdAt}</TableCell>
+                </TableRow>
+              );
+            })}
+      </TableBody>
+    );
+  }
 
   return (
     <>
@@ -49,6 +168,7 @@ export default function Paymentplayers() {
           }}
         />
       )}
+
       <Table>
         <TableHead>
           <TableRow>
@@ -69,78 +189,7 @@ export default function Paymentplayers() {
             <TableCell align="center">Time</TableCell>
           </TableRow>
         </TableHead>
-        {!show ? (
-          <TableBody>
-            {Array.isArray(playerlist) &&
-              playerlist
-                .filter((dataa) => dataa.ErodeEvent !== null)
-                .map((data, i) => (
-                  <TableRow key="2">
-                    <TableCell align="center">{i + 1}</TableCell>
-                    <TableCell align="center">{data?.fname}</TableCell>
-                    <TableCell align="center">{data?.email}</TableCell>
-                    <TableCell align="center">{data?.phone}</TableCell>
-                    <TableCell align="center">{data?.gender}</TableCell>
-                    <TableCell align="center">{age}</TableCell>
-                    <TableCell align="center">{data?.bloodGroup}</TableCell>
-                    <TableCell align="center">
-                      {data?.categories} / {data?.tshirtSize}
-                    </TableCell>
-                    <TableCell align="center">
-                      {data?.emergencyContactName} / {data?.emergencyContactPhone}
-                    </TableCell>
-                    <TableCell align="center">{data?.healthIssue ? 'Yes' : 'No'}</TableCell>
-                    <TableCell align="center">{data?.idType}</TableCell>
-                    <TableCell align="center">{data?.idNumber}</TableCell>
-                    <TableCell align="center">{data?.city}</TableCell>
-                    <TableCell align="center">
-                      {data?.ErodeEvent == null ? (
-                        <Chip
-                          label="Unpaid"
-                          style={{ color: 'white', backgroundColor: '#E51E25' }}
-                        />
-                      ) : (
-                        <Chip label="Paid" style={{ color: 'white', backgroundColor: '#128C7E' }} />
-                      )}
-                    </TableCell>
-                    <TableCell align="center">{data?.createdAt}</TableCell>
-                  </TableRow>
-                ))}
-          </TableBody>
-        ) : (
-          <TableBody>
-            {Array.isArray(playerlist) &&
-              playerlist.map((data, i) => (
-                <TableRow key="2">
-                  <TableCell align="center">{i + 1}</TableCell>
-                  <TableCell align="center">{data?.fname}</TableCell>
-                  <TableCell align="center">{data?.email}</TableCell>
-                  <TableCell align="center">{data?.phone}</TableCell>
-                  <TableCell align="center">{data?.gender}</TableCell>
-                  <TableCell align="center">{data?.dob}</TableCell>
-                  <TableCell align="center">{data?.bloodGroup}</TableCell>
-                  <TableCell align="center">
-                    {data?.categories} / {data?.tshirtSize}
-                  </TableCell>
-                  <TableCell align="center">
-                    {data?.emergencyContactName} / {data?.emergencyContactPhone}
-                  </TableCell>
-                  <TableCell align="center">{data?.healthIssue ? 'Yes' : 'No'}</TableCell>
-                  <TableCell align="center">{data?.idType}</TableCell>
-                  <TableCell align="center">{data?.idNumber}</TableCell>
-                  <TableCell align="center">{data?.city}</TableCell>
-                  <TableCell align="center">
-                    {data?.ErodeEvent == null ? (
-                      <Chip label="Unpaid" style={{ color: 'white', backgroundColor: '#E51E25' }} />
-                    ) : (
-                      <Chip label="Paid" style={{ color: 'white', backgroundColor: '#128C7E' }} />
-                    )}
-                  </TableCell>
-                  <TableCell align="center">{data?.createdAt}</TableCell>
-                </TableRow>
-              ))}
-          </TableBody>
-        )}
+        {showPlayers()}
       </Table>
     </>
   );

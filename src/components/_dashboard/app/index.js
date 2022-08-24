@@ -10,3 +10,6 @@ export { default as AppTasks } from './AppTasks';
 export { default as AppTrafficBySite } from './AppTrafficBySite';
 export { default as AppWebsiteVisits } from './AppWebsiteVisits';
 export { default as AppWeeklySales } from './AppWeeklySales';
+export { default as CategoryChart } from './CategoryChart';
+export { default as FiveKm } from './FiveKm';
+export { default as TenKm } from './TenKm';

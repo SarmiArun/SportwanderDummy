@@ -13,7 +13,10 @@ import {
   AppCurrentVisits,
   AppWebsiteVisits,
   AppTrafficBySite,
+  FiveKm,
+  TenKm,
   AppCurrentSubject,
+  CategoryChart,
   AppConversionRates
 } from '../components/_dashboard/app';
 
@@ -40,12 +43,24 @@ export default function DashboardApp() {
             <AppBugReports />
           </Grid>
 
-          <Grid item xs={12} md={6} lg={8}>
-            <AppWebsiteVisits />
+          <Grid item xs={12} md={6} lg={4}>
+            <AppTrafficBySite />
+          </Grid>
+          <Grid item xs={12} md={6} lg={4}>
+            <TenKm />
+          </Grid>
+          <Grid item xs={12} md={6} lg={4}>
+            <FiveKm />
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
+            <CategoryChart />
+          </Grid>
+          <Grid item xs={12} md={6} lg={4}>
             <AppCurrentVisits />
+          </Grid>
+          <Grid item xs={12} md={6} lg={4}>
+            <AppWebsiteVisits />
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>
@@ -64,13 +79,9 @@ export default function DashboardApp() {
             <AppOrderTimeline />
           </Grid>
 
-          <Grid item xs={12} md={6} lg={4}>
-            <AppTrafficBySite />
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={8}>
+          {/* <Grid item xs={12} md={6} lg={8}>
             <AppTasks />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </Page>

@@ -48,6 +48,11 @@ const sidebarConfig = [
     icon: getIcon(runIcon)
   },
   {
+    title: 'Spot Payments',
+    path: '/admin/SpotPayments',
+    icon: getIcon(imageFill)
+  },
+  {
     title: 'Main Banner',
     path: '/admin/Mainbanner',
     icon: getIcon(imageFill)

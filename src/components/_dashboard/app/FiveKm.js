@@ -37,7 +37,7 @@ function SiteItem({ site }) {
   );
 }
 
-export default function AppTrafficBySite() {
+export default function FiveKm() {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -48,14 +48,13 @@ export default function AppTrafficBySite() {
 
   const men =
     Array.isArray(count) &&
-    count.filter((d) => d.ErodeEvent !== null && d.categories === '21.1 km' && d.gender === 'male')
+    count.filter((d) => d.ErodeEvent !== null && d.categories === '5 km' && d.gender === 'male')
       .length;
 
   const women =
     Array.isArray(count) &&
-    count.filter(
-      (d) => d.ErodeEvent !== null && d.categories === '21.1 km' && d.gender === 'female'
-    ).length;
+    count.filter((d) => d.ErodeEvent !== null && d.categories === '5 km' && d.gender === 'female')
+      .length;
 
   const SOCIALS = [
     {
@@ -72,7 +71,7 @@ export default function AppTrafficBySite() {
 
   return (
     <Card>
-      <CardHeader title="21 Km" />
+      <CardHeader title="5 Km" />
       <CardContent>
         <Grid container spacing={2}>
           {SOCIALS.map((site) => (
