@@ -1,4 +1,5 @@
 export { default as AppBugReports } from './AppBugReports';
+export { default as SpotPaymentTotal } from './SpotPaymentTotal';
 export { default as AppConversionRates } from './AppConversionRates';
 export { default as AppCurrentSubject } from './AppCurrentSubject';
 export { default as AppCurrentVisits } from './AppCurrentVisits';
@@ -13,3 +14,4 @@ export { default as AppWeeklySales } from './AppWeeklySales';
 export { default as CategoryChart } from './CategoryChart';
 export { default as FiveKm } from './FiveKm';
 export { default as TenKm } from './TenKm';
+export { default as PromoCodeTotal } from './PromoCodeTotal';
