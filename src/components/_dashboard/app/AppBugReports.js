@@ -53,15 +53,22 @@ export default function AppBugReports() {
   const _totalPayments =
     Array.isArray(total) &&
     total.map((a) => {
+      let discount = 0;
+
+      if (a.ErodeEvent.promo_code === 'GRNCTY' || a.ErodeEvent.promo_code === 'VETIAS') {
+        discount = 0.1;
+      } else if (a.ErodeEvent.promo_code === 'KNGYM') {
+        discount = 0.2;
+      }
       switch (a.categories) {
         case '21.1 km':
-          money += 700;
+          money += 700 - 700 * discount;
           break;
         case '10 km':
-          money += 600;
+          money += 600 - 600 * discount;
           break;
         case '5 km':
-          money += 500;
+          money += 500 - 500 * discount;
           break;
         default:
           money += 0;
@@ -69,8 +76,6 @@ export default function AppBugReports() {
       }
       return money;
     });
-
-  console.log(money);
   return (
     <RootStyle>
       <IconWrapperStyle>
