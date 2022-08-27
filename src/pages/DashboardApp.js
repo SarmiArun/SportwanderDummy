@@ -51,7 +51,6 @@ export default function DashboardApp() {
           <Grid item xs={12} sm={6} md={4}>
             <PromoCodeTotal />
           </Grid>
-
           <Grid item xs={12} md={6} lg={4}>
             <AppTrafficBySite />
           </Grid>
@@ -61,34 +60,30 @@ export default function DashboardApp() {
           <Grid item xs={12} md={6} lg={4}>
             <FiveKm />
           </Grid>
-
-          <Grid item xs={12} md={6} lg={4}>
+          <Grid item xs={12} md={6} lg={6}>
             <CategoryChart />
           </Grid>
-          <Grid item xs={12} md={6} lg={4}>
+          <Grid item xs={12} md={6} lg={6}>
             <AppCurrentVisits />
           </Grid>
-          <Grid item xs={12} md={6} lg={4}>
+          {/*    <Grid item xs={12} md={6} lg={4}>
             <AppWebsiteVisits />
           </Grid>
-
           <Grid item xs={12} md={6} lg={8}>
             <AppConversionRates />
           </Grid>
-
           <Grid item xs={12} md={6} lg={4}>
             <AppCurrentSubject />
           </Grid>
-
           <Grid item xs={12} md={6} lg={8}>
             <AppNewsUpdate />
           </Grid>
-
+   
           <Grid item xs={12} md={6} lg={4}>
             <AppOrderTimeline />
           </Grid>
 
-          {/* <Grid item xs={12} md={6} lg={8}>
+          <Grid item xs={12} md={6} lg={8}>
             <AppTasks />
           </Grid> */}
         </Grid>

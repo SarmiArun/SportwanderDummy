@@ -81,8 +81,6 @@ export default function PromoCodeTotal() {
       }
       return money;
     });
-
-  console.log(total);
   return (
     <RootStyle>
       <IconWrapperStyle>
