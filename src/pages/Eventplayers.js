@@ -7,9 +7,15 @@ import { marathonlist } from '../redux/actions/actions';
 
 const columns = [
   {
+    field: 'idd',
+    headerName: 'S NO',
+    width: 100,
+    editable: false
+  },
+  {
     field: 'id',
-    headerName: 'id',
-    width: 50,
+    headerName: 'User ID',
+    width: 100,
     editable: false
   },
   {
@@ -97,6 +103,12 @@ const columns = [
     editable: false
   },
   {
+    field: 'PromoCode',
+    headerName: 'Promo Code',
+    width: 150,
+    editable: false
+  },
+  {
     field: 'type',
     headerName: 'Payment Mode',
     width: 150,
@@ -138,7 +150,8 @@ export default function EventPlayers() {
         ErodeEvent: data.ErodeEvent ? 'Paid' : 'Unpaid'
       };
       d.type = data.ErodeEvent ? data.ErodeEvent.type : 'None';
-      d.id = i + 1;
+      d.PromoCode = data.ErodeEvent ? data.ErodeEvent.promo_code ?? 'None' : 'Null';
+      d.idd = i + 1;
       return d;
     });
   }

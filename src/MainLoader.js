@@ -37,7 +37,6 @@ export default function MainLoader() {
         setRoute({ path: 'ListStadium', element: <ListStadium /> });
         return setLoad(false);
       default:
-        navigate('/', true);
         return setLoad(false);
     }
   }, []);

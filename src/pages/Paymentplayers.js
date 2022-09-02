@@ -33,6 +33,7 @@ export default function Paymentplayers() {
             .map((data, i) => (
               <TableRow key="2">
                 <TableCell align="center">{i + 1}</TableCell>
+                <TableCell align="center">{data?.id}</TableCell>
                 <TableCell align="center">{data?.fname}</TableCell>
                 <TableCell align="center">{data?.email}</TableCell>
                 <TableCell align="center">{data?.phone}</TableCell>
@@ -66,6 +67,7 @@ export default function Paymentplayers() {
           playerlist.map((data, i) => (
             <TableRow key="2">
               <TableCell align="center">{i + 1}</TableCell>
+              <TableCell align="center">{data?.id}</TableCell>
               <TableCell align="center">{data?.fname}</TableCell>
               <TableCell align="center">{data?.email}</TableCell>
               <TableCell align="center">{data?.phone}</TableCell>
@@ -111,6 +113,7 @@ export default function Paymentplayers() {
               return (
                 <TableRow key="2">
                   <TableCell align="center">{i + 1}</TableCell>
+                  <TableCell align="center">{data?.id}</TableCell>
                   <TableCell align="center">{data?.fname}</TableCell>
                   <TableCell align="center">{data?.email}</TableCell>
                   <TableCell align="center">{data?.phone}</TableCell>
@@ -173,6 +176,7 @@ export default function Paymentplayers() {
         <TableHead>
           <TableRow>
             <TableCell align="center">S No</TableCell>
+            <TableCell align="center">User ID</TableCell>
             <TableCell align="center">Name</TableCell>
             <TableCell align="center">Email</TableCell>
             <TableCell align="center">Phone</TableCell>
