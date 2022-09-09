@@ -15,7 +15,8 @@ import {
   issues,
   Sponsor,
   marathon,
-  promocode
+  promocode,
+  dashboard
 } from '../actiontype/actiontype';
 
 const initialState = {};
@@ -621,6 +622,22 @@ export const marathonlist = (state = initialState, actions) => {
         payload: actions.data
       };
     case marathon.list.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const dashboardcount = (state = initialState, actions) => {
+  switch (actions.type) {
+    case dashboard.count.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case dashboard.count.error:
       return {
         status: false,
         payload: actions.data

@@ -183,9 +183,16 @@ export const promocode = {
     error: 'promolisterror'
   }
 };
+
 export const marathon = {
   list: {
     success: 'marathonlistsuccess',
     error: 'marathonlisterror'
+  }
+};
+export const dashboard = {
+  count: {
+    success: 'dashboardcountsuccess',
+    error: 'dashboardcounterror'
   }
 };

@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   Grid,
@@ -28,14 +28,14 @@ function FormQuestion() {
     e.currentTarget.reset();
     dispatch(formquestion(data));
   };
-  useEffect(() => {
-    first
-  
-    return () => {
-      second
-    }
-  }, [third])
-  
+  // useEffect(() => {
+  //   first;
+
+  //   return () => {
+  //     second;
+  //   };
+  // }, [third]);
+
   return (
     <>
       <Box

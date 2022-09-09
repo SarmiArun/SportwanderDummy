@@ -17,7 +17,8 @@ import {
   stadium,
   Sponsor,
   promocode,
-  marathon
+  marathon,
+  dashboard
 } from '../actiontype/actiontype';
 
 export function userlogin(data) {
@@ -869,6 +870,32 @@ export function marathonlist() {
         .catch((err) => {
           dispatch({
             type: marathon.list.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function dashboardData() {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('get', '/v1/admin/dashboard')
+        .then((res) => {
+          if (res.data.data === 'Access Denied, Invalid Token') {
+            console.log('agdsgj');
+            localStorage.removeItem('AuthTokAdmin');
+            window.location.href = '/login';
+          }
+
+          dispatch({
+            type: dashboard.count.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: dashboard.count.error,
             data: err
           });
           reject(err);
