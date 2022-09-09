@@ -33,7 +33,7 @@ import User from './pages/User';
 import NotFound from './pages/Page404';
 import Testing from './components/Testing';
 import MainLoader from './MainLoader';
-
+import FormQuestion from './layouts/dashboard/FormQuestion';
 // ----------------------------------------------------------------------
 
 export function Router(props) {
@@ -70,7 +70,8 @@ export function Router(props) {
         { path: 'BookedEvents', element: <BookedEvents /> },
         { path: 'court', element: <Court /> },
         { path: 'user', element: <User /> },
-        { path: 'Subscription', element: <Subscription /> }
+        { path: 'Subscription', element: <Subscription /> },
+        { path: 'formquestion', element: <FormQuestion /> }
       ]
     },
     {

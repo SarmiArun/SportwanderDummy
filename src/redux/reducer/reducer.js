@@ -180,6 +180,38 @@ export const stadiumeventlist = (state = initialState, actions) => {
       return state;
   }
 };
+export const formquestion = (state = initialState, actions) => {
+  switch (actions.type) {
+    case event.form.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case event.form.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const formquestionlist = (state = initialState, actions) => {
+  switch (actions.type) {
+    case event.formlist.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case event.formlist.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
 export const stadiumlist = (state = initialState, actions) => {
   switch (actions.type) {
     case stadium.List.success:

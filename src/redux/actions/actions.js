@@ -236,6 +236,47 @@ export function eventorglist() {
         })
     );
 }
+
+export function formquestion(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/ef/add', data)
+        .then((res) => {
+          dispatch({
+            type: event.form.success,
+            data: res?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: event.form.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function formquestionlist(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/ef/add', data)
+        .then((res) => {
+          dispatch({
+            type: event.formlist.success,
+            data: res?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: event.formlist.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
 export function stadiumlist() {
   return (dispatch) =>
     new Promise((resolve, reject) =>

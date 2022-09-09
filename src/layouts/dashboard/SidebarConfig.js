@@ -33,6 +33,16 @@ const sidebarConfig = [
     icon: getIcon(pieChart2Fill)
   },
   {
+    title: 'erode marathon dashboard',
+    path: '/admin/dashboard',
+    icon: getIcon(pieChart2Fill)
+  },
+  {
+    title: 'form questions',
+    path: '/admin/formquestion',
+    icon: getIcon(pieChart2Fill)
+  },
+  {
     title: 'Players',
     path: '/admin/players',
     icon: getIcon(baselineSportsHandball)

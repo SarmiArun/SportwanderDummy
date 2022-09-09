@@ -48,6 +48,14 @@ export const event = {
   count: {
     success: 'eventcountsuccess',
     error: 'eventcounterror'
+  },
+  form: {
+    success: 'eventformsuccess',
+    error: 'eventformfailure'
+  },
+  formlist: {
+    success: 'eventformlistsuccess',
+    error: 'eventformlistsuccess'
   }
 };
 export const privacy = {
