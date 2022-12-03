@@ -196,3 +196,9 @@ export const dashboard = {
     error: 'dashboardcounterror'
   }
 };
+export const stadiumadd = {
+  add: {
+    success: 'stadiumaddaddsuccess',
+    error: 'stadiumaddadderror'
+  }
+};

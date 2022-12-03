@@ -18,7 +18,8 @@ import {
   Sponsor,
   promocode,
   marathon,
-  dashboard
+  dashboard,
+  stadiumadd
 } from '../actiontype/actiontype';
 
 export function userlogin(data) {
@@ -714,6 +715,31 @@ export function mainaddbanner(data) {
         .catch((err) => {
           dispatch({
             type: mainbanner.add.error,
+            data: err.response.data
+          });
+          reject(err);
+        })
+    );
+}
+export function addstadium(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/stadium/add', data)
+        .then((res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Stadium',
+            text: 'Added Successfully!'
+          });
+          dispatch({
+            type: stadiumadd.add.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: stadiumadd.add.error,
             data: err.response.data
           });
           reject(err);

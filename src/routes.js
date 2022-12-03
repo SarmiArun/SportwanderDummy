@@ -35,6 +35,7 @@ import Testing from './components/Testing';
 import MainLoader from './MainLoader';
 import FormQuestion from './layouts/dashboard/FormQuestion';
 import NewDashboard from './layouts/dashboard/NewDashboard';
+import Addstadiumlist from './pages/StadiumList/Addstadiumlist';
 // ----------------------------------------------------------------------
 
 export function Router(props) {
@@ -48,6 +49,7 @@ export function Router(props) {
         props.route,
         // { path: 'products', element: <Products /> },
         { path: 'blog', element: <Blog /> },
+        { path: 'Addstadiumlist', element: <Addstadiumlist /> },
         { path: 'testing', element: <Testing /> },
         { path: 'addStadium', element: <AddStadium /> },
         { path: 'addStadium', element: <AddStadium /> },

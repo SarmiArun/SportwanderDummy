@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import Box from '@mui/material/Box';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { marathonlist } from '../redux/actions/actions';
@@ -109,6 +108,18 @@ const columns = [
     editable: false
   },
   {
+    field: 'OrderId',
+    headerName: 'Order Id',
+    width: 150,
+    editable: false
+  },
+  {
+    field: 'paymentId',
+    headerName: 'Payment Id',
+    width: 150,
+    editable: false
+  },
+  {
     field: 'type',
     headerName: 'Payment Mode',
     width: 150,
@@ -150,7 +161,9 @@ export default function EventPlayers() {
         ErodeEvent: data.ErodeEvent ? 'Paid' : 'Unpaid'
       };
       d.type = data.ErodeEvent ? data.ErodeEvent.type : 'None';
+      d.paymentId = data.ErodeEvent ? data.ErodeEvent.r_payment_id : 'None';
       d.PromoCode = data.ErodeEvent ? data.ErodeEvent.promo_code ?? 'None' : 'Null';
+      d.OrderId = data.ErodeEvent ? data.ErodeEvent.r_order_id ?? 'r_order_id' : 'Null';
       d.idd = i + 1;
       return d;
     });

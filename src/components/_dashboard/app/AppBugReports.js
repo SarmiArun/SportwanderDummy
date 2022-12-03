@@ -50,16 +50,42 @@ export default function AppBugReports() {
 
   const total = Array.isArray(count) && count.filter((d) => d.ErodeEvent !== null);
   let money = 0;
+
   const _totalPayments =
     Array.isArray(total) &&
     total.map((a) => {
       let discount = 0;
 
-      if (a.ErodeEvent.promo_code === 'GRNCTY' || a.ErodeEvent.promo_code === 'VETIAS') {
+      if (a.ErodeEvent.type === 'LOCAL') {
+        discount = 1;
+      } else if (
+        a.ErodeEvent.promo_code === 'GRNCTY' ||
+        a.ErodeEvent.promo_code === 'VETIAS' ||
+        a.ErodeEvent.promo_code === 'KKSK' ||
+        a.ErodeEvent.promo_code === 'V2CRNS' ||
+        a.ErodeEvent.promo_code === 'CTRPHY' ||
+        a.ErodeEvent.promo_code === '360PLAY' ||
+        a.ErodeEvent.promo_code === 'PYNAGY' ||
+        a.ErodeEvent.promo_code === 'EGGPRO' ||
+        a.ErodeEvent.promo_code === 'SSPYSO' ||
+        a.ErodeEvent.promo_code === 'CARE24' ||
+        a.ErodeEvent.promo_code === 'ERODLS' ||
+        a.ErodeEvent.promo_code === 'PLAYZO' ||
+        a.ErodeEvent.promo_code === 'ANOOS' ||
+        a.ErodeEvent.promo_code === 'NUTZ' ||
+        a.ErodeEvent.promo_code === 'SRYNFM' ||
+        a.ErodeEvent.promo_code === 'MKYMST' ||
+        a.ErodeEvent.promo_code === 'ERO2PI'
+      ) {
         discount = 0.1;
       } else if (a.ErodeEvent.promo_code === 'KNGYM') {
         discount = 0.2;
+      } else if (a.ErodeEvent.promo_code === 'NUTZOFFER') {
+        discount = 1;
+      } else if (a.ErodeEvent.promo_code === 'CODE') {
+        discount = 0;
       }
+
       switch (a.categories) {
         case '21.1 km':
           money += 700 - 700 * discount;
