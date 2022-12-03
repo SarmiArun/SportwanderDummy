@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Grid, Container, Box, Typography } from '@mui/material';
+import outlineStadium from '@iconify/icons-ic/outline-stadium';
 import DashboardCountComponent from '../../components/_dashboard/app/DashboardCountComponent';
 import { dashboardData } from '../../redux/actions/actions';
 
@@ -20,12 +21,16 @@ function NewDashboard() {
         </Box>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={4}>
-            <DashboardCountComponent count={data?.total_events} title="Total Events" />
+            <DashboardCountComponent
+              count={data?.total_events}
+              title="Total Stadiums"
+              icon={outlineStadium}
+            />
           </Grid>
-          <Grid item xs={12} sm={6} md={4}>
+          {/* <Grid item xs={12} sm={6} md={4}>
             <DashboardCountComponent count={data?.live_events} title="Lived Events" />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
+          </Grid> */}
+          {/* <Grid item xs={12} sm={6} md={4}>
             <DashboardCountComponent count={data?.notLiveEvents} title="Not Lived Events" />
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
@@ -36,7 +41,7 @@ function NewDashboard() {
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <DashboardCountComponent count="100" title="Dummy" />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </>

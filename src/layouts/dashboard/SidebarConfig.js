@@ -32,84 +32,82 @@ const sidebarConfig = [
     path: '/admin/newdashboard',
     icon: getIcon(pieChart2Fill)
   },
-  {
-    title: 'erode marathon dashboard',
-    path: '/admin/dashboard',
-    icon: getIcon(pieChart2Fill)
-  },
-  {
-    title: 'form questions',
-    path: '/admin/formquestion',
-    icon: getIcon(pieChart2Fill)
-  },
+  // {
+  //   title: 'erode marathon dashboard',
+  //   path: '/admin/dashboard',
+  //   icon: getIcon(pieChart2Fill)
+  // },
+  // {
+  //   title: 'form questions',
+  //   path: '/admin/formquestion',
+  //   icon: getIcon(pieChart2Fill)
+  // },
   {
     title: 'Players',
     path: '/admin/players',
     icon: getIcon(baselineSportsHandball)
   },
-  {
-    title: 'Marathon Players',
-    path: '/admin/Eventplayers',
-    icon: getIcon(runIcon)
-  },
-  {
-    title: 'Paid Players',
-    path: '/admin/paymentplayers',
-    icon: getIcon(runIcon)
-  },
-  {
-    title: 'Spot Payments',
-    path: '/admin/SpotPayments',
-    icon: getIcon(imageFill)
-  },
+  // {
+  //   title: 'Marathon Players',
+  //   path: '/admin/Eventplayers',
+  //   icon: getIcon(runIcon)
+  // },
+  // {
+  //   title: 'Paid Players',
+  //   path: '/admin/paymentplayers',
+  //   icon: getIcon(runIcon)
+  // },
+  // {
+  //   title: 'Spot Payments',
+  //   path: '/admin/SpotPayments',
+  //   icon: getIcon(imageFill)
+  // },
   {
     title: 'Main Banner',
     path: '/admin/Mainbanner',
     icon: getIcon(imageFill)
   },
-  {
-    title: 'Sponsors',
-    path: '/admin/Sponsors',
-    icon: getIcon(financeIcon)
-  },
-  {
-    title: 'Promo Code',
-    path: '/admin/Promocode',
-    icon: getIcon(outlineDiscount)
-  },
+  // {
+  //   title: 'Sponsors',
+  //   path: '/admin/Sponsors',
+  //   icon: getIcon(financeIcon)
+  // },
+  // {
+  //   title: 'Promo Code',
+  //   path: '/admin/Promocode',
+  //   icon: getIcon(outlineDiscount)
+  // },
 
+  // {
+  //   title: 'Add Stadium Owner',
+  //   path: '/admin/BookedEvents',
+  //   icon: getIcon(outlineStadium)
+  // },
+  // {
+  //   title: 'Stadium Owner List',
+  //   path: '/admin/ListStadium',
+  //   icon: getIcon(peopleIcon)
+  // },
   {
-    title: 'Add Stadium Owner',
-    path: '/admin/BookedEvents',
-    icon: getIcon(outlineStadium)
-  },
-  {
-    title: 'Stadium Owner List',
-    path: '/admin/ListStadium',
-    icon: getIcon(peopleIcon)
-  },
-  {
-    title: 'Stadium List',
+    title: 'Stadiums',
     path: '/admin/stadiumlist',
     icon: getIcon(shoppingBagFill)
   },
-  {
-    title: 'KYC',
-    path: '/admin/BookedStadiums',
-    icon: getIcon(oktaVerify)
-  },
-
-  {
-    title: 'Privacy Policy',
-    path: '/admin/privacypolicy',
-    icon: getIcon(outlinePolicy)
-  },
-  {
-    title: 'Terms and Conditions',
-    path: '/admin/termsandconditions',
-    icon: getIcon(termuxIcon)
-  },
-
+  // {
+  //   title: 'KYC',
+  //   path: '/admin/BookedStadiums',
+  //   icon: getIcon(oktaVerify)
+  // },
+  // {
+  //   title: 'Privacy Policy',
+  //   path: '/admin/privacypolicy',
+  //   icon: getIcon(outlinePolicy)
+  // },
+  // {
+  //   title: 'Terms and Conditions',
+  //   path: '/admin/termsandconditions',
+  //   icon: getIcon(termuxIcon)
+  // },
   {
     title: 'Notifications',
     path: '/admin/notify',
