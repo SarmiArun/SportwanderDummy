@@ -291,9 +291,10 @@ export function stadiumlist() {
           resolve(res);
         })
         .catch((err) => {
+          console.log(err);
           dispatch({
             type: stadium.List.error,
-            data: err
+            data: []
           });
           reject(err);
         })

@@ -18,18 +18,11 @@ import { saveAs } from 'file-saver';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal, Typography, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { stadiumlist, stadiumupdate } from '../redux/actions/actions';
+import ReactLoading from 'react-loading';
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9)
-];
+import Loader from '../components/Loader';
+
+import { stadiumlist, stadiumupdate } from '../redux/actions/actions';
 
 const modalStyle = {
   position: 'absolute',
@@ -46,19 +39,16 @@ export default function Bookedstadiumlist() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  // const verifyy = useSelector(({ stadiumupdate }) => stadiumupdate.payload);
-  const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(stadiumlist());
-  // }, [verifyy]);
-  // const list = useSelector(({ stadiumlist }) => stadiumlist.payload);
-  // console.log(list);
 
-  // const saveFile = (row) => {
-  //   saveAs(row.offc_doc);
-  //   console.log(row.offc_doc);
-  // };
-  return (
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(stadiumlist());
+  }, []);
+  let list = [];
+  list = useSelector(({ stadiumlist }) => stadiumlist.payload) ?? [];
+  console.log(list);
+
+  return list ? (
     <Container>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <h1 style={{ marginBottom: '20px' }}>Stadium List</h1>
@@ -86,64 +76,88 @@ export default function Bookedstadiumlist() {
               </TableRow>
             </TableHead>
             <TableBody>
-              <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                <TableCell scope="row" style={{ textAlign: 'center' }}>
-                  1
-                </TableCell>
-                <TableCell scope="row" style={{ textAlign: 'center' }}>
-                  <Button
-                    padding={1}
-                    onClick={handleOpen}
-                    sx={{
-                      '&:hover': {
-                        backgroundColor: 'transparent'
-                      }
-                    }}
-                  >
-                    <img
-                      src="https://images.livemint.com/img/2022/12/06/1600x900/Stadium_974_1670308763958_1670308770302_1670308770302.jpg"
-                      alt="stadium-1"
-                    />
-                  </Button>
+              {list.length > 0 ? (
+                list.map((v, i) => (
+                  <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                    <TableCell scope="row" style={{ textAlign: 'center' }}>
+                      {i + 1}
+                    </TableCell>
+                    <TableCell scope="row" style={{ textAlign: 'center' }}>
+                      <Button
+                        padding={1}
+                        onClick={handleOpen}
+                        sx={{
+                          '&:hover': {
+                            backgroundColor: 'transparent'
+                          }
+                        }}
+                      >
+                        <img
+                          src="https://images.livemint.com/img/2022/12/06/1600x900/Stadium_974_1670308763958_1670308770302_1670308770302.jpg"
+                          alt="stadium-1"
+                        />
+                      </Button>
 
-                  <Modal
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                  >
-                    <Box sx={modalStyle}>
-                      <img
-                        src="https://images.livemint.com/img/2022/12/06/1600x900/Stadium_974_1670308763958_1670308770302_1670308770302.jpg"
-                        alt="fullscreen-view"
-                        height="100%"
+                      <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                      >
+                        <Box sx={modalStyle}>
+                          <img
+                            src="https://images.livemint.com/img/2022/12/06/1600x900/Stadium_974_1670308763958_1670308770302_1670308770302.jpg"
+                            alt="fullscreen-view"
+                            height="100%"
+                          />
+                        </Box>
+                      </Modal>
+                    </TableCell>
+                    <TableCell style={{ textAlign: 'center', textTransform: 'capitalize' }}>
+                      {v.name}
+                    </TableCell>
+                    <TableCell style={{ textAlign: 'center', textTransform: 'capitalize' }}>
+                      {v.location}
+                    </TableCell>
+                    <TableCell style={{ textAlign: 'center' }}>
+                      {v.owner ? 'Owner' : 'Admin'}
+                    </TableCell>
+                    <TableCell style={{ textAlign: 'center' }}>
+                      <Chip
+                        label={v.active ? 'Active' : 'Inactive'}
+                        style={{
+                          backgroundColor: v.active ? '#376F37' : '#FF5252',
+                          color: 'white'
+                        }}
                       />
-                    </Box>
-                  </Modal>
-                </TableCell>
-                <TableCell style={{ textAlign: 'center' }}>Playo</TableCell>
-                <TableCell style={{ textAlign: 'center' }}>Erode</TableCell>
-                <TableCell style={{ textAlign: 'center' }}>Admin</TableCell>
-                <TableCell style={{ textAlign: 'center' }}>
-                  <Chip label="active" style={{ backgroundColor: '#376F37', color: 'white' }} />
-                </TableCell>
-                <TableCell style={{ textAlign: 'center' }}>
-                  <div style={{ display: 'flex' }}>
-                    <Chip
-                      label="View Details"
-                      sx={{ backgroundColor: '#006EC6', color: 'white', marginRight: '5px' }}
-                    />
-                    <Chip
-                      label="Inactive"
-                      sx={{ backgroundColor: '#FF5252', color: 'white', marginRight: '5px' }}
-                    />
-                  </div>
-                </TableCell>
-              </TableRow>
+                    </TableCell>
+                    <TableCell style={{ textAlign: 'center' }}>
+                      <div style={{ display: 'flex' }}>
+                        <Chip
+                          label="View Details"
+                          sx={{ backgroundColor: '#006EC6', color: 'white', marginRight: '5px' }}
+                        />
+                        <Chip
+                          label="Inactive"
+                          sx={{ backgroundColor: '#FF5252', color: 'white', marginRight: '5px' }}
+                        />
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell colSpan={7} align="center">
+                    <Typography p={5}>No Data Found!</Typography>
+                  </TableCell>
+                </TableRow>
+              )}
             </TableBody>
           </Table>
         </TableContainer>
       </Card>
     </Container>
+  ) : (
+    <Loader />
   );
 }
