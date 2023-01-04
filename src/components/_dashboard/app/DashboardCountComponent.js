@@ -38,7 +38,6 @@ const IconWrapperStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function DashboardCountComponent({ count, title, icon }) {
-  console.log(count);
   return (
     <RootStyle>
       <IconWrapperStyle>

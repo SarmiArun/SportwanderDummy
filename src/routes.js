@@ -44,15 +44,11 @@ export function Router(props) {
       path: '/admin',
       element: <DashboardLayout />,
       children: [
-        { element: <Navigate to="/admin/dashboard" replace /> },
-        // { path: 'app', element: <DashboardApp /> },
+        { element: <Navigate to="/admin/newdashboard" replace /> },
         props.route,
-        // { path: 'products', element: <Products /> },
         { path: 'blog', element: <Blog /> },
-        { path: 'Addstadiumlist', element: <Addstadiumlist /> },
+        { path: 'addstadium', element: <Addstadiumlist /> },
         { path: 'testing', element: <Testing /> },
-        { path: 'addStadium', element: <AddStadium /> },
-        { path: 'addStadium', element: <AddStadium /> },
         { path: 'Privacypolicy', element: <Privacypolicy /> },
         { path: 'BookedStadiums', element: <BookedStadiums /> },
         { path: 'addmoderators', element: <AddModerators /> },
@@ -89,7 +85,7 @@ export function Router(props) {
         // { path: '*', element: <Navigate to="/404" /> }
       ]
     },
-    { path: '*', element: <MainLoader /> }
+    { path: '*', element: <NotFound /> }
   ]);
 }
 export function Routers() {

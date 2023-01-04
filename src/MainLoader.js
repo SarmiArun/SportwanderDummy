@@ -7,6 +7,7 @@ import Products from './pages/Products';
 import ListStadium from './pages/ListStadium';
 import Moderators from './pages/Moderator/Moderator';
 import Subscriptions from './pages/Subscription/Subscription';
+import NewDashboard from './layouts/dashboard/NewDashboard';
 
 export default function MainLoader() {
   const [load, setLoad] = useState(true);
@@ -25,7 +26,10 @@ export default function MainLoader() {
         navigate('/admin/dashboard', true);
         return setLoad(false);
       case '/admin/dashboard':
-        setRoute({ path: 'dashboard', element: <DashboardApp /> });
+        setRoute({ path: 'dashboard', element: <NewDashboard /> });
+        return setLoad(false);
+      case '/admin/old':
+        setRoute({ path: 'old', element: <DashboardApp /> });
         return setLoad(false);
       case '/admin/subscriptions':
         setRoute({ path: 'subscriptions', element: <Subscriptions /> });
