@@ -23,19 +23,13 @@ export default function MainLoader() {
         setRoute({ path: 'products', element: <Products /> });
         return setLoad(false);
       case '/':
-        navigate('/admin/dashboard', true);
-        return setLoad(false);
-      case '/admin/dashboard':
-        setRoute({ path: 'dashboard', element: <NewDashboard /> });
+        navigate('/admin/newdashboard', true);
         return setLoad(false);
       case '/admin/old':
         setRoute({ path: 'old', element: <DashboardApp /> });
         return setLoad(false);
       case '/admin/subscriptions':
         setRoute({ path: 'subscriptions', element: <Subscriptions /> });
-        return setLoad(false);
-      case '/admin/moderators':
-        setRoute({ path: 'moderators', element: <Moderators /> });
         return setLoad(false);
       case '/admin/ListStadium':
         setRoute({ path: 'ListStadium', element: <ListStadium /> });

@@ -13,7 +13,7 @@ import Privacypolicy from './pages/Privacypolicy';
 import Mainbanner from './pages/Mainbanner';
 import Catbanner from './pages/Catbanner';
 import Eventplayers from './pages/Eventplayers';
-import AddModerators from './pages/Moderator/AddModerator';
+// import AddModerators from './pages/Moderator/AddModerator';
 import Sponsors from './pages/Sponsors';
 import SpotPayments from './pages/SpotPayments';
 import Paymentplayers from './pages/Paymentplayers';
@@ -36,6 +36,7 @@ import MainLoader from './MainLoader';
 import FormQuestion from './layouts/dashboard/FormQuestion';
 import NewDashboard from './layouts/dashboard/NewDashboard';
 import Addstadiumlist from './pages/StadiumList/Addstadiumlist';
+import Moderators from './pages/Moderator/AddModerator';
 // ----------------------------------------------------------------------
 
 export function Router(props) {
@@ -51,7 +52,7 @@ export function Router(props) {
         { path: 'testing', element: <Testing /> },
         { path: 'Privacypolicy', element: <Privacypolicy /> },
         { path: 'BookedStadiums', element: <BookedStadiums /> },
-        { path: 'addmoderators', element: <AddModerators /> },
+        // { path: 'addmoderators', element: <AddModerators /> },
         { path: 'Stadiumlist', element: <Stadiumlist /> },
         { path: 'Promocode', element: <Promocode /> },
         { path: 'paymentplayers', element: <Paymentplayers /> },
@@ -71,7 +72,8 @@ export function Router(props) {
         { path: 'user', element: <User /> },
         { path: 'Subscription', element: <Subscription /> },
         { path: 'formquestion', element: <FormQuestion /> },
-        { path: 'newdashboard', element: <NewDashboard /> }
+        { path: 'newdashboard', element: <NewDashboard /> },
+        { path: 'moderators', element: <Moderators /> }
       ]
     },
     {
