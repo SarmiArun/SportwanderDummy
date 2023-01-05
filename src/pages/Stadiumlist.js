@@ -1,26 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
 import Button from '@mui/material/Button';
-import TableContainer from '@mui/material/TableContainer';
 import Container from '@mui/material/Container';
 import Card from '@mui/material/Card';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Chip from '@mui/material/Chip';
-import Select from '@mui/material/Select';
-import Paper from '@mui/material/Paper';
-import { saveAs } from 'file-saver';
 import { useDispatch, useSelector } from 'react-redux';
-import { Modal, Typography, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
-import ReactLoading from 'react-loading';
 
+import MUIDataTable from 'mui-datatables';
+
+import { Box, Chip, Icon, IconButton, Modal, Typography } from '@mui/material';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 import Loader from '../components/Loader';
+import banner from '../Images/banner2.jpg';
 
 import { stadiumlist, stadiumupdate } from '../redux/actions/actions';
 
@@ -36,17 +28,191 @@ const modalStyle = {
 };
 
 export default function Bookedstadiumlist() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const [open, setOpen] = useState(false);
+  const [modalImage, setModalImage] = useState();
+  const handleOpen = (img) => {
+    setModalImage(img);
+    setOpen(true);
+  };
   const handleClose = () => setOpen(false);
 
-  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(stadiumlist());
   }, []);
-  let list = [];
-  list = useSelector(({ stadiumlist }) => stadiumlist.payload) ?? [];
-  console.log(list);
+
+  const list =
+    useSelector(({ stadiumlist }) => {
+      console.log('stadiums : ', stadiumlist.payload);
+
+      const payload =
+        Array.isArray(stadiumlist.payload) &&
+        stadiumlist.payload.map((v, i) => {
+          const index = i + 1;
+          return { ...v, sno: index };
+        });
+
+      return payload;
+    }) ?? [];
+  const dispatch = useDispatch();
+
+  const columns = [
+    {
+      name: 'sno',
+      label: 'S.No',
+      options: {
+        sort: true
+      }
+    },
+    {
+      name: 'images',
+      label: 'Image',
+      options: {
+        sort: true,
+        customBodyRender: (value, tableMeta, updateValue) => (
+          <>
+            <Button onClick={() => handleOpen(value)}>
+              <img
+                src={value}
+                alt="stadium_img"
+                style={{ aspectRatio: '16/9', objectFit: 'cover' }}
+              />
+            </Button>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={modalStyle}>
+                <img src={modalImage} alt="stadium_img" style={{ objectFit: 'cover' }} />
+              </Box>
+            </Modal>
+          </>
+        )
+      }
+    },
+    {
+      name: 'name',
+      label: 'Name',
+      options: {
+        sort: true,
+        customBodyRender: (value, tableMeta, updateValue) => (
+          <Typography
+            sx={{
+              display: '-webkit-box',
+              overflow: 'hidden',
+              WebkitBoxOrient: 'vertical',
+              WebkitLineClamp: 3
+            }}
+          >
+            {value.trim()}
+          </Typography>
+        )
+      }
+    },
+    {
+      name: 'location',
+      label: 'Location',
+      options: {
+        sort: true
+      }
+    },
+    {
+      name: 'address',
+      label: 'Address',
+      options: {
+        sort: true
+      }
+    },
+    {
+      name: 'phone',
+      label: 'Phone',
+      options: {
+        sort: true,
+        customBodyRender: (value, tableMeta, updateValue) => <Typography noWrap>{value}</Typography>
+      }
+    },
+    {
+      name: 'availability',
+      label: 'Availability',
+      options: {
+        sort: true
+      }
+    },
+    {
+      name: 'status',
+      label: 'Status',
+      options: {
+        sort: true,
+        customBodyRender: (value, tableMeta, updateValue) => {
+          const color = value === 'active' ? '#2DA043' : 'primary';
+          return (
+            <Chip
+              label={value}
+              sx={{ backgroundColor: color, color: 'white', textTransform: 'capitalize' }}
+            />
+          );
+        }
+      }
+    },
+    {
+      name: 'action',
+      label: 'Actions',
+      center: true,
+      options: {
+        sort: true,
+        customHeadRender: (columnMeta, updateDirection) => (
+          <th key={columnMeta.index}>{columnMeta.label}</th>
+        ),
+        customBodyRender: (value, tableMeta, updateValue) => (
+          <Box display="flex">
+            <Button
+              color="warning"
+              startIcon={<VisibilityIcon />}
+              sx={{ boxShadow: 'none' }}
+              disableElevation
+              variant="contained"
+            >
+              View
+            </Button>
+            <Button
+              color="secondary"
+              startIcon={<EditIcon />}
+              sx={{ boxShadow: 'none', marginLeft: '10px' }}
+              disableElevation
+              variant="contained"
+            >
+              Edit
+            </Button>
+            <Button
+              color="error"
+              startIcon={<DeleteIcon />}
+              sx={{ boxShadow: 'none', marginLeft: '10px' }}
+              disableElevation
+              variant="contained"
+            >
+              Delete
+            </Button>
+          </Box>
+        )
+      }
+    }
+  ];
+
+  const options = {
+    elevation: 0,
+    expandableRows: false,
+    filter: false,
+    responsive: 'standard',
+    selectableRows: false,
+    downloadOptions: {
+      filename: `sw_stadiums.csv`,
+      filterOptions: {
+        useDisplayedColumnsOnly: true,
+        useDisplayedRowsOnly: true
+      }
+    }
+  };
 
   return list ? (
     <Container>
@@ -59,102 +225,8 @@ export default function Bookedstadiumlist() {
         </Link>
       </div>
 
-      <Card style={{ padding: '40px' }}>
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} size="small">
-            <TableHead>
-              <TableRow>
-                <TableCell style={{ width: '8%', textAlign: 'center' }} colSpan={1}>
-                  S No
-                </TableCell>
-                <TableCell style={{ textAlign: 'center', width: '20%' }}> Images </TableCell>
-                <TableCell style={{ textAlign: 'center', width: '20%' }}> Stadium Name</TableCell>
-                <TableCell style={{ textAlign: 'center' }}>Location</TableCell>
-                <TableCell style={{ textAlign: 'center', width: '16%' }}>Uploaded By</TableCell>
-                <TableCell style={{ textAlign: 'center', width: '16%' }}>Status</TableCell>
-                <TableCell style={{ textAlign: 'center', width: '16%' }}>Actions</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {list.length > 0 ? (
-                list.map((v, i) => (
-                  <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                    <TableCell scope="row" style={{ textAlign: 'center' }}>
-                      {i + 1}
-                    </TableCell>
-                    <TableCell scope="row" style={{ textAlign: 'center' }}>
-                      <Button
-                        padding={1}
-                        onClick={handleOpen}
-                        sx={{
-                          '&:hover': {
-                            backgroundColor: 'transparent'
-                          }
-                        }}
-                      >
-                        <img
-                          src="https://images.livemint.com/img/2022/12/06/1600x900/Stadium_974_1670308763958_1670308770302_1670308770302.jpg"
-                          alt="stadium-1"
-                        />
-                      </Button>
-
-                      <Modal
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="modal-modal-title"
-                        aria-describedby="modal-modal-description"
-                      >
-                        <Box sx={modalStyle}>
-                          <img
-                            src="https://images.livemint.com/img/2022/12/06/1600x900/Stadium_974_1670308763958_1670308770302_1670308770302.jpg"
-                            alt="fullscreen-view"
-                            height="100%"
-                          />
-                        </Box>
-                      </Modal>
-                    </TableCell>
-                    <TableCell style={{ textAlign: 'center', textTransform: 'capitalize' }}>
-                      {v.name}
-                    </TableCell>
-                    <TableCell style={{ textAlign: 'center', textTransform: 'capitalize' }}>
-                      {v.location}
-                    </TableCell>
-                    <TableCell style={{ textAlign: 'center' }}>
-                      {v.owner ? 'Owner' : 'Admin'}
-                    </TableCell>
-                    <TableCell style={{ textAlign: 'center' }}>
-                      <Chip
-                        label={v.active ? 'Active' : 'Inactive'}
-                        style={{
-                          backgroundColor: v.active ? '#376F37' : '#FF5252',
-                          color: 'white'
-                        }}
-                      />
-                    </TableCell>
-                    <TableCell style={{ textAlign: 'center' }}>
-                      <div style={{ display: 'flex' }}>
-                        <Chip
-                          label="View Details"
-                          sx={{ backgroundColor: '#006EC6', color: 'white', marginRight: '5px' }}
-                        />
-                        <Chip
-                          label="Inactive"
-                          sx={{ backgroundColor: '#FF5252', color: 'white', marginRight: '5px' }}
-                        />
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))
-              ) : (
-                <TableRow>
-                  <TableCell colSpan={7} align="center">
-                    <Typography p={5}>No Data Found!</Typography>
-                  </TableCell>
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
+      <Card style={{ padding: '25px' }}>
+        <MUIDataTable title="Stadiums" data={list} columns={columns} options={options} />
       </Card>
     </Container>
   ) : (
