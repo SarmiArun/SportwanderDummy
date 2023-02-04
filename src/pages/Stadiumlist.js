@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import MUIDataTable from 'mui-datatables';
-
 import { Box, Chip, Icon, IconButton, Modal, Typography } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import EditIcon from '@mui/icons-material/Edit';
@@ -74,7 +73,7 @@ export default function Bookedstadiumlist() {
               <img
                 src={value}
                 alt="stadium_img"
-                style={{ aspectRatio: '16/9', objectFit: 'cover' }}
+                style={{ aspectRatio: '16/9', objectFit: 'cover', width: '150px' }}
               />
             </Button>
             <Modal
@@ -166,32 +165,31 @@ export default function Bookedstadiumlist() {
         ),
         customBodyRender: (value, tableMeta, updateValue) => (
           <Box display="flex">
-            <Button
-              color="warning"
-              startIcon={<VisibilityIcon />}
-              sx={{ boxShadow: 'none' }}
-              disableElevation
-              variant="contained"
-            >
-              View
-            </Button>
+            <Link to={'/Stadiumfulldetails' + id}>
+              <Button
+                color="warning"
+                sx={{ boxShadow: 'none' }}
+                disableElevation
+                variant="contained"
+              >
+                <VisibilityIcon />
+              </Button>
+            </Link>
             <Button
               color="secondary"
-              startIcon={<EditIcon />}
               sx={{ boxShadow: 'none', marginLeft: '10px' }}
               disableElevation
               variant="contained"
             >
-              Edit
+              <EditIcon />
             </Button>
             <Button
               color="error"
-              startIcon={<DeleteIcon />}
               sx={{ boxShadow: 'none', marginLeft: '10px' }}
               disableElevation
               variant="contained"
             >
-              Delete
+              <DeleteIcon />
             </Button>
           </Box>
         )
@@ -215,7 +213,7 @@ export default function Bookedstadiumlist() {
   };
 
   return list ? (
-    <Container>
+    <div>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <h1 style={{ marginBottom: '20px' }}>Stadium List</h1>
         <Link to="/admin/addstadium" style={{ textDecoration: 'none' }}>
@@ -228,7 +226,7 @@ export default function Bookedstadiumlist() {
       <Card style={{ padding: '25px' }}>
         <MUIDataTable title="Stadiums" data={list} columns={columns} options={options} />
       </Card>
-    </Container>
+    </div>
   ) : (
     <Loader />
   );

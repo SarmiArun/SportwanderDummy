@@ -40,7 +40,7 @@ export default function LoginForm() {
       if (res.data.data === 'Invalid Email/Password !') {
         setError(res.data.data);
       } else {
-        window.location.href = '/admin/dashboard';
+        window.location.href = '/admin/newdashboard';
       }
     });
     // axios.post('http://192.168.1.44:5002/v1/admin/login', user);

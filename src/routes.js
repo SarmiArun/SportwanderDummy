@@ -37,6 +37,7 @@ import FormQuestion from './layouts/dashboard/FormQuestion';
 import NewDashboard from './layouts/dashboard/NewDashboard';
 import Addstadiumlist from './pages/StadiumList/Addstadiumlist';
 import Moderators from './pages/Moderator/AddModerator';
+import StadiumFullDetails from './pages/StadiumFullDetails';
 // ----------------------------------------------------------------------
 
 export function Router(props) {
@@ -54,6 +55,7 @@ export function Router(props) {
         { path: 'BookedStadiums', element: <BookedStadiums /> },
         // { path: 'addmoderators', element: <AddModerators /> },
         { path: 'Stadiumlist', element: <Stadiumlist /> },
+        { path: 'Stadiumfulldetails', element: <StadiumFullDetails /> },
         { path: 'Promocode', element: <Promocode /> },
         { path: 'paymentplayers', element: <Paymentplayers /> },
         { path: 'notify', element: <Notify /> },

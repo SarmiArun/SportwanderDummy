@@ -300,6 +300,27 @@ export function stadiumlist() {
         })
     );
 }
+export function Stadiumfulldetails() {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/stadium/detail')
+        .then((res) => {
+          dispatch({
+            type: stadium.Details.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          console.log(err);
+          dispatch({
+            type: stadium.Details.error,
+            data: []
+          });
+          reject(err);
+        })
+    );
+}
 export function stadiumupdate(data) {
   return (dispatch) =>
     new Promise((resolve, reject) =>
