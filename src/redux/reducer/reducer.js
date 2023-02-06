@@ -182,6 +182,22 @@ export const stadiumeventlist = (state = initialState, actions) => {
       return state;
   }
 };
+export const stadiumdetails = (state = initialState, actions) => {
+  switch (actions.type) {
+    case stadium.details.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case stadium.details.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
 export const formquestion = (state = initialState, actions) => {
   switch (actions.type) {
     case event.form.success:

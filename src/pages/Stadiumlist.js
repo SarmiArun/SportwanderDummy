@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import './style.css';
 import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
 import Card from '@mui/material/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-
 import MUIDataTable from 'mui-datatables';
 import { Box, Chip, Icon, IconButton, Modal, Typography } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Loader from '../components/Loader';
-import banner from '../Images/banner2.jpg';
-
 import { stadiumlist, stadiumupdate } from '../redux/actions/actions';
 
 const modalStyle = {
@@ -155,7 +152,7 @@ export default function Bookedstadiumlist() {
       }
     },
     {
-      name: 'action',
+      name: 'id',
       label: 'Actions',
       center: true,
       options: {
@@ -165,7 +162,7 @@ export default function Bookedstadiumlist() {
         ),
         customBodyRender: (value, tableMeta, updateValue) => (
           <Box display="flex">
-            <Link to={'/Stadiumfulldetails' + id}>
+            <Link to={`/admin/Stadiumfulldetails/${value}`}>
               <Button
                 color="warning"
                 sx={{ boxShadow: 'none' }}

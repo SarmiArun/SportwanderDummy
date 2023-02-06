@@ -300,13 +300,14 @@ export function stadiumlist() {
         })
     );
 }
-export function Stadiumfulldetails() {
+export function stadiumdetails(data) {
   return (dispatch) =>
     new Promise((resolve, reject) =>
-      axiosInstance('post', '/v1/admin/stadium/detail')
+      axiosInstance('post', '/v1/admin/stadium/detail', data)
         .then((res) => {
+          console.log(res.data.data);
           dispatch({
-            type: stadium.Details.success,
+            type: stadium.details.success,
             data: res?.data?.data
           });
           resolve(res);
@@ -314,7 +315,7 @@ export function Stadiumfulldetails() {
         .catch((err) => {
           console.log(err);
           dispatch({
-            type: stadium.Details.error,
+            type: stadium.details.error,
             data: []
           });
           reject(err);

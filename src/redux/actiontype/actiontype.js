@@ -171,6 +171,10 @@ export const stadium = {
   update: {
     success: 'stadiumupdateuccess',
     error: 'stadiumupdateerror'
+  },
+  details: {
+    success: 'stadiumdetailsuccess',
+    error: 'stadiumudetailerror'
   }
 };
 export const promocode = {

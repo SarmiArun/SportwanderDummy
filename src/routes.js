@@ -55,7 +55,7 @@ export function Router(props) {
         { path: 'BookedStadiums', element: <BookedStadiums /> },
         // { path: 'addmoderators', element: <AddModerators /> },
         { path: 'Stadiumlist', element: <Stadiumlist /> },
-        { path: 'Stadiumfulldetails', element: <StadiumFullDetails /> },
+        { path: 'Stadiumfulldetails/:id', element: <StadiumFullDetails /> },
         { path: 'Promocode', element: <Promocode /> },
         { path: 'paymentplayers', element: <Paymentplayers /> },
         { path: 'notify', element: <Notify /> },
