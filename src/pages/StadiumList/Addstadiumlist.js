@@ -62,7 +62,8 @@ export default function AddStadiumlist() {
     country: '',
     pincode: '',
     phone: '',
-    gst: ''
+    gst: '',
+    stadium: ''
   });
   const dispatch = useDispatch();
   const handleChangee = (event) => {
@@ -80,6 +81,18 @@ export default function AddStadiumlist() {
   useEffect(() => {
     dispatch(addstadium());
   }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    Object.entries(stadium).map(([key, value]) => formData.append(key, value));
+    dispatch(addstadium(formData));
+  };
+  const imageChange = (e) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setStadium({ ...stadium, [e.target.name]: e.target.files[0] });
+    }
+  };
   return (
     <Page title="Add Stadium">
       <Container>
@@ -166,13 +179,23 @@ export default function AddStadiumlist() {
               </Select>
             </FormControl>
           </Grid>
+          <Grid item sm={12} lg={12} md={12} xs={12} pl={2} pr={2} pt={2}>
+            <div>
+              <input
+                type="file"
+                onChange={imageChange}
+                name="stadium"
+                style={{ fontSize: '22px', color: '#637381' }}
+              />
+            </div>
+          </Grid>
         </Grid>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Button
             variant="contained"
             style={{ textTransform: 'uppercase', boxShadow: 'none' }}
             size="large"
-            onClick={handleOpen}
+            onClick={handleSubmit}
           >
             submit
           </Button>
