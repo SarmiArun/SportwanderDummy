@@ -40,12 +40,14 @@ export default function Bookedstadiumlist() {
     useSelector(({ stadiumlist }) => {
       console.log('stadiums : ', stadiumlist.payload);
 
-      const payload =
+      let payload =
         Array.isArray(stadiumlist.payload) &&
         stadiumlist.payload.map((v, i) => {
           const index = i + 1;
           return { ...v, sno: index };
         });
+
+      payload = stadiumlist.payload === 'No stadiums found' ? [] : payload;
 
       return payload;
     }) ?? [];
@@ -209,6 +211,8 @@ export default function Bookedstadiumlist() {
     }
   };
 
+  console.log(list);
+
   return list ? (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -226,5 +230,6 @@ export default function Bookedstadiumlist() {
     </div>
   ) : (
     <Loader />
+    // <div>no data found</div>
   );
 }
