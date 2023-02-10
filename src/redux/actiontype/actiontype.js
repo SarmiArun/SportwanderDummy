@@ -206,3 +206,9 @@ export const stadiumadd = {
     error: 'stadiumaddadderror'
   }
 };
+export const courtadd = {
+  add: {
+    success: 'courtaddsuccess',
+    error: 'courtadderror'
+  }
+};

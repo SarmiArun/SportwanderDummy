@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import MenuItem from '@mui/material/MenuItem';
-import InputLabel from '@mui/material/InputLabel';
-import Select from '@mui/material/Select';
+import dayjs from 'dayjs';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import { Button, Container, Typography, Stack, Grid, TextField, Box, Modal } from '@mui/material';
@@ -66,12 +67,8 @@ export default function AddStadiumlist() {
     stadium: ''
   });
   const dispatch = useDispatch();
-  const handleChangee = (event) => {
-    setFrom(event.target.value);
-  };
-  const handleChangeee = (event) => {
-    setTo(event.target.value);
-  };
+  const [timeFrom, setTimeFrom] = React.useState(null);
+  const [timeTo, setTimeTo] = React.useState(null);
   const handleChange = (event) => {
     setValue(event.target.value);
   };
@@ -103,35 +100,30 @@ export default function AddStadiumlist() {
         </Stack>
         <Grid container mb={4}>
           <Grid item sm={12} lg={6} md={6} xs={12} pr={2} pl={2} pt={2}>
-            <TextField name="name" label="Stadium Name" onchange={handlechange} fullWidth />
+            <TextField name="name" label="Stadium Name" onChange={handlechange} fullWidth />
           </Grid>
           <Grid item sm={12} lg={6} md={6} xs={12} pr={2} pl={2} pt={2}>
-            <TextField name="street" label="Street Name" onchange={handlechange} fullWidth />
+            <TextField name="street" label="Street Name" onChange={handlechange} fullWidth />
           </Grid>
 
           <Grid item sm={12} lg={6} md={6} xs={12} pl={2} pr={2} pt={2}>
-            <TextField name="district" label="District" onchange={handlechange} fullWidth />
+            <TextField name="district" label="District" onChange={handlechange} fullWidth />
           </Grid>
           <Grid item sm={12} lg={6} md={6} xs={12} pl={2} pr={2} pt={2}>
-            <TextField name="state" label="State" onchange={handlechange} fullWidth />
+            <TextField name="state" label="State" onChange={handlechange} fullWidth />
           </Grid>
           <Grid item sm={12} lg={6} md={6} xs={12} pl={2} pr={2} pt={2}>
-            <TextField name="country" label="Country" onchange={handlechange} fullWidth />
+            <TextField name="country" label="Country" onChange={handlechange} fullWidth />
           </Grid>
           <Grid item sm={12} lg={6} md={6} xs={12} pl={2} pr={2} pt={2}>
-            <TextField name="pincode" label="Pincode" onchange={handlechange} fullWidth />
+            <TextField name="pincode" label="Pincode" onChange={handlechange} fullWidth />
           </Grid>
           <Grid item sm={12} lg={6} md={6} xs={12} pl={2} pr={2} pt={2}>
-            <TextField name="phone" label="Phone Number" onchange={handlechange} fullWidth />
+            <TextField name="phone" label="Phone Number" onChange={handlechange} fullWidth />
           </Grid>
 
           <Grid item sm={12} lg={6} md={6} xs={12} pl={2} pr={2} pt={2}>
-            <TextField
-              name="gst"
-              label="GST Number"
-              onChange={(e) => setValue(e.target.value)}
-              fullWidth
-            />
+            <TextField name="gst" label="GST Number" onChange={handlechange} fullWidth />
           </Grid>
           <Grid item sm={12} lg={6} md={6} xs={12} pl={2} pr={2} pt={2}>
             <FormControl>
@@ -150,34 +142,52 @@ export default function AddStadiumlist() {
             </FormControl>
           </Grid>
           <Grid item sm={12} lg={6} md={6} xs={12} pl={2} pr={2} pt={2}>
-            <FormLabel pb={2}>Availability Time</FormLabel>
-            <br />
-            <TextField label="From" style={{ width: '120px', height: '40px' }} />
-            <FormControl sx={{ m: 1 }} variant="standard">
-              <Select
-                labelId="demo-customized-select-label"
-                id="demo-customized-select"
-                value={from}
-                onChange={handleChangee}
-                input={<BootstrapInput />}
+            <div style={{ display: 'flex' }}>
+              {' '}
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginRight: '20px'
+                }}
               >
-                <MenuItem value={10}>AM</MenuItem>
-                <MenuItem value={20}>PM</MenuItem>
-              </Select>
-            </FormControl>
-            <TextField label="To" style={{ width: '120px', height: '40px' }} />
-            <FormControl sx={{ m: 1 }} variant="standard">
-              <Select
-                labelId="demo-customized-select-label"
-                id="demo-customized-select"
-                value={to}
-                onChange={handleChangeee}
-                input={<BootstrapInput />}
-              >
-                <MenuItem value={10}>AM</MenuItem>
-                <MenuItem value={20}>PM</MenuItem>
-              </Select>
-            </FormControl>
+                {' '}
+                <FormLabel pb={2}>Availability Time</FormLabel>
+              </div>
+              <div>
+                <FormLabel pb={2}>From</FormLabel>
+                <br />
+                <input
+                  placeholder="From"
+                  type="time"
+                  name="timeFrom"
+                  style={{
+                    width: '130px',
+                    height: '50px',
+                    border: '1px solid #dce0e4',
+                    borderRadius: '8px'
+                  }}
+                />
+              </div>
+              <div>
+                {' '}
+                <FormLabel pb={2}>To</FormLabel>
+                <br />
+                <input
+                  type="time"
+                  name="timeTo"
+                  placeholder="To"
+                  style={{
+                    width: '130px',
+                    height: '50px',
+                    border: '1px solid #dce0e4',
+                    borderRadius: '8px',
+                    marginLeft: '20px'
+                  }}
+                />
+              </div>
+            </div>
           </Grid>
           <Grid item sm={12} lg={12} md={12} xs={12} pl={2} pr={2} pt={2}>
             <div>

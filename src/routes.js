@@ -38,7 +38,7 @@ import NewDashboard from './layouts/dashboard/NewDashboard';
 import Addstadiumlist from './pages/StadiumList/Addstadiumlist';
 import Moderators from './pages/Moderator/AddModerator';
 import StadiumFullDetails from './pages/StadiumFullDetails';
-import AddCourt from './pages/AddCourt';
+import AddCourt from './pages/Addcourt';
 // ----------------------------------------------------------------------
 
 export function Router(props) {

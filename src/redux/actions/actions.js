@@ -305,7 +305,6 @@ export function stadiumdetails(data) {
     new Promise((resolve, reject) =>
       axiosInstance('post', '/v1/admin/stadium/detail', data)
         .then((res) => {
-          console.log(res.data.data);
           dispatch({
             type: stadium.details.success,
             data: res?.data?.data
@@ -738,6 +737,32 @@ export function mainaddbanner(data) {
         .catch((err) => {
           dispatch({
             type: mainbanner.add.error,
+            data: err.response.data
+          });
+          reject(err);
+        })
+    );
+}
+export function addcourt(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/court/add', data)
+        .then((res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Court',
+            text: 'Added Successfully!'
+          });
+
+          dispatch({
+            type: addcourt.add.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: addcourt.add.error,
             data: err.response.data
           });
           reject(err);

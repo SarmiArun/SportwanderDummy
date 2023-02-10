@@ -17,7 +17,8 @@ import {
   marathon,
   promocode,
   dashboard,
-  stadiumadd
+  stadiumadd,
+  courtadd
 } from '../actiontype/actiontype';
 
 const initialState = {};
@@ -238,6 +239,22 @@ export const stadiumlist = (state = initialState, actions) => {
         payload: actions.data
       };
     case stadium.List.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const addcourt = (state = initialState, actions) => {
+  switch (actions.type) {
+    case courtadd.add.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case courtadd.add.error:
       return {
         status: false,
         payload: actions.data
