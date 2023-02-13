@@ -39,25 +39,26 @@ export default function Bookedstadiumlist() {
       console.log(res.data.data);
     });
   }, []);
-  console.log(id);
 
+  const handleclick = (val) => {
+    dispatch(changestatus({ stadiumId: 1, status: val }));
+  };
+  console.log(id);
   const list =
     useSelector(({ stadiumlist }) => {
       console.log('stadiums : ', stadiumlist.payload);
-
       let payload =
         Array.isArray(stadiumlist.payload) &&
         stadiumlist.payload.map((v, i) => {
           const index = i + 1;
           return { ...v, sno: index };
         });
-
       payload = stadiumlist.payload === 'No stadiums found' ? [] : payload;
-
       return payload;
     }) ?? [];
   const dispatch = useDispatch();
-
+  const VID = Array.isArray(list) && list?.map((data) => data.id);
+  const CID = VID;
   const columns = [
     {
       name: 'sno',
@@ -152,9 +153,7 @@ export default function Bookedstadiumlist() {
           const status = value === 'active' ? 'active' : 'inactive';
           return (
             <Chip
-              onClick={() => {
-                dispatch(changestatus({ stadiumId: String(CID), status: status }));
-              }}
+              onClick={() => handleclick(status)}
               label={value}
               sx={{ backgroundColor: color, color: 'white', textTransform: 'capitalize' }}
             />
@@ -162,7 +161,6 @@ export default function Bookedstadiumlist() {
         }
       }
     },
-
     {
       name: 'id',
       label: 'Actions',
@@ -222,9 +220,7 @@ export default function Bookedstadiumlist() {
   };
 
   console.log(list);
-  const VID = Array.isArray(list) && list?.map((data) => data.id);
-  const CID = String(VID);
-  console.log(String(VID));
+
   return list ? (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
