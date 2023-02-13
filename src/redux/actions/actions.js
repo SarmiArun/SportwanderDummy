@@ -19,7 +19,9 @@ import {
   promocode,
   marathon,
   dashboard,
-  stadiumadd
+  stadiumadd,
+  courtadd,
+  statuschange
 } from '../actiontype/actiontype';
 
 export function userlogin(data) {
@@ -755,14 +757,40 @@ export function addcourt(data) {
           });
 
           dispatch({
-            type: addcourt.add.success,
+            type: courtadd.add.success,
             data: res?.data?.data
           });
           resolve(res);
         })
         .catch((err) => {
           dispatch({
-            type: addcourt.add.error,
+            type: courtadd.add.error,
+            data: err.response.data
+          });
+          reject(err);
+        })
+    );
+}
+export function changestatus(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/stadium/status', data)
+        .then((res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Stadium',
+            text: 'Status Change Successfully!'
+          });
+
+          dispatch({
+            type: statuschange.add.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: statuschange.add.error,
             data: err.response.data
           });
           reject(err);

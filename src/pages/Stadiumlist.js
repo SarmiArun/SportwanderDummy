@@ -10,7 +10,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Loader from '../components/Loader';
-import { stadiumlist, stadiumupdate } from '../redux/actions/actions';
+import { stadiumlist, stadiumupdate, changestatus } from '../redux/actions/actions';
 
 const modalStyle = {
   position: 'absolute',
@@ -25,6 +25,7 @@ const modalStyle = {
 
 export default function Bookedstadiumlist() {
   const [open, setOpen] = useState(false);
+  const [id, setId] = useState('');
   const [modalImage, setModalImage] = useState();
   const handleOpen = (img) => {
     setModalImage(img);
@@ -33,8 +34,12 @@ export default function Bookedstadiumlist() {
   const handleClose = () => setOpen(false);
 
   useEffect(() => {
-    dispatch(stadiumlist());
+    dispatch(stadiumlist()).then((res) => {
+      setId(res.data.data);
+      console.log(res.data.data);
+    });
   }, []);
+  console.log(id);
 
   const list =
     useSelector(({ stadiumlist }) => {
@@ -144,8 +149,12 @@ export default function Bookedstadiumlist() {
         sort: true,
         customBodyRender: (value, tableMeta, updateValue) => {
           const color = value === 'active' ? '#2DA043' : 'primary';
+          const status = value === 'active' ? 'active' : 'inactive';
           return (
             <Chip
+              onClick={() => {
+                dispatch(changestatus({ stadiumId: String(CID), status: status }));
+              }}
               label={value}
               sx={{ backgroundColor: color, color: 'white', textTransform: 'capitalize' }}
             />
@@ -153,6 +162,7 @@ export default function Bookedstadiumlist() {
         }
       }
     },
+
     {
       name: 'id',
       label: 'Actions',
@@ -212,7 +222,9 @@ export default function Bookedstadiumlist() {
   };
 
   console.log(list);
-
+  const VID = Array.isArray(list) && list?.map((data) => data.id);
+  const CID = String(VID);
+  console.log(String(VID));
   return list ? (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>

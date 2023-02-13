@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import dayjs from 'dayjs';
+import moment from 'moment';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
@@ -47,8 +47,8 @@ const style = {
   boxShadow: 24,
   p: 4
 };
-
 export default function AddStadiumlist() {
+  const img = [];
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -64,32 +64,36 @@ export default function AddStadiumlist() {
     pincode: '',
     phone: '',
     gst: '',
+    image: '',
     stadium: ''
   });
   const dispatch = useDispatch();
-  const [timeFrom, setTimeFrom] = React.useState(null);
-  const [timeTo, setTimeTo] = React.useState(null);
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+  const [timeFrom, setTimeFrom] = useState('');
+  const [image, setImage] = useState([]);
+  const [timeTo, setTimeTo] = useState('');
+  const [book, setBook] = useState('');
   const handlechange = (event) => {
     setStadium(event.target.value);
   };
-  useEffect(() => {
-    dispatch(addstadium());
-  }, []);
-
+  const handleImage = (event) => {
+    img.push(image);
+    setImage(event.target.value);
+    console.log(img[0]);
+  };
+  // const imageChange = (e) => {
+  //   if (e.target.files && e.target.files.length > 0) {
+  //     setImage({ [e.target.name]: e.target.files[0] });
+  //   }
+  // };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    Object.entries(stadium).map(([key, value]) => formData.append(key, value));
-    dispatch(addstadium(formData));
+    const from = moment(timeFrom, 'HH:mm').format('h:mm a');
+    const to = moment(timeTo, 'HH:mm').format('h:mm a');
+    const time = `${from}-${to}`;
+
+    dispatch(addstadium({ ...stadium, duration: time, bookable: book }));
   };
-  const imageChange = (e) => {
-    if (e.target.files && e.target.files.length > 0) {
-      setStadium({ ...stadium, [e.target.name]: e.target.files[0] });
-    }
-  };
+
   return (
     <Page title="Add Stadium">
       <Container>
@@ -131,9 +135,8 @@ export default function AddStadiumlist() {
 
               <RadioGroup
                 aria-labelledby="demo-controlled-radio-buttons-group"
-                name="controlled-radio-buttons-group"
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
+                name="book"
+                onChange={handleImage}
                 row
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
@@ -162,6 +165,7 @@ export default function AddStadiumlist() {
                   placeholder="From"
                   type="time"
                   name="timeFrom"
+                  onChange={(e) => setTimeFrom(e.target.value)}
                   style={{
                     width: '130px',
                     height: '50px',
@@ -178,6 +182,7 @@ export default function AddStadiumlist() {
                   type="time"
                   name="timeTo"
                   placeholder="To"
+                  onChange={(e) => setTimeTo(e.target.value)}
                   style={{
                     width: '130px',
                     height: '50px',
@@ -190,14 +195,7 @@ export default function AddStadiumlist() {
             </div>
           </Grid>
           <Grid item sm={12} lg={12} md={12} xs={12} pl={2} pr={2} pt={2}>
-            <div>
-              <input
-                type="file"
-                onChange={imageChange}
-                name="stadium"
-                style={{ fontSize: '22px', color: '#637381' }}
-              />
-            </div>
+            <TextField name="image" label="Enter Image Link" onChange={handleImage} fullWidth />
           </Grid>
         </Grid>
         <div style={{ display: 'flex', justifyContent: 'center' }}>

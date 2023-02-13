@@ -18,7 +18,8 @@ import {
   promocode,
   dashboard,
   stadiumadd,
-  courtadd
+  courtadd,
+  statuschange
 } from '../actiontype/actiontype';
 
 const initialState = {};
@@ -255,6 +256,22 @@ export const addcourt = (state = initialState, actions) => {
         payload: actions.data
       };
     case courtadd.add.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const changestatus = (state = initialState, actions) => {
+  switch (actions.type) {
+    case statuschange.add.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case statuschange.add.error:
       return {
         status: false,
         payload: actions.data

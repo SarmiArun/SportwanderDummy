@@ -212,3 +212,9 @@ export const courtadd = {
     error: 'courtadderror'
   }
 };
+export const statuschange = {
+  add: {
+    success: 'statuschangesuccess',
+    error: 'statuschangeerror'
+  }
+};
