@@ -1,20 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  Container,
-  Button,
-  Box,
-  TextField,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  Grid,
-  Card,
-  CardActionArea,
-  CardMedia,
-  Chip
-} from '@mui/material';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
+import { Container, Button, Box, Grid, Card, Chip } from '@mui/material';
 import { Link, useParams } from 'react-router-dom';
 import { stadiumdetails, changestatus } from '../redux/actions/actions';
 
@@ -25,6 +13,7 @@ export default function StadiumFullDetails() {
   const [status, setStatus] = useState('');
   const dispatch = useDispatch();
   const { id } = useParams();
+
   useEffect(() => {
     dispatch(stadiumdetails({ id: String(id) }));
   }, [id]);
@@ -44,7 +33,7 @@ export default function StadiumFullDetails() {
       </div>
       <Card style={{ padding: '50px' }}>
         <Grid container spacing={2}>
-          <Grid item xs={8} md={9} lg={7}>
+          <Grid item xs={8} md={9} lg={6}>
             <div style={{ display: 'flex' }}>
               <div
                 style={{
@@ -113,16 +102,29 @@ export default function StadiumFullDetails() {
             >
               Availability Time : <Chip style={{ color: 'red' }} label={data?.availability} />
             </div>
+
             <div>
-              {Array.isArray(data?.images) ? (
-                (data?.images).map((L) => (
-                  <Box sx={{ marginTop: '30px' }}>
-                    <img src={L} alt="ghjdfoihoi" />
-                  </Box>
-                ))
-              ) : (
-                <h2>No image Found!</h2>
-              )}
+              <div
+                style={{
+                  fontSize: '24px',
+                  lineHeight: '24px',
+                  fontWeight: '500',
+                  marginTop: '30px'
+                }}
+              >
+                Location
+              </div>
+              <div
+                style={{
+                  textTransform: 'capitalize',
+                  fontSize: '20px',
+                  lineHeight: '40px',
+                  marginTop: '20px'
+                }}
+              >
+                {data?.street}, {data?.landmark}, {data?.district},<br /> {data?.state},{' '}
+                {data?.country}- {data?.pincode}.
+              </div>
             </div>
             <div>
               {data?.message ? (
@@ -138,89 +140,69 @@ export default function StadiumFullDetails() {
                     Amenities
                   </div>
                   <div style={{ fontSize: '20px', lineHeight: '20px', marginTop: '20px' }}>
-                    {' '}
                     {data?.amenities}
                   </div>
                 </div>
               ) : null}
             </div>
-          </Grid>
-          <Grid item xs={4} md={4} lg={4}>
-            <div>
-              <div style={{ fontSize: '24px', lineHeight: '24px', fontWeight: '500' }}>
-                Location
-              </div>
-              <div
-                style={{
-                  textTransform: 'capitalize',
-                  fontSize: '20px',
-                  lineHeight: '40px',
-                  marginTop: '20px'
-                }}
-              >
-                {data?.street}, {data?.landmark}, {data?.district},<br /> {data?.state},{' '}
-                {data?.country}- {data?.pincode}.
-              </div>
+            <div
+              style={{ fontSize: '24px', lineHeight: '24px', fontWeight: '500', marginTop: '30px' }}
+            >
+              Phone Number:
             </div>
+            <div
+              style={{
+                textTransform: 'capitalize',
+                fontSize: '20px',
+                lineHeight: '30px',
+                marginTop: '20px'
+              }}
+            >
+              {data?.phone}
+            </div>
+            <div
+              style={{
+                fontSize: '24px',
+                lineHeight: '24px',
+                fontWeight: '500',
+                marginTop: '30px'
+              }}
+            >
+              GST Number:
+            </div>
+            <div
+              style={{
+                textTransform: 'capitalize',
+                fontSize: '20px',
+                lineHeight: '30px',
+                marginTop: '20px'
+              }}
+            >
+              {data?.gst_no}
+            </div>
+          </Grid>
+          <Grid item xs={4} md={4} lg={6}>
             <div style={{ marginTop: '30px' }}>
-              <div style={{ fontSize: '24px', lineHeight: '24px', fontWeight: '500' }}>
-                Phone Number:
-              </div>
-              <div
-                style={{
-                  textTransform: 'capitalize',
-                  fontSize: '20px',
-                  lineHeight: '30px',
-                  marginTop: '20px'
-                }}
-              >
-                {data?.phone}
-              </div>
-              <div
-                style={{
-                  fontSize: '24px',
-                  lineHeight: '24px',
-                  fontWeight: '500',
-                  marginTop: '20px'
-                }}
-              >
-                GST Number:
-              </div>
-              <div
-                style={{
-                  textTransform: 'capitalize',
-                  fontSize: '20px',
-                  lineHeight: '30px',
-                  marginTop: '20px'
-                }}
-              >
-                {data?.gst_no}
-              </div>
               <div>
-                {Array.isArray(data?.courts)
-                  ? (data?.courts).map((c) => (
-                      <Box sx={{ marginTop: '30px' }}>
-                        <div style={{ fontSize: '24px', lineHeight: '24px', fontWeight: '500' }}>
-                          Court Details
-                        </div>
-                        <div style={{ fontSize: '20px', lineHeight: '40px', marginTop: '20px' }}>
-                          Court Name: {c.court_name}
-                          <br />
-                          Playable Game: {c.playable_game}
-                          <br />
-                          Duration: {c.duration}
-                          <br />
-                          Created At : {c.createdAt}, <br />
-                          Price: ₹ {c.price}
-                          <br />
-                          {c.date ? <span>Date : {c.date}</span> : null}
-                        </div>
-                      </Box>
+                <Carousel showThumbs={false} emulateTouch="true" infiniteLoop="true">
+                  {Array.isArray(data?.images) ? (
+                    (data?.images).map((L) => (
+                      <div>
+                        <img
+                          src={L}
+                          alt="stadium_image"
+                          style={{ aspectRatio: '16/9', objectFit: 'cover' }}
+                        />
+                      </div>
                     ))
-                  : null}
+                  ) : (
+                    <h2>No image Found!</h2>
+                  )}
+                </Carousel>
               </div>
+
               <div>
-                <div style={{ display: 'flex', marginTop: '20px' }}>
+                <div style={{ display: 'flex', marginTop: '30px' }}>
                   <div
                     style={{
                       fontSize: '24px',
@@ -266,6 +248,110 @@ export default function StadiumFullDetails() {
           </Grid>
         </Grid>
       </Card>
+      <Grid container spacing={2} style={{ marginTop: '20px' }}>
+        {Array.isArray(data?.courts)
+          ? (data?.courts).map((c) => (
+              <Grid item xs={12} md={6} lg={3}>
+                <Card style={{ padding: '20px' }}>
+                  <div>
+                    <Box>
+                      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <div
+                          style={{
+                            fontSize: '32px',
+                            lineHeight: '30px',
+                            marginTop: '10px',
+                            fontWeight: '700',
+                            color: 'black',
+                            textTransform: 'capitalize'
+                          }}
+                        >
+                          {c.court_name}{' '}
+                        </div>
+                        <Chip
+                          style={{
+                            color: 'red',
+                            borderRadius: '8px',
+                            marginRight: '20px',
+                            textTransform: 'capitalize'
+                          }}
+                          label={c.playable_game}
+                        />
+                      </div>
+                      <div style={{ fontSize: '20px', lineHeight: '40px', marginTop: '20px' }}>
+                        <span
+                          style={{
+                            fontSize: '20px',
+                            lineHeight: '20px',
+                            marginTop: '10px',
+                            fontWeight: '500',
+                            color: 'black',
+                            textTransform: 'capitalize'
+                          }}
+                        >
+                          Created At :
+                        </span>
+                        {c.createdAt}, <br />
+                        <span
+                          style={{
+                            fontSize: '20px',
+                            lineHeight: '20px',
+                            marginTop: '10px',
+                            fontWeight: '500',
+                            color: 'black',
+                            textTransform: 'capitalize'
+                          }}
+                        >
+                          Updated At :
+                        </span>{' '}
+                        {c.updatedAt}, <br />
+                        <span
+                          style={{
+                            fontSize: '20px',
+                            lineHeight: '20px',
+                            marginTop: '10px',
+                            fontWeight: '500',
+                            color: 'black',
+                            textTransform: 'capitalize'
+                          }}
+                        >
+                          Price:
+                        </span>
+                        ₹ {c.price}
+                        <br />
+                        {c.date ? <span>Date : {c.date}</span> : null}
+                      </div>
+                    </Box>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                    <Button
+                      style={{
+                        background: 'green',
+                        color: 'white'
+                      }}
+                    >
+                      Court Timming
+                    </Button>
+                    <Link
+                      to="/admin/defaultcourt"
+                      state={{ stadiumId: c.stadium_id, courtId: c.id }}
+                    >
+                      {' '}
+                      <Button
+                        style={{
+                          background: 'Red',
+                          color: 'white'
+                        }}
+                      >
+                        Default Timming
+                      </Button>{' '}
+                    </Link>
+                  </div>
+                </Card>
+              </Grid>
+            ))
+          : null}
+      </Grid>
     </div>
   );
 }

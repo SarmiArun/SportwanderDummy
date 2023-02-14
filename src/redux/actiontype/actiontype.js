@@ -210,6 +210,10 @@ export const courtadd = {
   add: {
     success: 'courtaddsuccess',
     error: 'courtadderror'
+  },
+  defaulttime: {
+    success: 'defaulttimeaddsucess',
+    error: 'defaulttimeerror'
   }
 };
 export const statuschange = {

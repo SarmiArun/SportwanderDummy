@@ -41,7 +41,7 @@ export default function Bookedstadiumlist() {
   }, []);
 
   const handleclick = (val) => {
-    dispatch(changestatus({ stadiumId: 1, status: val }));
+    dispatch(changestatus({ stadiumId: CID, status: val === 'active' ? 'inactive' : 'active' }));
   };
   console.log(id);
   const list =
@@ -58,7 +58,7 @@ export default function Bookedstadiumlist() {
     }) ?? [];
   const dispatch = useDispatch();
   const VID = Array.isArray(list) && list?.map((data) => data.id);
-  const CID = VID;
+  const CID = String(VID);
   const columns = [
     {
       name: 'sno',
@@ -76,7 +76,7 @@ export default function Bookedstadiumlist() {
           <>
             <Button onClick={() => handleOpen(value)}>
               <img
-                src={value}
+                src={value[0]}
                 alt="stadium_img"
                 style={{ aspectRatio: '16/9', objectFit: 'cover', width: '150px' }}
               />
@@ -149,12 +149,12 @@ export default function Bookedstadiumlist() {
       options: {
         sort: true,
         customBodyRender: (value, tableMeta, updateValue) => {
-          const color = value === 'active' ? '#2DA043' : 'primary';
+          const color = value === 'active' ? '#2DA043' : 'red';
           const status = value === 'active' ? 'active' : 'inactive';
           return (
             <Chip
               onClick={() => handleclick(status)}
-              label={value}
+              label={value === 'active' ? 'active' : 'inactive'}
               sx={{ backgroundColor: color, color: 'white', textTransform: 'capitalize' }}
             />
           );

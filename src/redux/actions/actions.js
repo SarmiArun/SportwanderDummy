@@ -771,6 +771,32 @@ export function addcourt(data) {
         })
     );
 }
+export function defaulttime(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/court/defaulttime', data)
+        .then((res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Court',
+            text: 'Added Successfully!'
+          });
+
+          dispatch({
+            type: courtadd.defaulttime.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: courtadd.defaulttime.error,
+            data: err.response.data
+          });
+          reject(err);
+        })
+    );
+}
 export function changestatus(data) {
   return (dispatch) =>
     new Promise((resolve, reject) =>
@@ -781,7 +807,7 @@ export function changestatus(data) {
             title: 'Stadium',
             text: 'Status Change Successfully!'
           });
-
+          dispatch(stadiumlist());
           dispatch({
             type: statuschange.add.success,
             data: res?.data?.data
