@@ -21,7 +21,8 @@ import {
   dashboard,
   stadiumadd,
   courtadd,
-  statuschange
+  statuschange,
+  bookcourt
 } from '../actiontype/actiontype';
 
 export function userlogin(data) {
@@ -349,6 +350,32 @@ export function stadiumupdate(data) {
         })
     );
 }
+export function stadiumdelete(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/stadium/delete', data)
+        .then((res) => {
+          dispatch(stadiumlist());
+          Swal.fire({
+            icon: 'success',
+            title: 'Stadium',
+            text: 'Deleted Successfully!'
+          });
+          dispatch({
+            type: stadium.delete.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: stadium.delete.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
 export function eventorgcount() {
   return (dispatch) =>
     new Promise((resolve, reject) =>
@@ -548,6 +575,26 @@ export function notifyadd(data) {
         .catch((err) => {
           dispatch({
             type: notify.add.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
+export function courtbook(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/stadium/book', data)
+        .then((res) => {
+          dispatch({
+            type: bookcourt.book.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: bookcourt.book.error,
             data: err
           });
           reject(err);
@@ -797,6 +844,32 @@ export function defaulttime(data) {
         })
     );
 }
+export function addtime(data) {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/court/addtime', data)
+        .then((res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Court',
+            text: 'Added Successfully!'
+          });
+
+          dispatch({
+            type: courtadd.courttime.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: courtadd.courttime.error,
+            data: err.response.data
+          });
+          reject(err);
+        })
+    );
+}
 export function changestatus(data) {
   return (dispatch) =>
     new Promise((resolve, reject) =>
@@ -826,7 +899,7 @@ export function changestatus(data) {
 export function addstadium(data) {
   return (dispatch) =>
     new Promise((resolve, reject) =>
-      axiosInstance('post', '/v1/stadium/add', data)
+      axiosInstance('post', '/v1/admin/stadium/add', data)
         .then((res) => {
           Swal.fire({
             icon: 'success',
@@ -848,6 +921,7 @@ export function addstadium(data) {
         })
     );
 }
+
 export function mainlistbanner(data) {
   return (dispatch) =>
     new Promise((resolve, reject) =>

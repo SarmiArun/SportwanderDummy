@@ -10,7 +10,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Loader from '../components/Loader';
-import { stadiumlist, stadiumupdate, changestatus } from '../redux/actions/actions';
+import { stadiumlist, stadiumupdate, changestatus, stadiumdelete } from '../redux/actions/actions';
 
 const modalStyle = {
   position: 'absolute',
@@ -59,6 +59,7 @@ export default function Bookedstadiumlist() {
   const dispatch = useDispatch();
   const VID = Array.isArray(list) && list?.map((data) => data.id);
   const CID = String(VID);
+
   const columns = [
     {
       name: 'sno',
@@ -191,6 +192,7 @@ export default function Bookedstadiumlist() {
               <EditIcon />
             </Button>
             <Button
+              onClick={() => dispatch(stadiumdelete({ stadiumId: String(value) }))}
               color="error"
               sx={{ boxShadow: 'none', marginLeft: '10px' }}
               disableElevation

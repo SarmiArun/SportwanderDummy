@@ -19,7 +19,8 @@ import {
   dashboard,
   stadiumadd,
   courtadd,
-  statuschange
+  statuschange,
+  bookcourt
 } from '../actiontype/actiontype';
 
 const initialState = {};
@@ -264,6 +265,22 @@ export const addcourt = (state = initialState, actions) => {
       return state;
   }
 };
+export const courttiming = (state = initialState, actions) => {
+  switch (actions.type) {
+    case courtadd.courttime.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case courtadd.courttime.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
 export const changestatus = (state = initialState, actions) => {
   switch (actions.type) {
     case statuschange.add.success:
@@ -288,6 +305,22 @@ export const stadiumupdate = (state = initialState, actions) => {
         payload: actions.data
       };
     case stadium.update.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const stadiumdelete = (state = initialState, actions) => {
+  switch (actions.type) {
+    case stadium.delete.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case stadium.delete.error:
       return {
         status: false,
         payload: actions.data
@@ -448,6 +481,22 @@ export const notifyadd = (state = initialState, actions) => {
         payload: actions.data
       };
     case notify.add.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
+export const courtbook = (state = initialState, actions) => {
+  switch (actions.type) {
+    case bookcourt.book.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case bookcourt.book.error:
       return {
         status: false,
         payload: actions.data

@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import moment from 'moment';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import { TagsInput } from 'react-tag-input-component';
 import { styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import { Button, Container, Typography, Stack, Grid, TextField, Box, Modal } from '@mui/material';
@@ -57,29 +57,34 @@ export default function AddStadiumlist() {
   const [to, setTo] = React.useState('');
   const [stadium, setStadium] = React.useState({
     name: '',
+    amenities: '',
     street: '',
+    landmark: '',
     district: '',
+    location: '',
     state: '',
     country: '',
     pincode: '',
     phone: '',
     gst: '',
-    image: '',
-    stadium: ''
+    stadium: '',
+    about: ''
   });
   const dispatch = useDispatch();
   const [timeFrom, setTimeFrom] = useState('');
   const [image, setImage] = useState([]);
+  const [sports, setSports] = useState([]);
   const [timeTo, setTimeTo] = useState('');
   const [book, setBook] = useState('');
-  const handlechange = (event) => {
-    setStadium(event.target.value);
+  const handlechange = (e) => {
+    setStadium({ ...stadium, [e.target.name]: e.target.value });
   };
-  const handleImage = (event) => {
-    img.push(image);
-    setImage(event.target.value);
-    console.log(img[0]);
-  };
+
+  // const handleImage = (event) => {
+  //   img.push(image);
+  //   setImage(event.target.value);
+  //   console.log(img[0]);
+  // };
   // const imageChange = (e) => {
   //   if (e.target.files && e.target.files.length > 0) {
   //     setImage({ [e.target.name]: e.target.files[0] });
@@ -91,7 +96,15 @@ export default function AddStadiumlist() {
     const to = moment(timeTo, 'HH:mm').format('h:mm a');
     const time = `${from}-${to}`;
 
-    dispatch(addstadium({ ...stadium, duration: time, bookable: book }));
+    dispatch(
+      addstadium({
+        ...stadium,
+        availability: time,
+        bookable: book,
+        sports_available: sports,
+        image
+      })
+    );
   };
 
   return (
@@ -104,31 +117,97 @@ export default function AddStadiumlist() {
         </Stack>
         <Grid container mb={4}>
           <Grid item sm={12} lg={6} md={6} xs={12} pr={2} pl={2} pt={2}>
-            <TextField name="name" label="Stadium Name" onChange={handlechange} fullWidth />
+            <TextField
+              name="name"
+              label="Stadium Name"
+              onChange={handlechange}
+              inputProps={{ minLength: 3 }}
+              fullWidth
+            />
+          </Grid>
+
+          <Grid item sm={12} lg={6} md={6} xs={12} pr={2} pl={2} pt={2}>
+            <TextField
+              name="street"
+              label="Street Name"
+              onChange={handlechange}
+              inputProps={{ minLength: 3 }}
+              fullWidth
+            />
+          </Grid>
+          <Grid item sm={12} lg={6} md={6} xs={12} pl={2} pr={2} pt={2}>
+            <TextField
+              name="district"
+              label="District"
+              onChange={handlechange}
+              inputProps={{ minLength: 3 }}
+              fullWidth
+            />
+          </Grid>
+          <Grid item sm={12} lg={6} md={6} xs={12} pl={2} pr={2} pt={2}>
+            <TextField
+              name="state"
+              label="State"
+              onChange={handlechange}
+              inputProps={{ minLength: 3 }}
+              fullWidth
+            />
+          </Grid>
+          <Grid item sm={12} lg={6} md={6} xs={12} pl={2} pr={2} pt={2}>
+            <TextField
+              name="country"
+              label="Country"
+              onChange={handlechange}
+              inputProps={{ minLength: 3 }}
+              fullWidth
+            />
+          </Grid>
+          <Grid item sm={12} lg={6} md={6} xs={12} pl={2} pr={2} pt={2}>
+            <TextField
+              name="pincode"
+              label="Pincode"
+              onChange={handlechange}
+              inputProps={{ maxLength: 6 }}
+              fullWidth
+            />
           </Grid>
           <Grid item sm={12} lg={6} md={6} xs={12} pr={2} pl={2} pt={2}>
-            <TextField name="street" label="Street Name" onChange={handlechange} fullWidth />
+            <TextField
+              name="landmark"
+              label="Land Mark"
+              onChange={handlechange}
+              inputProps={{ minLength: 3 }}
+              fullWidth
+            />
+          </Grid>
+          <Grid item sm={12} lg={6} md={6} xs={12} pr={2} pl={2} pt={2}>
+            <TextField
+              name="location"
+              label="Location"
+              inputProps={{ minLength: 3 }}
+              onChange={handlechange}
+              fullWidth
+            />
+          </Grid>
+          <Grid item sm={12} lg={6} md={6} xs={12} pl={2} pr={2} pt={2}>
+            <TextField
+              name="phone"
+              label="Phone Number"
+              onChange={handlechange}
+              inputProps={{ maxLength: 10 }}
+              fullWidth
+            />
+          </Grid>
+          <Grid item sm={12} lg={6} md={6} xs={12} pl={2} pr={2} pt={2}>
+            <TextField
+              name="gst"
+              label="GST Number"
+              onChange={handlechange}
+              inputProps={{ maxLength: 15 }}
+              fullWidth
+            />
           </Grid>
 
-          <Grid item sm={12} lg={6} md={6} xs={12} pl={2} pr={2} pt={2}>
-            <TextField name="district" label="District" onChange={handlechange} fullWidth />
-          </Grid>
-          <Grid item sm={12} lg={6} md={6} xs={12} pl={2} pr={2} pt={2}>
-            <TextField name="state" label="State" onChange={handlechange} fullWidth />
-          </Grid>
-          <Grid item sm={12} lg={6} md={6} xs={12} pl={2} pr={2} pt={2}>
-            <TextField name="country" label="Country" onChange={handlechange} fullWidth />
-          </Grid>
-          <Grid item sm={12} lg={6} md={6} xs={12} pl={2} pr={2} pt={2}>
-            <TextField name="pincode" label="Pincode" onChange={handlechange} fullWidth />
-          </Grid>
-          <Grid item sm={12} lg={6} md={6} xs={12} pl={2} pr={2} pt={2}>
-            <TextField name="phone" label="Phone Number" onChange={handlechange} fullWidth />
-          </Grid>
-
-          <Grid item sm={12} lg={6} md={6} xs={12} pl={2} pr={2} pt={2}>
-            <TextField name="gst" label="GST Number" onChange={handlechange} fullWidth />
-          </Grid>
           <Grid item sm={12} lg={6} md={6} xs={12} pl={2} pr={2} pt={2}>
             <FormControl>
               <FormLabel id="demo-controlled-radio-buttons-group">Bookable</FormLabel>
@@ -136,11 +215,11 @@ export default function AddStadiumlist() {
               <RadioGroup
                 aria-labelledby="demo-controlled-radio-buttons-group"
                 name="book"
-                onChange={handleImage}
+                onChange={(e) => setBook(e.target.value)}
                 row
               >
-                <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
-                <FormControlLabel value="No" control={<Radio />} label="No" />
+                <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+                <FormControlLabel value="no" control={<Radio />} label="No" />
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -195,7 +274,40 @@ export default function AddStadiumlist() {
             </div>
           </Grid>
           <Grid item sm={12} lg={12} md={12} xs={12} pl={2} pr={2} pt={2}>
-            <TextField name="image" label="Enter Image Link" onChange={handleImage} fullWidth />
+            <TagsInput
+              value={image}
+              onChange={setImage}
+              name="images"
+              placeHolder="Enter Image Link"
+            />
+            <em>press enter to add new image link</em>
+          </Grid>
+          <Grid item sm={12} lg={12} md={12} xs={12} pl={2} pr={2} pt={2}>
+            <TextField
+              name="about"
+              label="About"
+              onChange={handlechange}
+              inputProps={{ minLength: 3 }}
+              fullWidth
+            />
+          </Grid>
+          <Grid item sm={12} lg={12} md={12} xs={12} pl={2} pr={2} pt={2}>
+            <TextField
+              name="amenities"
+              label="Amenities"
+              onChange={handlechange}
+              inputProps={{ minLength: 3 }}
+              fullWidth
+            />
+          </Grid>
+          <Grid item sm={12} lg={12} md={12} xs={12} pl={2} pr={2} pt={2}>
+            <TagsInput
+              value={sports}
+              onChange={setSports}
+              name="sports_available"
+              placeHolder="Enter Sports"
+            />
+            <em>press enter to add new sports</em>
           </Grid>
         </Grid>
         <div style={{ display: 'flex', justifyContent: 'center' }}>

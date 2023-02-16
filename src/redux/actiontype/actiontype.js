@@ -175,6 +175,10 @@ export const stadium = {
   details: {
     success: 'stadiumdetailsuccess',
     error: 'stadiumudetailerror'
+  },
+  delete: {
+    success: 'stadiumadddeltesuccess',
+    error: 'stadiumadddeleteerror'
   }
 };
 export const promocode = {
@@ -214,11 +218,21 @@ export const courtadd = {
   defaulttime: {
     success: 'defaulttimeaddsucess',
     error: 'defaulttimeerror'
+  },
+  courttime: {
+    success: 'courttimeaddsucess',
+    error: 'courttimeerror'
   }
 };
 export const statuschange = {
   add: {
     success: 'statuschangesuccess',
     error: 'statuschangeerror'
+  }
+};
+export const bookcourt = {
+  book: {
+    success: 'bookcourtsuccess',
+    error: 'bookcourterror'
   }
 };

@@ -40,6 +40,7 @@ import Moderators from './pages/Moderator/AddModerator';
 import StadiumFullDetails from './pages/StadiumFullDetails';
 import AddCourt from './pages/Addcourt';
 import DefaultCourt from './pages/DefaultCourt';
+import CourtTimming from './pages/CourtTimming';
 // ----------------------------------------------------------------------
 
 export function Router(props) {
@@ -55,6 +56,7 @@ export function Router(props) {
         { path: 'addcourt', element: <AddCourt /> },
         { path: 'testing', element: <Testing /> },
         { path: 'defaultcourt', element: <DefaultCourt /> },
+        { path: 'courttiming', element: <CourtTimming /> },
         { path: 'Privacypolicy', element: <Privacypolicy /> },
         { path: 'BookedStadiums', element: <BookedStadiums /> },
         // { path: 'addmoderators', element: <AddModerators /> },
