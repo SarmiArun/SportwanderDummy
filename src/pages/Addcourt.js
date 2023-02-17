@@ -3,15 +3,27 @@ import { useLocation } from 'react-router-dom';
 import moment from 'moment';
 import { Button, Container, Typography, Stack, Grid, TextField, Box, Modal } from '@mui/material';
 import FormLabel from '@mui/material/FormLabel';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import { makeStyles } from '@mui/styles';
+import RadioGroup from '@mui/material/RadioGroup';
+import Select from '@mui/material/Select';
+import FormControl from '@mui/material/FormControl';
 import { useDispatch, useSelector } from 'react-redux';
 import { addcourt } from '../redux/actions/actions';
 
+const useStyles = makeStyles({
+  paper: {
+    overflowY: 'scroll',
+    height: '450px'
+  }
+});
 function AddCourt(props) {
   const [court, setCourt] = useState({
     playableGame: '',
     courtName: ''
   });
-
+  const classes = useStyles();
   const [price, setPrice] = useState('');
   const [timeFrom, setTimeFrom] = useState('');
   const [timeTo, setTimeTo] = useState('');
@@ -19,15 +31,17 @@ function AddCourt(props) {
   const { data } = location.state;
   console.log(data);
   const dispatch = useDispatch();
-
+  const MenuProps = {
+    autoFocus: false
+  };
   const handleChange = (e) => {
     setCourt({ ...court, [e.target.name]: e.target.value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     const pri = Number(price);
-    const from = moment(timeFrom, 'HH:mm').format('h:mm a');
-    const to = moment(timeTo, 'HH:mm').format('h:mm a');
+    const from = timeFrom;
+    const to = timeTo;
     const time = `${from}-${to}`;
     dispatch(addcourt({ ...court, duration: time, price: pri, stadiumId: data }));
   };
@@ -64,55 +78,101 @@ function AddCourt(props) {
           <Grid item sm={12} lg={6} md={6} xs={12} pl={2} pr={2} pt={2}>
             <div style={{ display: 'flex' }}>
               {' '}
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  marginRight: '20px'
-                }}
-              >
-                <FormLabel pb={2}>Duration</FormLabel>
-              </div>
+              <FormLabel pb={2}>Duration</FormLabel>
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'flex-start',
+                marginRight: '20px',
+                marginTop: '10px'
+              }}
+            >
               <div>
-                <FormLabel pb={2}>From</FormLabel>
-                <br />
-                <input
-                  placeholder="From"
-                  type="time"
-                  name="timeFrom"
-                  onChange={(e) => setTimeFrom(e.target.value)}
-                  style={{
-                    width: '140px',
-                    height: '60px',
-                    border: '1px solid #dce0e4',
-                    borderRadius: '8px',
-                    fontFamily: 'poppins',
-                    fontSize: '18px',
-                    padding: '10px',
-                    marginRight: '10px'
-                  }}
-                />
+                <FormControl style={{ width: '130px', height: '50px' }}>
+                  <InputLabel id="demo-simple-select-label">From</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    label="From"
+                    name="timeFrom"
+                    MenuProps={{
+                      ...MenuProps,
+                      classes: {
+                        paper: classes.paper
+                      }
+                    }}
+                    onChange={(e) => setTimeFrom(e.target.value)}
+                  >
+                    <MenuItem value="12AM">12.00</MenuItem>
+                    <MenuItem value="1AM">01.00</MenuItem>
+                    <MenuItem value="2AM">02.00</MenuItem>
+                    <MenuItem value="3AM">03.00</MenuItem>
+                    <MenuItem value="4AM">04.00</MenuItem>
+                    <MenuItem value="5AM">05.00</MenuItem>
+                    <MenuItem value="6AM">06.00</MenuItem>
+                    <MenuItem value="7AM">07.00</MenuItem>
+                    <MenuItem value="8AM">08.00</MenuItem>
+                    <MenuItem value="9AM">09.00</MenuItem>
+                    <MenuItem value="10AM">10.00</MenuItem>
+                    <MenuItem value="11AM">11.00</MenuItem>
+                    <MenuItem value="12PM">00.00</MenuItem>
+                    <MenuItem value="1PM">13.00</MenuItem>
+                    <MenuItem value="2PM">14.00</MenuItem>
+                    <MenuItem value="3PM">15.00</MenuItem>
+                    <MenuItem value="4PM">16.00</MenuItem>
+                    <MenuItem value="5PM">17.00</MenuItem>
+                    <MenuItem value="6PM">18.00</MenuItem>
+                    <MenuItem value="7PM">19.00</MenuItem>
+                    <MenuItem value="8PM">20.00</MenuItem>
+                    <MenuItem value="9PM">21.00</MenuItem>
+                    <MenuItem value="10PM">22.00</MenuItem>
+                    <MenuItem value="11PM">23.00</MenuItem>
+                  </Select>
+                </FormControl>
               </div>
-              <div>
-                {' '}
-                <FormLabel pb={2}>To</FormLabel>
-                <br />
-                <input
-                  type="time"
-                  name="timeTo"
-                  placeholder="To"
-                  onChange={(e) => setTimeTo(e.target.value)}
-                  style={{
-                    width: '140px',
-                    height: '60px',
-                    border: '1px solid #dce0e4',
-                    borderRadius: '8px',
-                    fontFamily: 'poppins',
-                    fontSize: '18px',
-                    padding: '10px'
-                  }}
-                />
+              <div style={{ marginLeft: '20px' }}>
+                <FormControl style={{ width: '130px', height: '20px' }}>
+                  <InputLabel id="demo-simple-select-label">To</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    label="To"
+                    name="timeTo"
+                    onChange={(e) => setTimeTo(e.target.value)}
+                    MenuProps={{
+                      ...MenuProps,
+                      classes: {
+                        paper: classes.paper
+                      }
+                    }}
+                  >
+                    <MenuItem value="12AM">12.00</MenuItem>
+                    <MenuItem value="1AM">01.00</MenuItem>
+                    <MenuItem value="2AM">02.00</MenuItem>
+                    <MenuItem value="3AM">03.00</MenuItem>
+                    <MenuItem value="4AM">04.00</MenuItem>
+                    <MenuItem value="5AM">05.00</MenuItem>
+                    <MenuItem value="6AM">06.00</MenuItem>
+                    <MenuItem value="7AM">07.00</MenuItem>
+                    <MenuItem value="8AM">08.00</MenuItem>
+                    <MenuItem value="9AM">09.00</MenuItem>
+                    <MenuItem value="10AM">10.00</MenuItem>
+                    <MenuItem value="11AM">11.00</MenuItem>
+                    <MenuItem value="12PM">00.00</MenuItem>
+                    <MenuItem value="1PM">13.00</MenuItem>
+                    <MenuItem value="2PM">14.00</MenuItem>
+                    <MenuItem value="3PM">15.00</MenuItem>
+                    <MenuItem value="4PM">16.00</MenuItem>
+                    <MenuItem value="5PM">17.00</MenuItem>
+                    <MenuItem value="6PM">18.00</MenuItem>
+                    <MenuItem value="7PM">19.00</MenuItem>
+                    <MenuItem value="8PM">20.00</MenuItem>
+                    <MenuItem value="9PM">21.00</MenuItem>
+                    <MenuItem value="10PM">22.00</MenuItem>
+                    <MenuItem value="11PM">23.00</MenuItem>
+                  </Select>
+                </FormControl>
               </div>
             </div>
           </Grid>
@@ -126,22 +186,6 @@ function AddCourt(props) {
             onClick={handleSubmit}
           >
             submit
-          </Button>
-
-          <Button
-            variant="contained"
-            style={{ textTransform: 'uppercase', boxShadow: 'none', marginRight: '10px' }}
-            size="large"
-          >
-            Court Timing
-          </Button>
-
-          <Button
-            variant="contained"
-            style={{ textTransform: 'uppercase', boxShadow: 'none' }}
-            size="large"
-          >
-            Default Timing
           </Button>
         </div>
       </Container>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link, useParams, useNavigate } from 'react-router-dom';
 import {
   Button,
   Container,
@@ -22,6 +22,7 @@ import { defaulttime } from '../redux/actions/actions';
 function DefaultCourt(props) {
   const [values, setValues] = useState([]);
   const location = useLocation();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [data, setData] = React.useState({
     time: '00:00 - 01:00',
@@ -360,6 +361,7 @@ function DefaultCourt(props) {
 
   return (
     <Container>
+      <Button onClick={() => navigate(-1)}>Back</Button>
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
         <Typography variant="h4" pl={2} gutterBottom>
           Add Default Court time
@@ -390,7 +392,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -407,7 +409,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -446,7 +448,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -463,7 +465,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -502,7 +504,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -519,7 +521,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -558,7 +560,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -575,7 +577,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -614,7 +616,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -631,7 +633,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -670,7 +672,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -687,7 +689,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -726,7 +728,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -743,7 +745,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -782,7 +784,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -799,7 +801,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -838,7 +840,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -855,7 +857,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -894,7 +896,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -911,7 +913,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -950,7 +952,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -967,7 +969,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1006,7 +1008,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1023,7 +1025,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1062,7 +1064,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1079,7 +1081,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1118,7 +1120,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1135,7 +1137,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1174,7 +1176,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1191,7 +1193,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1230,7 +1232,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1247,7 +1249,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1286,7 +1288,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1303,7 +1305,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1342,7 +1344,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1359,7 +1361,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1398,7 +1400,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1415,7 +1417,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1454,7 +1456,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1471,7 +1473,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1510,7 +1512,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1527,7 +1529,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1566,7 +1568,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1583,7 +1585,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1622,7 +1624,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1639,7 +1641,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1678,7 +1680,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1695,7 +1697,7 @@ function DefaultCourt(props) {
                 borderRadius: '8px',
                 marginRight: '20px',
                 textTransform: 'capitalize',
-                fontSize: '28px',
+                fontSize: '16px',
                 lineHeight: '28px',
                 padding: '30px 20px'
               }}
@@ -1726,9 +1728,16 @@ function DefaultCourt(props) {
           <Button onClick={handleSubmit23}>Add</Button>
         </Grid>
       </Grid>
-      <button onClick={handleallsubmit} type="submit">
+      <Button
+        className="pr-2"
+        variant="contained"
+        style={{ textTransform: 'uppercase', boxShadow: 'none', marginRight: '10px' }}
+        size="large"
+        onClick={handleallsubmit}
+        type="submit"
+      >
         Submit
-      </button>
+      </Button>
     </Container>
   );
 }

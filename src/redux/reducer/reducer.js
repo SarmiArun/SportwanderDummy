@@ -505,6 +505,22 @@ export const courtbook = (state = initialState, actions) => {
       return state;
   }
 };
+export const BookedCourts = (state = initialState, actions) => {
+  switch (actions.type) {
+    case bookcourt.bookedcourt.success:
+      return {
+        status: true,
+        payload: actions.data
+      };
+    case bookcourt.bookedcourt.error:
+      return {
+        status: false,
+        payload: actions.data
+      };
+    default:
+      return state;
+  }
+};
 export const addmoderators = (state = initialState, actions) => {
   switch (actions.type) {
     case moderators.add.success:

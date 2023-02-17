@@ -601,6 +601,26 @@ export function courtbook(data) {
         })
     );
 }
+export function BookedCourts() {
+  return (dispatch) =>
+    new Promise((resolve, reject) =>
+      axiosInstance('post', '/v1/admin/stadium/bookedlist')
+        .then((res) => {
+          dispatch({
+            type: bookcourt.bookedcourt.success,
+            data: res?.data?.data
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          dispatch({
+            type: bookcourt.bookedcourt.error,
+            data: err
+          });
+          reject(err);
+        })
+    );
+}
 export function promocodeadd(data) {
   return (dispatch) =>
     new Promise((resolve, reject) =>

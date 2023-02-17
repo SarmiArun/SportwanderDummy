@@ -234,5 +234,9 @@ export const bookcourt = {
   book: {
     success: 'bookcourtsuccess',
     error: 'bookcourterror'
+  },
+  bookedcourt: {
+    success: 'bookedcourtsuccess',
+    error: 'bookedcourterror'
   }
 };

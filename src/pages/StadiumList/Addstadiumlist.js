@@ -50,6 +50,7 @@ const style = {
 export default function AddStadiumlist() {
   const img = [];
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [value, setValue] = useState('no');
@@ -110,6 +111,7 @@ export default function AddStadiumlist() {
   return (
     <Page title="Add Stadium">
       <Container>
+        <Button onClick={() => navigate(-1)}>Back</Button>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
           <Typography variant="h4" pl={2} gutterBottom>
             Add Stadium
