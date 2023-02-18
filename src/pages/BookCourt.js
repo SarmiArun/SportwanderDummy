@@ -7,21 +7,20 @@ import moment from 'moment';
 import Typography from '@mui/material/Typography';
 import { Container, Button, Box, Grid, Card, Chip } from '@mui/material';
 import FormLabel from '@mui/material/FormLabel';
-import { courtbook, BookedCourts } from '../redux/actions/actions';
+import { courtbook } from '../redux/actions/actions';
 
 const BookCourt = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const [datep, setDatep] = React.useState();
+  const [data, setData] = React.useState([]);
+  const [slotselected, setSlotSelected] = useState([]);
+  const [slotlist, setSlotlist] = useState([]);
+  const [slot, setSlot] = useState([]);
+  const [bookprice, setBookprice] = useState([]);
   const navigate = useNavigate();
   console.log(datep);
   const { stadiumId, courtId } = location.state;
-
-  useEffect(() => {
-    dispatch(BookedCourts());
-  }, []);
-  const data = useSelector(({ BookedCourts }) => BookedCourts.payload);
-  console.log('list', data);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,15 +32,28 @@ const BookCourt = () => {
         courtId: String(courtId),
         stadiumId: String(stadiumId)
       })
-    );
+    ).then((res) => {
+      setData(res.data.data);
+      console.log(data);
+    });
   };
+
+  const slots = slotselected;
+  slots[index] = !slots[index];
+  const filteredslots = slotlist
+    .filter((data, index) => slots[index])
+    .map((data) => Number(data.price));
+  let price = 0;
+  if (filteredslots.length > 0) price = filteredslots.reduce((from, to) => from + to);
+  else setBookprice(price);
+  setSlotSelected([...slotselected]);
+
   return (
     <Box>
       <Grid container mb={4}>
         <Button onClick={() => navigate(-1)}>Back</Button>
         <Grid item sm={12} lg={12} md={12} xs={12} pl={2} pr={3} pt={2}>
           <div style={{ display: 'flex' }}>
-            {' '}
             <div>
               {' '}
               <FormLabel>Enter the Date</FormLabel>
@@ -87,34 +99,38 @@ const BookCourt = () => {
           </div>
         </Grid>
       </Grid>
-      {data ? (
-        <Grid container spacing={2} className="mt-3">
-          <Grid item xs={12} sm={6} md={4} lg={2}>
-            <Card
-              style={{
-                borderRadius: '12px',
-                width: '200px',
-                padding: '15px',
-                cursor: 'pointer'
-              }}
-            >
-              <Typography
-                style={{
-                  fontSize: '18px',
-                  lineHeight: '18px',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  fontFamily: 'poppins',
-                  fontWeight: '500'
-                }}
-                gutterBottom
-              >
-                ,kjhv
-              </Typography>
-            </Card>
-          </Grid>
-        </Grid>
-      ) : null}
+
+      <Grid container spacing={2} className="mt-3">
+        {Array.isArray(data) && data?.length > 0
+          ? data.map((x, index) => (
+              <Grid item sm={12} lg={2} md={6} xs={12} pr={2} pl={2} pt={2}>
+                <Card
+                  onClick={(e) => setSlot(index)}
+                  style={{
+                    borderRadius: '12px',
+                    width: '200px',
+                    padding: '15px',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <Typography
+                    style={{
+                      fontSize: '18px',
+                      lineHeight: '18px',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      fontFamily: 'poppins',
+                      fontWeight: '500'
+                    }}
+                    gutterBottom
+                  >
+                    {x.time}
+                  </Typography>
+                </Card>
+              </Grid>
+            ))
+          : false}
+      </Grid>
     </Box>
   );
 };
