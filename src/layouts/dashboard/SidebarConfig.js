@@ -67,6 +67,11 @@ const sidebarConfig = [
     path: '/admin/Mainbanner',
     icon: getIcon(imageFill)
   },
+  {
+    title: 'Stadium Owner',
+    path: '/admin/stadiumowner',
+    icon: getIcon(shoppingBagFill)
+  },
   // {
   //   title: 'Sponsors',
   //   path: '/admin/Sponsors',

@@ -13,15 +13,16 @@ const BookCourt = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const [datep, setDatep] = React.useState();
-  const [data, setData] = React.useState([]);
+  const [active, setActive] = useState(false);
   const [slotselected, setSlotSelected] = useState([]);
   const [slotlist, setSlotlist] = useState([]);
-  const [slot, setSlot] = useState([]);
   const [bookprice, setBookprice] = useState([]);
   const navigate = useNavigate();
   console.log(datep);
   const { stadiumId, courtId } = location.state;
-
+  const handleClick = () => {
+    setActive(!active);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     const date = moment(datep).format('DD-MM-YYYY');
@@ -33,20 +34,10 @@ const BookCourt = () => {
         stadiumId: String(stadiumId)
       })
     ).then((res) => {
-      setData(res.data.data);
-      console.log(data);
+      setSlotlist(res.data.data);
+      console.log(slotlist);
     });
   };
-
-  const slots = slotselected;
-  slots[index] = !slots[index];
-  const filteredslots = slotlist
-    .filter((data, index) => slots[index])
-    .map((data) => Number(data.price));
-  let price = 0;
-  if (filteredslots.length > 0) price = filteredslots.reduce((from, to) => from + to);
-  else setBookprice(price);
-  setSlotSelected([...slotselected]);
 
   return (
     <Box>
@@ -101,17 +92,18 @@ const BookCourt = () => {
       </Grid>
 
       <Grid container spacing={2} className="mt-3">
-        {Array.isArray(data) && data?.length > 0
-          ? data.map((x, index) => (
+        {Array.isArray(slotlist) && slotlist?.length > 0
+          ? slotlist.map((x, index) => (
               <Grid item sm={12} lg={2} md={6} xs={12} pr={2} pl={2} pt={2}>
                 <Card
-                  onClick={(e) => setSlot(index)}
                   style={{
+                    backgroundColor: active ? 'white' : '#ffe',
                     borderRadius: '12px',
                     width: '200px',
                     padding: '15px',
                     cursor: 'pointer'
                   }}
+                  onClick={handleClick}
                 >
                   <Typography
                     style={{
@@ -120,7 +112,8 @@ const BookCourt = () => {
                       display: 'flex',
                       justifyContent: 'center',
                       fontFamily: 'poppins',
-                      fontWeight: '500'
+                      fontWeight: '500',
+                      margin: '0'
                     }}
                     gutterBottom
                   >

@@ -42,6 +42,8 @@ import AddCourt from './pages/Addcourt';
 import BookCourt from './pages/BookCourt';
 import DefaultCourt from './pages/DefaultCourt';
 import CourtTimming from './pages/CourtTimming';
+import StadiumOwner from './pages/StadiumOwner';
+import SelectCard from './pages/SelectCard';
 // ----------------------------------------------------------------------
 
 export function Router(props) {
@@ -56,6 +58,8 @@ export function Router(props) {
         { path: 'addstadium', element: <Addstadiumlist /> },
         { path: 'addcourt', element: <AddCourt /> },
         { path: 'testing', element: <Testing /> },
+        { path: 'stadiumowner', element: <StadiumOwner /> },
+        { path: 'selectcard', element: <SelectCard /> },
         { path: 'defaultcourt', element: <DefaultCourt /> },
         { path: 'bookcourt', element: <BookCourt /> },
         { path: 'courttiming', element: <CourtTimming /> },
